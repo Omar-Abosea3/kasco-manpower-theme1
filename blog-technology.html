@@ -12,6 +12,7 @@
         href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700&family=Changa:wght@400;500;600;700&display=swap"
         rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
     <style id="dynamic-color-styles">
         @layer base {
             :root {
@@ -228,38 +229,257 @@
         <!-- BLOG CONTENT -->
         <section class="bg-cp_background_default py-24">
             <div class="max-w-7xl mx-auto px-6 lg:px-16">
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <!-- Post 2 -->
-                    <article
-                        class="bg-cp_background_paper rounded-2xl border border-cp_borders_main overflow-hidden shadow-sm hover:shadow-md transition-shadow anim-up"
-                        style="animation-delay:100ms">
-                        <div class="aspect-video bg-cp_palette_primary opacity-10 flex items-center justify-center">
-                            <svg class="w-12 h-12 text-cp_palette_primary" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M13 10V3L4 14h7v7l9-11h-7z" />
-                            </svg>
-                        </div>
-                        <div class="p-8">
-                            <div class="flex items-center gap-2 mb-4">
-                                <span
-                                    class="text-[10px] font-bold text-cp_palette_primary uppercase tracking-widest bg-cp_background_default px-2 py-1 rounded">Technology</span>
-                                <span class="text-cp_text_secondary text-[10px]">September 28, 2024</span>
+                <!-- Featured Article -->
+                <article
+                    class="bg-cp_background_paper rounded-3xl border border-cp_borders_main overflow-hidden shadow-xl mb-16 anim-up">
+                    <div class="md:flex">
+                        <div class="md:w-2/5 relative h-80 md:h-auto">
+                            <img src="./assets/tecnoligy-placeholder-blog.png" alt="AI Recruitment Technology"
+                                class="w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-r from-cp_palette_primary/80 to-cp_palette_primary/40">
                             </div>
-                            <h3 class="text-cp_text_primary text-xl font-bold mb-4 leading-snug">AI in Recruitment:
-                                Efficiency vs. Human Element</h3>
-                            <p class="text-cp_text_secondary text-sm leading-relaxed mb-6">How we use automated
-                                screening to
-                                speed up technical hiring without losing the nuance of skill verification.</p>
+                            <div class="absolute top-6 left-6">
+                                <span
+                                    class="text-cp_text_tertiary text-xs font-bold uppercase tracking-widest bg-cp_palette_secondary px-3 py-1 rounded-full">Featured</span>
+                            </div>
+                        </div>
+                        <div class="md:w-3/5 p-8 md:p-12">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span
+                                    class="text-[11px] font-bold text-cp_palette_primary uppercase tracking-widest bg-cp_background_default px-3 py-1.5 rounded">Technology</span>
+                                <span class="text-cp_text_secondary text-xs">September 28, 2024</span>
+                                <span class="text-cp_text_secondary text-xs">• 10 min read</span>
+                            </div>
+                            <h2 class="text-cp_text_primary text-3xl md:text-4xl font-bold mb-6 leading-tight">AI in
+                                Recruitment: Efficiency vs. Human Element</h2>
+                            <p class="text-cp_text_secondary text-lg leading-relaxed mb-8">How we leverage artificial
+                                intelligence to accelerate technical hiring while preserving the critical human insights
+                                that drive successful placements.</p>
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span
+                                    class="text-xs bg-cp_palette_primary/10 text-cp_palette_primary px-3 py-1 rounded-full">Artificial
+                                    Intelligence</span>
+                                <span
+                                    class="text-xs bg-cp_palette_primary/10 text-cp_palette_primary px-3 py-1 rounded-full">Recruitment</span>
+                                <span
+                                    class="text-xs bg-cp_palette_primary/10 text-cp_palette_primary px-3 py-1 rounded-full">Automation</span>
+                                <span
+                                    class="text-xs bg-cp_palette_primary/10 text-cp_palette_primary px-3 py-1 rounded-full">Skill
+                                    Matching</span>
+                            </div>
                             <a href="#"
-                                class="text-cp_palette_primary text-sm font-bold flex items-center gap-2 group">Read
-                                More <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none"
+                                class="inline-flex items-center gap-3 bg-cp_palette_primary text-cp_text_tertiary px-6 py-3 rounded-xl font-bold hover:bg-cp_palette_primary/90 transition-all duration-300 group">
+                                Read Full Article
+                                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none"
                                     stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg></a>
+                                </svg>
+                            </a>
                         </div>
-                    </article>
+                    </div>
+                </article>
+
+                <!-- Technology Trends -->
+                <div class="mb-16 anim-up" style="animation-delay:100ms">
+                    <h2 class="text-cp_text_primary text-3xl font-bold mb-8 text-center">Emerging HR Technology Trends
+                    </h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Trend 1 -->
+                        <div
+                            class="bg-cp_background_paper rounded-2xl border border-cp_borders_main p-8 hover:shadow-lg transition-shadow duration-300">
+                            <div
+                                class="w-14 h-14 rounded-xl bg-cp_palette_primary/10 flex items-center justify-center mb-6">
+                                <svg class="w-8 h-8 text-cp_palette_primary" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-cp_text_primary text-xl font-bold mb-4">Predictive Analytics</h3>
+                            <p class="text-cp_text_secondary text-sm leading-relaxed mb-4">Using data science to predict
+                                candidate success rates and optimize hiring decisions. Machine learning models analyze
+                                performance patterns and cultural fit indicators.</p>
+                            <div class="text-xs text-cp_palette_primary font-semibold">Adoption Rate: 73%</div>
+                        </div>
+
+                        <!-- Trend 2 -->
+                        <div
+                            class="bg-cp_background_paper rounded-2xl border border-cp_borders_main p-8 hover:shadow-lg transition-shadow duration-300">
+                            <div
+                                class="w-14 h-14 rounded-xl bg-cp_palette_secondary/10 flex items-center justify-center mb-6">
+                                <svg class="w-8 h-8 text-cp_palette_secondary" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-cp_text_primary text-xl font-bold mb-4">Automated Screening</h3>
+                            <p class="text-cp_text_secondary text-sm leading-relaxed mb-4">AI-powered resume parsing and
+                                skills assessment that reduces initial screening time by 85%. Natural language
+                                processing identifies qualified candidates instantly.</p>
+                            <div class="text-xs text-cp_palette_secondary font-semibold">Time Saved: 85%</div>
+                        </div>
+
+                        <!-- Trend 3 -->
+                        <div
+                            class="bg-cp_background_paper rounded-2xl border border-cp_borders_main p-8 hover:shadow-lg transition-shadow duration-300">
+                            <div
+                                class="w-14 h-14 rounded-xl bg-cp_palette_primary/10 flex items-center justify-center mb-6">
+                                <svg class="w-8 h-8 text-cp_palette_primary" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-cp_text_primary text-xl font-bold mb-4">Video Interview AI</h3>
+                            <p class="text-cp_text_secondary text-sm leading-relaxed mb-4">Automated video analysis for
+                                candidate assessment including speech patterns, facial expressions, and behavioral
+                                indicators for comprehensive evaluation.</p>
+                            <div class="text-xs text-cp_palette_primary font-semibold">Accuracy Rate: 92%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Implementation Framework -->
+                <div class="bg-cp_background_paper rounded-3xl border border-cp_borders_main p-8 md:p-12 mb-16 anim-up"
+                    style="animation-delay:200ms">
+                    <h2 class="text-cp_text_primary text-3xl font-bold mb-8 text-center">Our AI Implementation Framework
+                    </h2>
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-6">
+                            <div
+                                class="w-12 h-12 rounded-full bg-cp_palette_primary flex items-center justify-center flex-shrink-0">
+                                <span class="text-cp_text_tertiary font-bold">1</span>
+                            </div>
+                            <div>
+                                <h3 class="text-cp_text_primary text-xl font-bold mb-3">Data Collection & Integration
+                                </h3>
+                                <p class="text-cp_text_secondary text-sm leading-relaxed">Seamlessly integrate with
+                                    existing HR systems and job boards. Our platform aggregates candidate data from
+                                    multiple sources while maintaining data privacy compliance.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-6">
+                            <div
+                                class="w-12 h-12 rounded-full bg-cp_palette_secondary flex items-center justify-center flex-shrink-0">
+                                <span class="text-cp_text_tertiary font-bold">2</span>
+                            </div>
+                            <div>
+                                <h3 class="text-cp_text_primary text-xl font-bold mb-3">Algorithm Training</h3>
+                                <p class="text-cp_text_secondary text-sm leading-relaxed">Custom machine learning models
+                                    trained on industry-specific datasets. Continuous learning ensures improved accuracy
+                                    and reduced bias over time.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-6">
+                            <div
+                                class="w-12 h-12 rounded-full bg-cp_palette_primary flex items-center justify-center flex-shrink-0">
+                                <span class="text-cp_text_tertiary font-bold">3</span>
+                            </div>
+                            <div>
+                                <h3 class="text-cp_text_primary text-xl font-bold mb-3">Human Oversight Integration</h3>
+                                <p class="text-cp_text_secondary text-sm leading-relaxed">AI recommendations are
+                                    reviewed by experienced recruiters who provide final approval. This hybrid approach
+                                    ensures both efficiency and quality.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-6">
+                            <div
+                                class="w-12 h-12 rounded-full bg-cp_palette_secondary flex items-center justify-center flex-shrink-0">
+                                <span class="text-cp_text_tertiary font-bold">4</span>
+                            </div>
+                            <div>
+                                <h3 class="text-cp_text_primary text-xl font-bold mb-3">Performance Monitoring</h3>
+                                <p class="text-cp_text_secondary text-sm leading-relaxed">Real-time analytics dashboard
+                                    tracks hiring metrics, candidate quality, and system performance. Continuous
+                                    optimization based on measurable outcomes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Benefits Section -->
+                <div class="grid md:grid-cols-2 gap-12 mb-16 anim-up" style="animation-delay:300ms">
+                    <div class="bg-cp_background_paper rounded-2xl border border-cp_borders_main p-8">
+                        <h3 class="text-cp_text_primary text-2xl font-bold mb-6">Key Benefits</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <div class="w-2 h-2 rounded-full bg-cp_palette_primary mt-2 flex-shrink-0"></div>
+                                <div>
+                                    <h4 class="text-cp_text_primary font-semibold mb-1">Faster Time-to-Hire</h4>
+                                    <p class="text-cp_text_secondary text-sm">Reduce hiring cycle by up to 60% through
+                                        automated screening</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-2 h-2 rounded-full bg-cp_palette_primary mt-2 flex-shrink-0"></div>
+                                <div>
+                                    <h4 class="text-cp_text_primary font-semibold mb-1">Improved Quality</h4>
+                                    <p class="text-cp_text_secondary text-sm">Enhanced candidate matching through
+                                        comprehensive skill analysis</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-2 h-2 rounded-full bg-cp_palette_primary mt-2 flex-shrink-0"></div>
+                                <div>
+                                    <h4 class="text-cp_text_primary font-semibold mb-1">Cost Reduction</h4>
+                                    <p class="text-cp_text_secondary text-sm">Lower recruitment costs through process
+                                        automation</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-cp_background_paper rounded-2xl border border-cp_borders_main p-8">
+                        <h3 class="text-cp_text_primary text-2xl font-bold mb-6">Human Touch Preservation</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <div class="w-2 h-2 rounded-full bg-cp_palette_secondary mt-2 flex-shrink-0"></div>
+                                <div>
+                                    <h4 class="text-cp_text_primary font-semibold mb-1">Cultural Fit Assessment</h4>
+                                    <p class="text-cp_text_secondary text-sm">Experienced recruiters evaluate soft
+                                        skills and company alignment</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-2 h-2 rounded-full bg-cp_palette_secondary mt-2 flex-shrink-0"></div>
+                                <div>
+                                    <h4 class="text-cp_text_primary font-semibold mb-1">Complex Role Matching</h4>
+                                    <p class="text-cp_text_secondary text-sm">Human expertise for senior and specialized
+                                        positions</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-2 h-2 rounded-full bg-cp_palette_secondary mt-2 flex-shrink-0"></div>
+                                <div>
+                                    <h4 class="text-cp_text_primary font-semibold mb-1">Candidate Experience</h4>
+                                    <p class="text-cp_text_secondary text-sm">Personal interaction throughout the hiring
+                                        process</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="text-center anim-up" style="animation-delay:400ms">
+                    <h2 class="text-cp_text_primary text-2xl font-bold mb-6">Ready to Transform Your Hiring Process?
+                    </h2>
+                    <p class="text-cp_text_secondary text-lg max-w-2xl mx-auto mb-8">Discover how our AI-powered
+                        recruitment solutions can accelerate your hiring while maintaining the human touch that drives
+                        success.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="contact.html"
+                            class="bg-cp_palette_primary text-cp_text_tertiary px-8 py-4 rounded-xl font-bold hover:bg-cp_palette_primary/90 transition-all duration-300 text-center">Request
+                            Demo</a>
+                        <a href="#"
+                            class="border-2 border-cp_palette_primary text-cp_palette_primary px-8 py-4 rounded-xl font-bold hover:bg-cp_palette_primary hover:text-cp_text_tertiary transition-all duration-300 text-center">View
+                            Case Studies</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -344,9 +564,21 @@
         window.addEventListener('scroll', () => { navbar.classList.toggle('shadow-md', window.scrollY > 40); });
         const hamburger = document.getElementById('hamburger'), mobileMenu = document.getElementById('mobile-menu'), hamOpen = document.getElementById('ham-open'), hamClose = document.getElementById('ham-close'); let menuOpen = false;
         hamburger.addEventListener('click', () => { menuOpen = !menuOpen; mobileMenu.classList.toggle('hidden', !menuOpen); hamOpen.classList.toggle('hidden', menuOpen); hamClose.classList.toggle('hidden', !menuOpen); });
-        document.querySelectorAll('.anim-up').forEach(el => el.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700', 'ease-out'));
-        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (!entry.isIntersecting) return; const delay = parseInt(entry.target.style.animationDelay || '0'); setTimeout(() => { entry.target.classList.remove('opacity-0', 'translate-y-8'); }, delay); observer.unobserve(entry.target); }); }, { threshold: 0.1 });
-        document.querySelectorAll('.anim-up').forEach(el => observer.observe(el));
+        // Framer Motion Animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const animateElements = document.querySelectorAll('.anim-up');
+            animateElements.forEach((el, index) => {
+                const delay = parseInt(el.style.animationDelay || '0');
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+
+                setTimeout(() => {
+                    el.style.transition = 'opacity 0.7s ease-out, transform 0.7s ease-out';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, delay);
+            });
+        });
     </script>
 </body>
 

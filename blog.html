@@ -12,6 +12,7 @@
         href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700&family=Changa:wght@400;500;600;700&display=swap"
         rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
     <style id="dynamic-color-styles">
         @layer base {
             :root {
@@ -303,7 +304,8 @@
                     <article
                         class="bg-cp_background_paper rounded-2xl border border-cp_borders_main overflow-hidden shadow-sm hover:shadow-md transition-shadow anim-up">
                         <div class="aspect-video bg-cp_palette_primary flex items-center justify-center">
-                            <img src="./assets/compilance-placeholder-blog.png" alt="compilance" class="w-full h-full object-cover">
+                            <img src="./assets/compilance-placeholder-blog.png" alt="compilance"
+                                class="w-full h-full object-cover">
                         </div>
                         <div class="p-8">
                             <div class="flex items-center gap-2 mb-4">
@@ -330,7 +332,8 @@
                         class="bg-cp_background_paper rounded-2xl border border-cp_borders_main overflow-hidden shadow-sm hover:shadow-md transition-shadow anim-up"
                         style="animation-delay:100ms">
                         <div class="aspect-video bg-cp_palette_primary flex items-center justify-center">
-                            <img src="./assets/tecnoligy-placeholder-blog.png" alt="technology" class="w-full h-full object-cover">
+                            <img src="./assets/tecnoligy-placeholder-blog.png" alt="technology"
+                                class="w-full h-full object-cover">
                         </div>
                         <div class="p-8">
                             <div class="flex items-center gap-2 mb-4">
@@ -358,7 +361,8 @@
                         class="bg-cp_background_paper rounded-2xl border border-cp_borders_main overflow-hidden shadow-sm hover:shadow-md transition-shadow anim-up"
                         style="animation-delay:200ms">
                         <div class="aspect-video bg-cp_palette_primary flex items-center justify-center">
-                            <img src="./assets/stratigy-placeholder.blogpng.png" alt="strategy" class="w-full h-full object-cover">
+                            <img src="./assets/stratigy-placeholder.blogpng.png" alt="strategy"
+                                class="w-full h-full object-cover">
                         </div>
                         <div class="p-8">
                             <div class="flex items-center gap-2 mb-4">
@@ -493,9 +497,21 @@
         setInterval(() => { currentIdx = (currentIdx + 1) % totalSlides; updateCarousel(); }, 5000);
         updateCarousel();
 
-        document.querySelectorAll('.anim-up').forEach(el => el.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700', 'ease-out'));
-        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (!entry.isIntersecting) return; const delay = parseInt(entry.target.style.animationDelay || '0'); setTimeout(() => { entry.target.classList.remove('opacity-0', 'translate-y-8'); }, delay); observer.unobserve(entry.target); }); }, { threshold: 0.1 });
-        document.querySelectorAll('.anim-up').forEach(el => observer.observe(el));
+        // Framer Motion Animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const animateElements = document.querySelectorAll('.anim-up');
+            animateElements.forEach((el, index) => {
+                const delay = parseInt(el.style.animationDelay || '0');
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+
+                setTimeout(() => {
+                    el.style.transition = 'opacity 0.7s ease-out, transform 0.7s ease-out';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, delay);
+            });
+        });
     </script>
 </body>
 

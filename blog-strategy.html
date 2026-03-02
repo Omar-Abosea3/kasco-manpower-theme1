@@ -11,6 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700&family=Changa:wght@400;500;600;700&display=swap"
         rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
     <style id="dynamic-color-styles">
         @layer base {
             :root {
@@ -226,39 +227,311 @@
         <!-- BLOG CONTENT -->
         <section class="bg-cp_background_default py-24">
             <div class="max-w-7xl mx-auto px-6 lg:px-16">
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <!-- Post 3 -->
-                    <article
-                        class="bg-cp_background_paper rounded-2xl border border-cp_borders_main overflow-hidden shadow-sm hover:shadow-md transition-shadow anim-up"
-                        style="animation-delay:200ms">
-                        <div class="aspect-video bg-cp_palette_primary opacity-10 flex items-center justify-center">
-                            <svg class="w-12 h-12 text-cp_palette_primary" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                            </svg>
-                        </div>
-                        <div class="p-8">
-                            <div class="flex items-center gap-2 mb-4">
-                                <span
-                                    class="text-[10px] font-bold text-cp_palette_primary uppercase tracking-widest bg-cp_background_default px-2 py-1 rounded">Strategy</span>
-                                <span class="text-cp_text_secondary text-[10px]">September 15, 2024</span>
+                <!-- Featured Article -->
+                <article
+                    class="bg-cp_background_paper rounded-3xl border border-cp_borders_main overflow-hidden shadow-xl mb-16 anim-up">
+                    <div class="md:flex">
+                        <div class="md:w-2/5 relative h-80 md:h-auto">
+                            <img src="./assets/stratigy-placeholder.blogpng.png" alt="Workforce Strategy"
+                                class="w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-r from-cp_palette_primary/80 to-cp_palette_primary/40">
                             </div>
-                            <h3 class="text-cp_text_primary text-xl font-bold mb-4 leading-snug">Managing Seasonal
-                                Workforce
-                                Spikes</h3>
-                            <p class="text-cp_text_secondary text-sm leading-relaxed mb-6">Best practices for logistics
-                                and
-                                construction firms to scale their teams during peak project phases.</p>
+                            <div class="absolute top-6 left-6">
+                                <span
+                                    class="text-cp_text_tertiary text-xs font-bold uppercase tracking-widest bg-cp_palette_secondary px-3 py-1 rounded-full">Featured</span>
+                            </div>
+                        </div>
+                        <div class="md:w-3/5 p-8 md:p-12">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span
+                                    class="text-[11px] font-bold text-cp_palette_primary uppercase tracking-widest bg-cp_background_default px-3 py-1.5 rounded">Strategy</span>
+                                <span class="text-cp_text_secondary text-xs">September 15, 2024</span>
+                                <span class="text-cp_text_secondary text-xs">• 12 min read</span>
+                            </div>
+                            <h2 class="text-cp_text_primary text-3xl md:text-4xl font-bold mb-6 leading-tight">Managing
+                                Seasonal Workforce Spikes</h2>
+                            <p class="text-cp_text_secondary text-lg leading-relaxed mb-8">Strategic frameworks for
+                                logistics and construction firms to effectively scale teams during peak project phases
+                                while maintaining operational excellence.</p>
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span
+                                    class="text-xs bg-cp_palette_primary/10 text-cp_palette_primary px-3 py-1 rounded-full">Workforce
+                                    Planning</span>
+                                <span
+                                    class="text-xs bg-cp_palette_primary/10 text-cp_palette_primary px-3 py-1 rounded-full">Seasonal
+                                    Hiring</span>
+                                <span
+                                    class="text-xs bg-cp_palette_primary/10 text-cp_palette_primary px-3 py-1 rounded-full">Resource
+                                    Optimization</span>
+                                <span
+                                    class="text-xs bg-cp_palette_primary/10 text-cp_palette_primary px-3 py-1 rounded-full">Project
+                                    Management</span>
+                            </div>
                             <a href="#"
-                                class="text-cp_palette_primary text-sm font-bold flex items-center gap-2 group">Read
-                                More <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none"
+                                class="inline-flex items-center gap-3 bg-cp_palette_primary text-cp_text_tertiary px-6 py-3 rounded-xl font-bold hover:bg-cp_palette_primary/90 transition-all duration-300 group">
+                                Read Full Article
+                                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none"
                                     stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg></a>
+                                </svg>
+                            </a>
                         </div>
-                    </article>
+                    </div>
+                </article>
+
+                <!-- Strategic Framework -->
+                <div class="mb-16 anim-up" style="animation-delay:100ms">
+                    <h2 class="text-cp_text_primary text-3xl font-bold mb-8 text-center">Strategic Workforce Planning
+                        Framework</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Phase 1 -->
+                        <div
+                            class="bg-cp_background_paper rounded-2xl border border-cp_borders_main p-6 text-center hover:shadow-lg transition-shadow duration-300">
+                            <div
+                                class="w-16 h-16 rounded-xl bg-cp_palette_primary/10 flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl font-bold text-cp_palette_primary">1</span>
+                            </div>
+                            <h3 class="text-cp_text_primary text-lg font-bold mb-3">Forecasting</h3>
+                            <p class="text-cp_text_secondary text-sm">Analyze historical data and project pipelines to
+                                predict staffing requirements 3-6 months in advance.</p>
+                        </div>
+
+                        <!-- Phase 2 -->
+                        <div
+                            class="bg-cp_background_paper rounded-2xl border border-cp_borders_main p-6 text-center hover:shadow-lg transition-shadow duration-300">
+                            <div
+                                class="w-16 h-16 rounded-xl bg-cp_palette_secondary/10 flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl font-bold text-cp_palette_secondary">2</span>
+                            </div>
+                            <h3 class="text-cp_text_primary text-lg font-bold mb-3">Resource Mapping</h3>
+                            <p class="text-cp_text_secondary text-sm">Identify internal capacity and create partnerships
+                                with reliable staffing providers for surge needs.</p>
+                        </div>
+
+                        <!-- Phase 3 -->
+                        <div
+                            class="bg-cp_background_paper rounded-2xl border border-cp_borders_main p-6 text-center hover:shadow-lg transition-shadow duration-300">
+                            <div
+                                class="w-16 h-16 rounded-xl bg-cp_palette_primary/10 flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl font-bold text-cp_palette_primary">3</span>
+                            </div>
+                            <h3 class="text-cp_text_primary text-lg font-bold mb-3">Implementation</h3>
+                            <p class="text-cp_text_secondary text-sm">Execute onboarding and training programs to ensure
+                                rapid productivity for new team members.</p>
+                        </div>
+
+                        <!-- Phase 4 -->
+                        <div
+                            class="bg-cp_background_paper rounded-2xl border border-cp_borders_main p-6 text-center hover:shadow-lg transition-shadow duration-300">
+                            <div
+                                class="w-16 h-16 rounded-xl bg-cp_palette_secondary/10 flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl font-bold text-cp_palette_secondary">4</span>
+                            </div>
+                            <h3 class="text-cp_text_primary text-lg font-bold mb-3">Optimization</h3>
+                            <p class="text-cp_text_secondary text-sm">Continuously monitor performance and adjust
+                                staffing levels based on project progress and changing requirements.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Industry-Specific Strategies -->
+                <div class="grid md:grid-cols-2 gap-12 mb-16 anim-up" style="animation-delay:200ms">
+                    <div class="bg-cp_background_paper rounded-2xl border border-cp_borders_main p-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-cp_palette_primary/10 flex items-center justify-center">
+                                <svg class="w-8 h-8 text-cp_palette_primary" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                                </svg>
+                            </div>
+                            <h3 class="text-cp_text_primary text-2xl font-bold">Construction Industry</h3>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <div class="w-2 h-2 rounded-full bg-cp_palette_primary mt-2 flex-shrink-0"></div>
+                                <span class="text-cp_text_secondary text-sm">Plan for 20-40% workforce increase during
+                                    peak seasons</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-2 h-2 rounded-full bg-cp_palette_primary mt-2 flex-shrink-0"></div>
+                                <span class="text-cp_text_secondary text-sm">Implement staggered onboarding
+                                    schedules</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-2 h-2 rounded-full bg-cp_palette_primary mt-2 flex-shrink-0"></div>
+                                <span class="text-cp_text_secondary text-sm">Utilize specialized skill-based
+                                    contractors</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-2 h-2 rounded-full bg-cp_palette_primary mt-2 flex-shrink-0"></div>
+                                <span class="text-cp_text_secondary text-sm">Deploy mobile training units at project
+                                    sites</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-cp_background_paper rounded-2xl border border-cp_borders_main p-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div
+                                class="w-14 h-14 rounded-xl bg-cp_palette_secondary/10 flex items-center justify-center">
+                                <svg class="w-8 h-8 text-cp_palette_secondary" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                                </svg>
+                            </div>
+                            <h3 class="text-cp_text_primary text-2xl font-bold">Logistics Sector</h3>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <div class="w-2 h-2 rounded-full bg-cp_palette_secondary mt-2 flex-shrink-0"></div>
+                                <span class="text-cp_text_secondary text-sm">Create tiered workforce pools based on
+                                    cargo volumes</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-2 h-2 rounded-full bg-cp_palette_secondary mt-2 flex-shrink-0"></div>
+                                <span class="text-cp_text_secondary text-sm">Develop flexible scheduling systems</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-2 h-2 rounded-full bg-cp_palette_secondary mt-2 flex-shrink-0"></div>
+                                <span class="text-cp_text_secondary text-sm">Invest in cross-training permanent
+                                    staff</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-2 h-2 rounded-full bg-cp_palette_secondary mt-2 flex-shrink-0"></div>
+                                <span class="text-cp_text_secondary text-sm">Implement predictive loading
+                                    analytics</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Success Metrics -->
+                <div class="bg-cp_background_paper rounded-3xl border border-cp_borders_main p-8 md:p-12 mb-16 anim-up"
+                    style="animation-delay:300ms">
+                    <h2 class="text-cp_text_primary text-3xl font-bold mb-8 text-center">Key Performance Indicators</h2>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <div
+                                class="w-20 h-20 rounded-full bg-cp_palette_primary/10 flex items-center justify-center mx-auto mb-6">
+                                <span class="text-3xl font-bold text-cp_palette_primary">85%</span>
+                            </div>
+                            <h3 class="text-cp_text_primary text-xl font-bold mb-3">Project On-Time Delivery</h3>
+                            <p class="text-cp_text_secondary text-sm">Achieving target completion dates despite staffing
+                                fluctuations through effective surge capacity management.</p>
+                        </div>
+                        <div class="text-center">
+                            <div
+                                class="w-20 h-20 rounded-full bg-cp_palette_secondary/10 flex items-center justify-center mx-auto mb-6">
+                                <span class="text-3xl font-bold text-cp_palette_secondary">30%</span>
+                            </div>
+                            <h3 class="text-cp_text_primary text-xl font-bold mb-3">Cost Reduction</h3>
+                            <p class="text-cp_text_secondary text-sm">Lowering overtime costs and temporary staffing
+                                premiums through strategic workforce planning and timing.</p>
+                        </div>
+                        <div class="text-center">
+                            <div
+                                class="w-20 h-20 rounded-full bg-cp_palette_primary/10 flex items-center justify-center mx-auto mb-6">
+                                <span class="text-3xl font-bold text-cp_palette_primary">95%</span>
+                            </div>
+                            <h3 class="text-cp_text_primary text-xl font-bold mb-3">Quality Maintenance</h3>
+                            <p class="text-cp_text_secondary text-sm">Sustaining service quality standards even during
+                                peak staffing periods through comprehensive training programs.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Risk Management -->
+                <div class="grid md:grid-cols-2 gap-12 mb-16 anim-up" style="animation-delay:400ms">
+                    <div>
+                        <h3 class="text-cp_text_primary text-2xl font-bold mb-6">Risk Mitigation Strategies</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="w-3 h-3 rounded-full bg-cp_palette_primary mt-2 flex-shrink-0"></div>
+                                <div>
+                                    <h4 class="text-cp_text_primary font-semibold mb-2">Supply Chain Disruptions</h4>
+                                    <p class="text-cp_text_secondary text-sm">Maintain multiple staffing partner
+                                        relationships and develop contingency plans for key positions.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-3 h-3 rounded-full bg-cp_palette_primary mt-2 flex-shrink-0"></div>
+                                <div>
+                                    <h4 class="text-cp_text_primary font-semibold mb-2">Skill Gaps</h4>
+                                    <p class="text-cp_text_secondary text-sm">Implement rapid upskilling programs and
+                                        cross-training initiatives for existing workforce during transition periods.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-3 h-3 rounded-full bg-cp_palette_primary mt-2 flex-shrink-0"></div>
+                                <div>
+                                    <h4 class="text-cp_text_primary font-semibold mb-2">Compliance Risks</h4>
+                                    <p class="text-cp_text_secondary text-sm">Ensure all temporary and contract workers
+                                        meet industry certifications and safety requirements before deployment.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-cp_background_paper rounded-2xl border border-cp_borders_main p-8">
+                        <h3 class="text-cp_text_primary text-xl font-bold mb-6">Implementation Timeline</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-cp_text_primary font-medium">Month 1-2</span>
+                                    <span class="text-cp_text_secondary text-sm">Planning & Analysis</span>
+                                </div>
+                                <div class="h-2 bg-cp_borders_main rounded-full overflow-hidden">
+                                    <div class="h-full bg-cp_palette_primary rounded-full w-1/4"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-cp_text_primary font-medium">Month 3-4</span>
+                                    <span class="text-cp_text_secondary text-sm">Partnership Development</span>
+                                </div>
+                                <div class="h-2 bg-cp_borders_main rounded-full overflow-hidden">
+                                    <div class="h-full bg-cp_palette_secondary rounded-full w-1/2"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-cp_text_primary font-medium">Month 5-6</span>
+                                    <span class="text-cp_text_secondary text-sm">System Implementation</span>
+                                </div>
+                                <div class="h-2 bg-cp_borders_main rounded-full overflow-hidden">
+                                    <div class="h-full bg-cp_palette_primary rounded-full w-3/4"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-cp_text_primary font-medium">Month 7+</span>
+                                    <span class="text-cp_text_secondary text-sm">Optimization & Scaling</span>
+                                </div>
+                                <div class="h-2 bg-cp_borders_main rounded-full overflow-hidden">
+                                    <div class="h-full bg-cp_palette_secondary rounded-full w-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="text-center anim-up" style="animation-delay:500ms">
+                    <h2 class="text-cp_text_primary text-2xl font-bold mb-6">Optimize Your Workforce Strategy</h2>
+                    <p class="text-cp_text_secondary text-lg max-w-2xl mx-auto mb-8">Our strategic workforce planning
+                        experts can help you develop a customized approach to manage seasonal demands while maximizing
+                        efficiency and minimizing costs.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="contact.html"
+                            class="bg-cp_palette_primary text-cp_text_tertiary px-8 py-4 rounded-xl font-bold hover:bg-cp_palette_primary/90 transition-all duration-300 text-center">Schedule
+                            Strategy Session</a>
+                        <a href="#"
+                            class="border-2 border-cp_palette_primary text-cp_palette_primary px-8 py-4 rounded-xl font-bold hover:bg-cp_palette_primary hover:text-cp_text_tertiary transition-all duration-300 text-center">Download
+                            Planning Guide</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -343,9 +616,21 @@
         window.addEventListener('scroll', () => { navbar.classList.toggle('shadow-md', window.scrollY > 40); });
         const hamburger = document.getElementById('hamburger'), mobileMenu = document.getElementById('mobile-menu'), hamOpen = document.getElementById('ham-open'), hamClose = document.getElementById('ham-close'); let menuOpen = false;
         hamburger.addEventListener('click', () => { menuOpen = !menuOpen; mobileMenu.classList.toggle('hidden', !menuOpen); hamOpen.classList.toggle('hidden', menuOpen); hamClose.classList.toggle('hidden', !menuOpen); });
-        document.querySelectorAll('.anim-up').forEach(el => el.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700', 'ease-out'));
-        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (!entry.isIntersecting) return; const delay = parseInt(entry.target.style.animationDelay || '0'); setTimeout(() => { entry.target.classList.remove('opacity-0', 'translate-y-8'); }, delay); observer.unobserve(entry.target); }); }, { threshold: 0.1 });
-        document.querySelectorAll('.anim-up').forEach(el => observer.observe(el));
+        // Framer Motion Animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const animateElements = document.querySelectorAll('.anim-up');
+            animateElements.forEach((el, index) => {
+                const delay = parseInt(el.style.animationDelay || '0');
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+
+                setTimeout(() => {
+                    el.style.transition = 'opacity 0.7s ease-out, transform 0.7s ease-out';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, delay);
+            });
+        });
     </script>
 </body>
 
