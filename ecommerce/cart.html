@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ManShop - Cart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <style id="dynamic-color-styles">
+    @layer base {
+      :root {
+        --palette-primary: #1B3A6B;
+        --palette-secondary: #C9972A;
+        --background-default: #F4F6FA;
+        --background-paper: #FFFFFF;
+        --text-primary: #0F1F3D;
+        --text-secondary: #5A6A85;
+        --text-tertiary: #FFFFFF;
+        --borders-main: #DDE3EE;
+      }
+
+      :dir(ltr) {
+        font-family: 'Lexend Deca', system-ui, sans-serif;
+      }
+
+      :dir(rtl) {
+        font-family: 'Changa', system-ui, sans-serif;
+      }
+    }
+
+    .bg-cp_palette_primary {
+      background-color: var(--palette-primary) !important
+    }
+
+    .bg-cp_palette_secondary {
+      background-color: var(--palette-secondary) !important
+    }
+
+    .bg-cp_background_default {
+      background-color: var(--background-default) !important
+    }
+
+    .bg-cp_background_paper {
+      background-color: var(--background-paper) !important
+    }
+
+    .text-cp_text_primary {
+      color: var(--text-primary) !important
+    }
+
+    .text-cp_text_secondary {
+      color: var(--text-secondary) !important
+    }
+
+    .text-cp_text_tertiary {
+      color: var(--text-tertiary) !important
+    }
+
+    .border-cp_borders_main {
+      border-color: var(--borders-main) !important
+    }
+
+    .text-cp_palette_primary {
+      color: var(--palette-primary) !important
+    }
+
+    .text-cp_palette_secondary {
+      color: var(--palette-secondary) !important
+    }
+
+    .border-cp_palette_primary {
+      border-color: var(--palette-primary) !important
+    }
+
+    .hover\:text-cp_palette_primary:hover {
+      color: var(--palette-primary) !important
+    }
+
+    .hover\:bg-cp_palette_primary:hover {
+      background-color: var(--palette-primary) !important
+    }
+
+    .focus\:border-cp_palette_primary:focus {
+      border-color: var(--palette-primary) !important
+    }
+
+    /* Essential Custom Classes replaced by Tailwind utilities */
+    input:focus {
+      outline: none;
+      border-color: var(--palette-primary) !important;
+      box-shadow: 0 0 0 3px rgba(27, 58, 107, 0.15);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav class="bg-cp_palette_primary shadow-lg sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center gap-4">
+            <a href="../index.html" class="text-blue-300 hover:text-white text-xs flex items-center gap-1 transition">←
+              Portfolio</a>
+            <div class="w-px h-5 bg-blue-700"></div>
+            <a href="index.html" class="flex items-center gap-2">
+              <div
+                class="w-8 h-8 rounded-lg p-1 bg-cp_palette_secondary overflow-hidden flex items-center justify-center font-bold text-white text-xs">
+                <img src="../assets/logoipsum-409.png" class="object-cover w-full h-full" alt="logo">
+              </div>
+              <span class="text-white font-bold text-lg">ManShop</span>
+            </a>
+          </div>
+          <div class="hidden md:flex items-center gap-6">
+            <a href="index.html" class="text-blue-200 hover:text-white text-sm font-medium transition">Home</a>
+            <a href="products.html" class="text-blue-200 hover:text-white text-sm font-medium transition">Products</a>
+            <a href="wishlist.html" class="text-blue-200 hover:text-white text-sm font-medium transition">Wishlist</a>
+            <a href="orders.html" class="text-blue-200 hover:text-white text-sm font-medium transition">Orders</a>
+            <a href="cart.html"
+              class="relative flex items-center gap-1 px-4 py-2 rounded-lg bg-cp_palette_secondary text-white text-sm font-semibold hover:opacity-90 transition">
+              🛒 Cart <span id="nav-cart-count"
+                class="ml-1 bg-white text-cp_palette_primary text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">0</span>
+            </a>
+            <a href="login.html" id="nav-login-btn"
+              class="text-blue-200 hover:text-white text-sm font-medium transition">Login</a>
+          </div>
+          <button class="md:hidden text-white" onclick="document.getElementById('mob-nav').classList.toggle('hidden')">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div id="mob-nav" class="hidden md:hidden px-4 pb-4 border-t border-blue-800 pt-3 space-y-2">
+        <a href="index.html" class="block text-blue-200 text-sm py-1">Home</a>
+        <a href="products.html" class="block text-blue-200 text-sm py-1">Products</a>
+        <a href="wishlist.html" class="block text-blue-200 text-sm py-1">Wishlist</a>
+        <a href="orders.html" class="block text-blue-200 text-sm py-1">Orders</a>
+        <a href="login.html" class="block text-blue-200 text-sm py-1">Login</a>
+      </div>
+    </nav>
+  </header>
+  <!-- Content -->
+  <main class="bg-cp_background_default min-h-screen">
+    <!-- Header -->
+    <section class="bg-cp_palette_primary py-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div>
+          <h1 class="text-3xl font-bold text-white mb-1">Shopping Cart</h1>
+          <p id="cart-header-count" class="text-blue-200 text-sm"></p>
+        </div>
+        <button onclick="clearCart()"
+          class="px-4 py-2 rounded-lg border border-red-400 text-red-300 hover:bg-red-900 hover:bg-opacity-30 text-sm font-medium transition">🗑
+          Clear Cart</button>
+      </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div id="empty-cart" class="hidden text-center py-20">
+        <div class="text-6xl mb-4">🛒</div>
+        <h2 class="text-2xl font-bold text-cp_palette_primary mb-2">Your Cart is Empty</h2>
+        <p class="text-cp_text_secondary mb-6">Add some products to get started!</p>
+        <a href="products.html"
+          class="px-8 py-3 rounded-xl bg-cp_palette_primary text-white font-semibold hover:bg-blue-900 transition">Browse
+          Products →</a>
+      </div>
+
+      <div id="cart-content" class="hidden flex-col lg:flex-row gap-8">
+        <!-- Cart Items -->
+        <div class="flex-1">
+          <div id="cart-items" class="space-y-4"></div>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="lg:w-80 flex-shrink-0">
+          <div class="bg-cp_background_paper rounded-xl border border-cp_borders_main p-6 sticky top-24">
+            <h3 class="text-lg font-bold text-cp_palette_primary mb-5">Order Summary</h3>
+
+            <!-- Discount Coupon -->
+            <div class="mb-5">
+              <label class="text-sm font-semibold text-cp_palette_primary mb-2 block">Discount Coupon</label>
+              <div class="flex gap-2">
+                <input id="coupon-input" type="text" placeholder="Enter code"
+                  class="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm transition" />
+                <button onclick="applyCoupon()"
+                  class="px-4 py-2 rounded-lg bg-cp_palette_secondary text-white text-sm font-semibold hover:opacity-90 transition">Apply</button>
+              </div>
+              <div id="coupon-msg" class="mt-2 text-xs hidden"></div>
+              <div class="mt-2 text-xs text-gray-400">Try: <button onclick="fillCoupon('MANSHOP20')"
+                  class="text-cp_palette_secondary hover:underline">MANSHOP20</button> · <button
+                  onclick="fillCoupon('SAVE10')" class="text-cp_palette_secondary hover:underline">SAVE10</button> ·
+                <button onclick="fillCoupon('FLAT50')" class="text-cp_palette_secondary hover:underline">FLAT50</button>
+              </div>
+            </div>
+
+            <div class="space-y-3 mb-5 border-t border-cp_borders_main pt-4">
+              <div class="flex justify-between text-sm">
+                <span class="text-cp_text_secondary">Subtotal</span>
+                <span class="font-medium text-cp_palette_primary" id="subtotal">$0.00</span>
+              </div>
+              <div id="discount-row" class="hidden flex justify-between text-sm">
+                <span class="text-green-600">Discount (<span id="discount-code-label"></span>)</span>
+                <span class="font-medium text-green-600" id="discount-amount">-$0.00</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span class="text-cp_text_secondary">Shipping</span>
+                <span class="text-green-600 font-medium" id="shipping-text">Free</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span class="text-cp_text_secondary">Tax (8%)</span>
+                <span class="font-medium text-cp_palette_primary" id="tax-amount">$0.00</span>
+              </div>
+            </div>
+
+            <div class="border-t border-cp_borders_main pt-4 mb-6">
+              <div class="flex justify-between">
+                <span class="font-bold text-cp_palette_primary text-lg">Total</span>
+                <span class="font-bold text-cp_palette_primary text-lg" id="total-price">$0.00</span>
+              </div>
+            </div>
+
+            <button onclick="checkout()"
+              class="w-full py-3 rounded-xl bg-cp_palette_primary text-white font-bold hover:bg-blue-900 transition mb-3">Checkout
+              →</button>
+            <a href="products.html"
+              class="w-full block text-center py-3 rounded-xl border border-cp_borders_main text-cp_palette_primary text-sm font-medium hover:bg-gray-50 transition">←
+              Continue Shopping</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Checkout Modal -->
+    <section id="checkout-modal"
+      class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+      <div class="bg-white rounded-2xl max-w-md w-full p-8 text-center">
+        <div class="text-6xl mb-4">✅</div>
+        <h2 class="text-2xl font-bold text-cp_palette_primary mb-2">Order Placed!</h2>
+        <p class="text-cp_text_secondary mb-4 text-sm">Your order <span id="order-id-display"
+            class="font-mono font-bold text-cp_palette_secondary"></span> has been placed successfully.</p>
+        <p class="text-sm text-cp_text_secondary mb-6">You'll receive a confirmation email shortly.</p>
+        <div class="flex gap-3">
+          <a href="orders.html"
+            class="flex-1 py-3 rounded-xl bg-cp_palette_primary text-white font-semibold text-sm hover:bg-blue-900 transition">View
+            Orders</a>
+          <button onclick="document.getElementById('checkout-modal').classList.add('hidden')"
+            class="flex-1 py-3 rounded-xl border border-cp_borders_main text-cp_palette_primary text-sm font-medium hover:bg-gray-50 transition">Continue
+            Shopping</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const COUPONS = { 'MANSHOP20': { type: 'percent', value: 20 }, 'SAVE10': { type: 'percent', value: 10 }, 'FLAT50': { type: 'fixed', value: 50 } };
+    let appliedCoupon = null;
+
+    function getCart() { try { return JSON.parse(localStorage.getItem('manpower_cart') || '[]'); } catch (e) { return []; } }
+    function setCart(c) { localStorage.setItem('manpower_cart', JSON.stringify(c)); render(); }
+
+    function updateNavCount() {
+      const cart = getCart();
+      document.getElementById('nav-cart-count').textContent = cart.reduce((s, i) => s + i.qty, 0);
+    }
+
+    function changeQty(id, delta) {
+      let cart = getCart();
+      const idx = cart.findIndex(x => x.id === id);
+      if (idx < 0) return;
+      cart[idx].qty += delta;
+      if (cart[idx].qty <= 0) cart.splice(idx, 1);
+      setCart(cart);
+    }
+
+    function removeItem(id) {
+      let cart = getCart();
+      setCart(cart.filter(x => x.id !== id));
+    }
+
+    function clearCart() {
+      if (!confirm('Clear your entire cart?')) return;
+      setCart([]);
+      appliedCoupon = null;
+    }
+
+    function fillCoupon(code) { document.getElementById('coupon-input').value = code; }
+
+    function applyCoupon() {
+      const code = document.getElementById('coupon-input').value.trim().toUpperCase();
+      const msgEl = document.getElementById('coupon-msg');
+      if (!code) { msgEl.textContent = 'Please enter a coupon code.'; msgEl.className = 'mt-2 text-xs text-red-500'; msgEl.classList.remove('hidden'); return; }
+      if (COUPONS[code]) {
+        appliedCoupon = { code, ...COUPONS[code] };
+        msgEl.textContent = `✅ Coupon applied! ${COUPONS[code].type === 'percent' ? COUPONS[code].value + '% off' : '$' + COUPONS[code].value + ' off'}`;
+        msgEl.className = 'mt-2 text-xs text-green-600';
+        msgEl.classList.remove('hidden');
+        render();
+      } else {
+        appliedCoupon = null;
+        msgEl.textContent = '❌ Invalid coupon code.';
+        msgEl.className = 'mt-2 text-xs text-red-500';
+        msgEl.classList.remove('hidden');
+        render();
+      }
+    }
+
+    function calcTotals(cart) {
+      const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+      let discount = 0;
+      if (appliedCoupon) {
+        if (appliedCoupon.type === 'percent') discount = subtotal * appliedCoupon.value / 100;
+        else discount = Math.min(appliedCoupon.value, subtotal);
+      }
+      const afterDiscount = subtotal - discount;
+      const tax = afterDiscount * 0.08;
+      const total = afterDiscount + tax;
+      return { subtotal, discount, tax, total };
+    }
+
+    function render() {
+      const cart = getCart();
+      updateNavCount();
+      const headerCount = document.getElementById('cart-header-count');
+      const totalItems = cart.reduce((s, i) => s + i.qty, 0);
+      headerCount.textContent = `${totalItems} item${totalItems !== 1 ? 's' : ''} in your cart`;
+
+      if (cart.length === 0) {
+        document.getElementById('empty-cart').classList.remove('hidden');
+        document.getElementById('cart-content').classList.remove('flex');
+        document.getElementById('cart-content').classList.add('hidden');
+        return;
+      }
+      document.getElementById('empty-cart').classList.add('hidden');
+      document.getElementById('cart-content').classList.remove('hidden');
+      document.getElementById('cart-content').classList.add('flex');
+
+      document.getElementById('cart-items').innerHTML = cart.map(item => `
+    <div class="bg-cp_background_paper rounded-xl border border-cp_borders_main p-5 flex items-start gap-4">
+      <div class="w-20 h-20 bg-gray-50 rounded-xl overflow-hidden flex-shrink-0">
+        <a href="product-details.html?id=${item.id}"><img src="${item.image || 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&h=400'}" alt="${item.name}" class="w-full h-full object-cover"></a>
+      </div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-start justify-between gap-2">
+          <div>
+            <div class="text-xs text-cp_text_secondary">${item.brand} · ${item.sub}</div>
+            <a href="product-details.html?id=${item.id}"><h4 class="font-semibold text-cp_palette_primary text-sm mt-0.5 hover:text-cp_palette_secondary transition">${item.name}</h4></a>
+          </div>
+          <button onclick="removeItem(${item.id})" class="text-gray-400 hover:text-red-500 transition flex-shrink-0 text-lg">×</button>
+        </div>
+        <div class="flex items-center justify-between mt-3">
+          <div class="flex items-center gap-2">
+            <button onclick="changeQty(${item.id}, -1)" class="w-8 h-8 rounded-lg flex items-center justify-center font-bold transition-all duration-200 cursor-pointer border border-cp_borders_main bg-cp_background_default hover:bg-cp_palette_primary hover:text-white hover:border-cp_palette_primary">−</button>
+            <span class="w-8 text-center font-semibold text-cp_palette_primary text-sm">${item.qty}</span>
+            <button onclick="changeQty(${item.id}, 1)" class="w-8 h-8 rounded-lg flex items-center justify-center font-bold transition-all duration-200 cursor-pointer border border-cp_borders_main bg-cp_background_default hover:bg-cp_palette_primary hover:text-white hover:border-cp_palette_primary">+</button>
+          </div>
+          <div class="text-right">
+            <div class="font-bold text-cp_palette_primary">$${(item.price * item.qty).toFixed(2)}</div>
+            <div class="text-xs text-cp_text_secondary">$${item.price.toFixed(2)} each</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+      const { subtotal, discount, tax, total } = calcTotals(cart);
+      document.getElementById('subtotal').textContent = '$' + subtotal.toFixed(2);
+      document.getElementById('tax-amount').textContent = '$' + tax.toFixed(2);
+      document.getElementById('total-price').textContent = '$' + total.toFixed(2);
+      document.getElementById('shipping-text').textContent = subtotal > 50 ? 'Free' : '$9.99';
+
+      const discountRow = document.getElementById('discount-row');
+      if (appliedCoupon && discount > 0) {
+        discountRow.classList.remove('hidden');
+        document.getElementById('discount-code-label').textContent = appliedCoupon.code;
+        document.getElementById('discount-amount').textContent = '-$' + discount.toFixed(2);
+      } else {
+        discountRow.classList.add('hidden');
+      }
+    }
+
+    function checkout() {
+      const cart = getCart();
+      if (cart.length === 0) return;
+      const { total } = calcTotals(cart);
+      const orderId = 'ORD-' + Date.now().toString().slice(-6);
+      const orders = JSON.parse(localStorage.getItem('manpower_orders') || '[]');
+      orders.unshift({ id: orderId, items: cart, total: total.toFixed(2), date: new Date().toLocaleDateString(), status: 'Processing', coupon: appliedCoupon?.code || null });
+      localStorage.setItem('manpower_orders', JSON.stringify(orders));
+      setCart([]);
+      appliedCoupon = null;
+      document.getElementById('order-id-display').textContent = orderId;
+      document.getElementById('checkout-modal').classList.remove('hidden');
+    }
+
+    render();
+    const user = JSON.parse(localStorage.getItem('manpower_user') || 'null');
+    if (user) { document.getElementById('nav-login-btn').textContent = '👤 ' + user.name.split(' ')[0]; document.getElementById('nav-login-btn').href = 'orders.html'; }
+  </script>
+</body>
+
+</html>

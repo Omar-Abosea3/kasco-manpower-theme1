@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ManBook - Booking Confirmed!</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <style id="dynamic-color-styles">
+    @layer base {
+      :root {
+        --palette-primary: #1B3A6B;
+        --palette-secondary: #C9972A;
+        --background-default: #F4F6FA;
+        --background-paper: #FFFFFF;
+        --text-primary: #0F1F3D;
+        --text-secondary: #5A6A85;
+        --text-tertiary: #FFFFFF;
+        --borders-main: #DDE3EE;
+      }
+
+      :dir(ltr) {
+        font-family: 'Lexend Deca', system-ui, sans-serif;
+      }
+
+      :dir(rtl) {
+        font-family: 'Changa', system-ui, sans-serif;
+      }
+    }
+
+    .bg-cp_palette_primary {
+      background-color: var(--palette-primary) !important
+    }
+
+    .bg-cp_palette_secondary {
+      background-color: var(--palette-secondary) !important
+    }
+
+    .bg-cp_background_default {
+      background-color: var(--background-default) !important
+    }
+
+    .bg-cp_background_paper {
+      background-color: var(--background-paper) !important
+    }
+
+    .text-cp_text_primary {
+      color: var(--text-primary) !important
+    }
+
+    .text-cp_text_secondary {
+      color: var(--text-secondary) !important
+    }
+
+    .text-cp_text_tertiary {
+      color: var(--text-tertiary) !important
+    }
+
+    .border-cp_borders_main {
+      border-color: var(--borders-main) !important
+    }
+
+    .text-cp_palette_primary {
+      color: var(--palette-primary) !important
+    }
+
+    .border-cp_palette_primary {
+      border-color: var(--palette-primary) !important
+    }
+
+    .hover\:text-cp_palette_primary:hover {
+      color: var(--palette-primary) !important
+    }
+
+    .hover\:bg-cp_palette_primary:hover {
+      background-color: var(--palette-primary) !important
+    }
+
+    .focus\:border-cp_palette_primary:focus {
+      border-color: var(--palette-primary) !important
+    }
+
+    /* Animations */
+    @keyframes pop {
+      0% {
+        transform: scale(0.5);
+        opacity: 0
+      }
+
+      60% {
+        transform: scale(1.15)
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1
+      }
+    }
+
+    .icon-pop {
+      animation: pop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .fade-up {
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    .delay-1 {
+      animation-delay: 0.2s;
+      opacity: 0;
+    }
+
+    .delay-2 {
+      animation-delay: 0.4s;
+      opacity: 0;
+    }
+
+    .delay-3 {
+      animation-delay: 0.6s;
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header>
+    <nav class="bg-cp_palette_primary shadow-lg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+        <div class="flex items-center gap-4">
+          <a href="../index.html" class="text-blue-300 hover:text-white text-xs transition">← Portfolio</a>
+          <div class="w-px h-5 bg-blue-700"></div>
+          <a href="index.html" class="flex items-center gap-2">
+            <div
+              class="w-8 h-8 rounded-lg bg-cp_palette_secondary flex items-center justify-center font-bold text-white text-xs overflow-hidden">
+              <img src="https://placehold.co/40x40/C9972A/FFFFFF/png?text=MB" alt="MB"
+                class="w-full h-full object-cover">
+            </div>
+            <span class="text-white font-bold text-lg">ManBook</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center gap-6">
+          <a href="index.html" class="text-blue-200 hover:text-white text-sm transition">Home</a>
+          <a href="services.html" class="text-blue-200 hover:text-white text-sm transition">Services</a>
+          <a href="my-bookings.html" class="text-blue-200 hover:text-white text-sm transition">My Bookings</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="bg-cp_background_default min-h-screen">
+    <!-- Progress complete -->
+    <section class="bg-cp_palette_primary py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-3">
+          <div class="flex items-center gap-2">
+            <div
+              class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">✓
+            </div>
+            <span class="text-white text-sm font-medium hidden sm:block">Service</span>
+          </div>
+          <div class="flex-1 h-px bg-green-400 max-w-16"></div>
+          <div class="flex items-center gap-2">
+            <div
+              class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">✓
+            </div>
+            <span class="text-white text-sm font-medium hidden sm:block">Your Details</span>
+          </div>
+          <div class="flex-1 h-px bg-green-400 max-w-16"></div>
+          <div class="flex items-center gap-2">
+            <div
+              class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">✓
+            </div>
+            <span class="text-white text-sm font-medium hidden sm:block">Confirmation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+      <!-- Success Header -->
+      <div class="text-center mb-10">
+        <div
+          class="w-24 h-24 rounded-full bg-green-100 flex items-center justify-center overflow-hidden mx-auto mb-6 icon-pop">
+          <img src="https://placehold.co/200x200/22C55E/FFFFFF/png?text=Done" alt="Confirmed"
+            class="w-full h-full object-cover">
+        </div>
+        <h1 class="text-3xl font-extrabold text-cp_palette_primary mb-2 fade-up delay-1">Booking Confirmed!</h1>
+        <p class="text-cp_text_secondary fade-up delay-2">Your appointment has been successfully scheduled. A
+          confirmation has been noted below.</p>
+      </div>
+
+      <!-- Booking Card -->
+      <div
+        class="bg-cp_background_paper rounded-2xl border border-cp_borders_main overflow-hidden shadow-lg fade-up delay-3">
+        <!-- Card Header -->
+        <div class="bg-cp_palette_primary p-6 text-center">
+          <div class="inline-flex items-center gap-2 bg-white bg-opacity-10 rounded-full px-4 py-2 mb-3">
+            <span class="w-2 h-2 bg-green-400 rounded-full"></span>
+            <span class="text-white text-xs font-semibold">Booking Confirmed</span>
+          </div>
+          <div
+            class="w-16 h-16 bg-white bg-opacity-10 rounded-2xl flex items-center justify-center overflow-hidden mx-auto mb-2">
+            <img id="conf-icon" src="" alt="Service Icon" class="w-full h-full object-cover">
+          </div>
+          <h2 class="text-2xl font-bold text-white mb-1" id="conf-service">—</h2>
+          <p class="text-blue-200 text-sm" id="conf-cat">—</p>
+        </div>
+
+        <!-- Booking ID Banner -->
+        <div class="bg-cp_palette_secondary bg-opacity-10 border-b border-yellow-200 p-4 text-center">
+          <p class="text-xs text-cp_palette_secondary font-semibold uppercase tracking-wider mb-1">Booking ID</p>
+          <p class="font-mono font-extrabold text-cp_palette_secondary text-2xl" id="conf-id">—</p>
+        </div>
+
+        <!-- Details Grid -->
+        <div class="p-6">
+          <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="bg-cp_background_default rounded-xl p-4">
+              <p class="text-xs text-cp_text_secondary font-semibold uppercase tracking-wide mb-1">📅 Date</p>
+              <p class="font-bold text-cp_palette_primary text-sm" id="conf-date">—</p>
+            </div>
+            <div class="bg-cp_background_default rounded-xl p-4">
+              <p class="text-xs text-cp_text_secondary font-semibold uppercase tracking-wide mb-1">⏰ Time</p>
+              <p class="font-bold text-cp_palette_primary text-sm" id="conf-time">—</p>
+            </div>
+            <div class="bg-cp_background_default rounded-xl p-4">
+              <p class="text-xs text-cp_text_secondary font-semibold uppercase tracking-wide mb-1">⏱ Duration</p>
+              <p class="font-bold text-cp_palette_primary text-sm" id="conf-duration">—</p>
+            </div>
+            <div class="bg-cp_background_default rounded-xl p-4">
+              <p class="text-xs text-cp_text_secondary font-semibold uppercase tracking-wide mb-1">💰 Price</p>
+              <p class="font-bold text-cp_palette_primary text-sm" id="conf-price">—</p>
+            </div>
+          </div>
+
+          <div class="border-t border-cp_borders_main pt-5 mb-5">
+            <h4 class="text-sm font-bold text-cp_palette_primary mb-3">Customer Details</h4>
+            <div class="space-y-2">
+              <div class="flex justify-between text-sm">
+                <span class="text-cp_text_secondary">Name</span>
+                <span class="font-medium text-cp_palette_primary" id="conf-name">—</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span class="text-cp_text_secondary">Email</span>
+                <span class="font-medium text-cp_palette_primary" id="conf-email">—</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span class="text-cp_text_secondary">Phone</span>
+                <span class="font-medium text-cp_palette_primary" id="conf-phone">—</span>
+              </div>
+            </div>
+          </div>
+
+          <div id="conf-notes-section" class="hidden border-t border-cp_borders_main pt-5 mb-5">
+            <h4 class="text-sm font-bold text-cp_palette_primary mb-2">Special Notes</h4>
+            <p class="text-sm text-cp_text_secondary bg-cp_background_default rounded-lg p-3 italic" id="conf-notes">
+            </p>
+          </div>
+
+          <div class="bg-blue-50 border border-blue-100 rounded-xl p-4 mb-5">
+            <p class="text-xs text-blue-700 font-semibold mb-1">📋 What to Bring</p>
+            <p class="text-xs text-blue-600">Please arrive 5 minutes early. Bring a valid ID and any relevant medical
+              information if applicable.</p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="my-bookings.html"
+              class="flex-1 text-center py-3 rounded-xl bg-cp_palette_primary text-white font-semibold text-sm hover:bg-blue-900 transition">View
+              All Bookings</a>
+            <a href="services.html"
+              class="flex-1 text-center py-3 rounded-xl border border-cp_borders_main text-cp_palette_primary font-semibold text-sm hover:bg-gray-50 transition">Book
+              Another →</a>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-center text-xs text-cp_text_secondary mt-6">Need to cancel? Visit <a href="my-bookings.html"
+          class="text-cp_palette_secondary hover:underline">My Bookings</a> up to 24 hours before your appointment.</p>
+    </section>
+  </main>
+
+  <footer class="bg-gray-900 py-8">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p class="text-gray-600 text-sm">© 2026 ManBook. <a href="../index.html"
+          class="text-gray-500 hover:text-yellow-400 transition">← Portfolio</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const bookingId = new URLSearchParams(location.search).get('id');
+    const bookings = JSON.parse(localStorage.getItem('manpower_bookings') || '[]');
+    const b = bookings.find(x => x.id === bookingId) || bookings[0];
+
+    if (b) {
+      const icon = (b.serviceIcon && b.serviceIcon.startsWith('http')) ? b.serviceIcon : `https://placehold.co/200x200/1B3A6B/FFFFFF/png?text=${encodeURIComponent(b.serviceName || 'Booking')}`;
+      document.getElementById('conf-icon').src = icon;
+      document.getElementById('conf-service').textContent = b.serviceName;
+      document.getElementById('conf-cat').textContent = (b.serviceCategory || '') + ' Service';
+      document.getElementById('conf-id').textContent = b.id;
+      document.getElementById('conf-date').textContent = b.dateFormatted || b.date;
+      document.getElementById('conf-time').textContent = b.time;
+      document.getElementById('conf-duration').textContent = (b.serviceDuration || '—') + ' min';
+      document.getElementById('conf-price').textContent = '$' + b.servicePrice;
+      document.getElementById('conf-name').textContent = b.customerName;
+      document.getElementById('conf-email').textContent = b.email;
+      document.getElementById('conf-phone').textContent = b.phone;
+      if (b.notes) {
+        document.getElementById('conf-notes').textContent = b.notes;
+        document.getElementById('conf-notes-section').classList.remove('hidden');
+      }
+    } else {
+      document.querySelector('.max-w-2xl').innerHTML = `<div class="text-center py-20"><div class="text-5xl mb-4">😕</div><h2 class="text-2xl font-bold text-primary-c mb-2">Booking Not Found</h2><a href="booking.html" class="px-6 py-3 rounded-xl bg-secondary text-white font-semibold inline-block mt-4">Make a Booking</a></div>`;
+    }
+  </script>
+</body>
+
+</html>

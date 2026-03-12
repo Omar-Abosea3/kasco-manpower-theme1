@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ManBook - My Bookings</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <style id="dynamic-color-styles">
+    @layer base {
+      :root {
+        --palette-primary: #1B3A6B;
+        --palette-secondary: #C9972A;
+        --background-default: #F4F6FA;
+        --background-paper: #FFFFFF;
+        --text-primary: #0F1F3D;
+        --text-secondary: #5A6A85;
+        --text-tertiary: #FFFFFF;
+        --borders-main: #DDE3EE;
+      }
+
+      :dir(ltr) {
+        font-family: 'Lexend Deca', system-ui, sans-serif;
+      }
+
+      :dir(rtl) {
+        font-family: 'Changa', system-ui, sans-serif;
+      }
+    }
+
+    .bg-cp_palette_primary {
+      background-color: var(--palette-primary) !important
+    }
+
+    .bg-cp_palette_secondary {
+      background-color: var(--palette-secondary) !important
+    }
+
+    .bg-cp_background_default {
+      background-color: var(--background-default) !important
+    }
+
+    .bg-cp_background_paper {
+      background-color: var(--background-paper) !important
+    }
+
+    .text-cp_text_primary {
+      color: var(--text-primary) !important
+    }
+
+    .text-cp_text_secondary {
+      color: var(--text-secondary) !important
+    }
+
+    .text-cp_text_tertiary {
+      color: var(--text-tertiary) !important
+    }
+
+    .border-cp_borders_main {
+      border-color: var(--borders-main) !important
+    }
+
+    .text-cp_palette_primary {
+      color: var(--palette-primary) !important
+    }
+
+    .border-cp_palette_primary {
+      border-color: var(--palette-primary) !important
+    }
+
+    .hover\:text-cp_palette_primary:hover {
+      color: var(--palette-primary) !important
+    }
+
+    .hover\:bg-cp_palette_primary:hover {
+      background-color: var(--palette-primary) !important
+    }
+
+    .focus\:border-cp_palette_primary:focus {
+      border-color: var(--palette-primary) !important
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header>
+    <nav class="bg-cp_palette_primary shadow-lg sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+        <div class="flex items-center gap-4">
+          <a href="../index.html" class="text-blue-300 hover:text-white text-xs transition">← Portfolio</a>
+          <div class="w-px h-5 bg-blue-700"></div>
+          <a href="index.html" class="flex items-center gap-2">
+            <div
+              class="w-8 h-8 rounded-lg bg-cp_palette_secondary flex items-center justify-center font-bold text-white text-xs overflow-hidden">
+              <img src="https://placehold.co/40x40/C9972A/FFFFFF/png?text=MB" alt="MB"
+                class="w-full h-full object-cover">
+            </div>
+            <span class="text-white font-bold text-lg">ManBook</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center gap-6">
+          <a href="index.html" class="text-blue-200 hover:text-white text-sm transition">Home</a>
+          <a href="services.html" class="text-blue-200 hover:text-white text-sm transition">Services</a>
+          <a href="my-bookings.html" class="text-white text-sm font-medium border-b-2 border-secondary pb-0.5">My
+            Bookings</a>
+          <a href="booking.html"
+            class="px-4 py-2 rounded-lg bg-cp_palette_secondary text-white text-sm font-semibold hover:opacity-90 transition flex items-center gap-2">
+            <span class="w-4 h-4 overflow-hidden rounded-sm"><img
+                src="https://placehold.co/40x40/C9972A/FFFFFF/png?text=Book" class="w-full h-full object-cover"></span>
+            Book Now
+          </a>
+          <a href="login.html" id="nav-login-btn" class="text-blue-200 hover:text-white text-sm transition">Login</a>
+        </div>
+        <button class="md:hidden text-white" onclick="document.getElementById('mob-nav').classList.toggle('hidden')">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+      <div id="mob-nav" class="hidden md:hidden px-4 pb-4 border-t border-blue-800 pt-3 space-y-2">
+        <a href="index.html" class="block text-blue-200 text-sm py-1">Home</a>
+        <a href="services.html" class="block text-blue-200 text-sm py-1">Services</a>
+        <a href="booking.html" class="block text-blue-200 text-sm py-1">Book Now</a>
+        <a href="login.html" class="block text-blue-200 text-sm py-1">Login</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="bg-cp_background_default min-h-screen">
+    <section class="bg-cp_palette_primary py-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between flex-wrap gap-4">
+        <div>
+          <h1 class="text-3xl font-bold text-white mb-1">My Bookings</h1>
+          <p id="booking-count" class="text-blue-200 text-sm"></p>
+        </div>
+        <a href="booking.html"
+          class="px-6 py-3 rounded-xl bg-cp_palette_secondary text-white font-semibold text-sm hover:opacity-90 transition">+
+          New Booking</a>
+      </div>
+    </section>
+
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+      <!-- Tabs -->
+      <div class="flex gap-6 border-b border-cp_borders_main mb-8 overflow-x-auto">
+        <button onclick="setTab('all')" id="tab-all"
+          class="filter-tab border-cp_palette_secondary text-cp_palette_secondary font-bold pb-3 text-sm whitespace-nowrap border-b-2 transition-all duration-200">All
+          Bookings</button>
+        <button onclick="setTab('Confirmed')" id="tab-Confirmed"
+          class="filter-tab pb-3 text-sm text-cp_text_secondary whitespace-nowrap border-b-2 border-transparent transition-all duration-200 hover:text-cp_palette_secondary">Confirmed</button>
+        <button onclick="setTab('Completed')" id="tab-Completed"
+          class="filter-tab pb-3 text-sm text-cp_text_secondary whitespace-nowrap border-b-2 border-transparent transition-all duration-200 hover:text-cp_palette_secondary">Completed</button>
+        <button onclick="setTab('Cancelled')" id="tab-Cancelled"
+          class="filter-tab pb-3 text-sm text-cp_text_secondary whitespace-nowrap border-b-2 border-transparent transition-all duration-200 hover:text-cp_palette_secondary">Cancelled</button>
+      </div>
+
+      <!-- Empty State -->
+      <div id="empty-state" class="hidden text-center py-20">
+        <div
+          class="w-20 h-20 mx-auto mb-4 overflow-hidden rounded-2xl bg-cp_background_default flex items-center justify-center border border-cp_borders_main">
+          <img src="https://placehold.co/100x100/1B3A6B/FFFFFF/png?text=Empty" alt="No bookings"
+            class="w-full h-full object-cover opacity-20">
+        </div>
+        <h2 class="text-2xl font-bold text-cp_palette_primary mb-2">No Bookings Yet</h2>
+        <p class="text-cp_text_secondary mb-6">You haven't made any bookings. Explore our services and schedule your
+          first appointment!</p>
+        <a href="services.html"
+          class="px-8 py-3 rounded-xl bg-cp_palette_secondary text-white font-semibold hover:opacity-90 transition">Browse
+          Services →</a>
+      </div>
+
+      <!-- Demo Generate -->
+      <div id="gen-demo" class="hidden text-center mb-6">
+        <button onclick="generateDemo()" class="text-xs text-cp_palette_secondary hover:underline">+ Generate demo
+          bookings to preview this page</button>
+      </div>
+
+      <div id="bookings-list" class="space-y-4"></div>
+    </section>
+
+    <!-- Detail Modal -->
+    <section id="detail-modal"
+      class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-start justify-center p-4 pt-16 overflow-y-auto">
+      <div class="bg-white rounded-2xl max-w-lg w-full">
+        <div class="bg-cp_palette_primary rounded-t-2xl p-6">
+          <div class="flex justify-between items-start">
+            <div>
+              <div
+                class="w-14 h-14 bg-white bg-opacity-10 rounded-2xl flex items-center justify-center overflow-hidden mb-2"
+                id="modal-icon-wrap">
+                <img id="modal-icon" src="" alt="icon" class="w-full h-full object-cover">
+              </div>
+              <h3 class="text-xl font-bold text-white" id="modal-service"></h3>
+              <p class="text-blue-200 text-sm" id="modal-cat"></p>
+            </div>
+            <button onclick="document.getElementById('detail-modal').classList.add('hidden')"
+              class="text-blue-300 hover:text-white text-2xl leading-none">×</button>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="bg-cp_palette_secondary bg-opacity-10 rounded-xl p-3 text-center mb-5">
+            <p class="text-xs text-cp_palette_secondary font-semibold mb-0.5">Booking ID</p>
+            <p class="font-mono font-extrabold text-cp_palette_secondary text-lg" id="modal-id"></p>
+          </div>
+          <div class="grid grid-cols-2 gap-3 mb-4">
+            <div class="bg-cp_background_default rounded-lg p-3">
+              <p class="text-xs text-cp_text_secondary mb-0.5">Date</p>
+              <p class="font-bold text-cp_palette_primary text-sm" id="modal-date"></p>
+            </div>
+            <div class="bg-cp_background_default rounded-lg p-3">
+              <p class="text-xs text-cp_text_secondary mb-0.5">Time</p>
+              <p class="font-bold text-cp_palette_primary text-sm" id="modal-time"></p>
+            </div>
+            <div class="bg-cp_background_default rounded-lg p-3">
+              <p class="text-xs text-cp_text_secondary mb-0.5">Duration</p>
+              <p class="font-bold text-cp_palette_primary text-sm" id="modal-duration"></p>
+            </div>
+            <div class="bg-cp_background_default rounded-lg p-3">
+              <p class="text-xs text-cp_text_secondary mb-0.5">Price</p>
+              <p class="font-bold text-cp_palette_primary text-sm" id="modal-price"></p>
+            </div>
+          </div>
+          <div class="space-y-2 border-t border-cp_borders_main pt-4 text-sm mb-4">
+            <div class="flex justify-between"><span class="text-cp_text_secondary">Customer</span><span
+                class="font-medium text-cp_palette_primary" id="modal-name"></span></div>
+            <div class="flex justify-between"><span class="text-cp_text_secondary">Email</span><span
+                class="font-medium text-cp_palette_primary" id="modal-email"></span></div>
+            <div class="flex justify-between"><span class="text-cp_text_secondary">Phone</span><span
+                class="font-medium text-cp_palette_primary" id="modal-phone"></span></div>
+            <div class="flex justify-between"><span class="text-cp_text_secondary">Status</span><span
+                id="modal-status"></span></div>
+          </div>
+          <div id="modal-notes-wrap" class="hidden mb-4 text-sm">
+            <div class="text-cp_text_secondary font-semibold mb-1">Notes:</div>
+            <p class="text-cp_text_secondary italic bg-cp_background_default rounded-lg p-3" id="modal-notes"></p>
+          </div>
+          <div class="flex gap-3">
+            <button id="modal-cancel-btn" onclick=""
+              class="flex-1 py-3 rounded-xl border border-red-200 text-red-600 text-sm font-semibold hover:bg-red-50 transition">Cancel
+              Booking</button>
+            <button onclick="document.getElementById('detail-modal').classList.add('hidden')"
+              class="flex-1 py-3 rounded-xl border border-cp_borders_main text-cp_palette_primary text-sm font-medium hover:bg-gray-50 transition">Close</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-900 py-8 mt-8">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p class="text-gray-600 text-sm">© 2026 ManBook. <a href="../index.html"
+          class="text-gray-500 hover:text-yellow-400 transition">← Portfolio</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const STATUS_STYLES = {
+      'Confirmed': 'bg-green-100 text-green-700',
+      'Completed': 'bg-blue-100 text-blue-700',
+      'Cancelled': 'bg-red-100 text-red-700',
+      'Pending': 'bg-yellow-100 text-yellow-700',
+    };
+
+    let currentTab = 'all';
+
+    function getBookings() { try { return JSON.parse(localStorage.getItem('manpower_bookings') || '[]'); } catch (e) { return []; } }
+    function setBookings(b) { localStorage.setItem('manpower_bookings', JSON.stringify(b)); render(); }
+
+    function setTab(tab) {
+      currentTab = tab;
+      document.querySelectorAll('.filter-tab').forEach(t => {
+        t.classList.remove('border-cp_palette_secondary', 'text-cp_palette_secondary', 'font-bold');
+        t.classList.add('text-cp_text_secondary', 'border-transparent');
+      });
+      const el = document.getElementById('tab-' + tab);
+      if (el) {
+        el.classList.add('border-cp_palette_secondary', 'text-cp_palette_secondary', 'font-bold');
+        el.classList.remove('text-cp_text_secondary', 'border-transparent');
+      }
+      render();
+    }
+
+    function cancelBooking(id) {
+      if (!confirm('Are you sure you want to cancel this booking?')) return;
+      const bookings = getBookings().map(b => b.id === id ? { ...b, status: 'Cancelled' } : b);
+      setBookings(bookings);
+      document.getElementById('detail-modal').classList.add('hidden');
+    }
+
+    function viewDetails(id) {
+      const b = getBookings().find(x => x.id === id);
+      if (!b) return;
+      const icon = (b.serviceIcon && b.serviceIcon.startsWith('http')) ? b.serviceIcon : `https://placehold.co/200x200/1B3A6B/FFFFFF/png?text=${encodeURIComponent(b.serviceName || 'Booking')}`;
+      document.getElementById('modal-icon').src = icon;
+      document.getElementById('modal-service').textContent = b.serviceName;
+      document.getElementById('modal-cat').textContent = (b.serviceCategory || '') + ' Service';
+      document.getElementById('modal-id').textContent = b.id;
+      document.getElementById('modal-date').textContent = b.dateFormatted || b.date;
+      document.getElementById('modal-time').textContent = b.time;
+      document.getElementById('modal-duration').textContent = (b.serviceDuration || '—') + ' min';
+      document.getElementById('modal-price').textContent = '$' + b.servicePrice;
+      document.getElementById('modal-name').textContent = b.customerName;
+      document.getElementById('modal-email').textContent = b.email;
+      document.getElementById('modal-phone').textContent = b.phone;
+      document.getElementById('modal-status').innerHTML = `<span class="px-3 py-[3px] rounded-[20px] text-[11px] font-[700] uppercase tracking-[0.5px] ${STATUS_STYLES[b.status] || 'bg-gray-100 text-gray-700'}">${b.status}</span>`;
+      if (b.notes) { document.getElementById('modal-notes').textContent = b.notes; document.getElementById('modal-notes-wrap').classList.remove('hidden'); }
+      else { document.getElementById('modal-notes-wrap').classList.add('hidden'); }
+
+      const cancelBtn = document.getElementById('modal-cancel-btn');
+      if (b.status === 'Confirmed') {
+        cancelBtn.classList.remove('hidden');
+        cancelBtn.onclick = () => cancelBooking(id);
+      } else {
+        cancelBtn.classList.add('hidden');
+      }
+
+      document.getElementById('detail-modal').classList.remove('hidden');
+    }
+
+    function generateDemo() {
+      const demos = [
+        { id: 'BK-100001', customerName: 'Alex Johnson', email: 'alex@demo.com', phone: '+1 555-0101', serviceName: 'Classic Haircut', serviceIcon: 'https://placehold.co/200x200/1B3A6B/FFFFFF/png?text=Haircut', serviceCategory: 'Hair', servicePrice: 45, serviceDuration: 45, date: '2026-03-05', dateFormatted: 'Wednesday, March 5, 2026', time: '10:00 AM', status: 'Completed', createdAt: new Date().toISOString(), notes: '' },
+        { id: 'BK-100002', customerName: 'Alex Johnson', email: 'alex@demo.com', phone: '+1 555-0101', serviceName: 'Deep Tissue Massage', serviceIcon: 'https://placehold.co/200x200/1B3A6B/FFFFFF/png?text=Massage', serviceCategory: 'Wellness', servicePrice: 95, serviceDuration: 60, date: '2026-03-15', dateFormatted: 'Sunday, March 15, 2026', time: '02:00 PM', status: 'Confirmed', createdAt: new Date().toISOString(), notes: 'Please use lighter pressure on the lower back.' },
+        { id: 'BK-100003', customerName: 'Alex Johnson', email: 'alex@demo.com', phone: '+1 555-0101', serviceName: 'Dental Checkup', serviceIcon: 'https://placehold.co/200x200/1B3A6B/FFFFFF/png?text=Dental', serviceCategory: 'Medical', servicePrice: 120, serviceDuration: 30, date: '2026-02-20', dateFormatted: 'Friday, February 20, 2026', time: '09:00 AM', status: 'Cancelled', createdAt: new Date().toISOString(), notes: '' },
+      ];
+      const existing = getBookings();
+      setBookings([...demos, ...existing.filter(b => !demos.find(d => d.id === b.id))]);
+    }
+
+    function render() {
+      let bookings = getBookings();
+      document.getElementById('booking-count').textContent = `${bookings.length} booking${bookings.length !== 1 ? 's' : ''}`;
+
+      const genDemo = document.getElementById('gen-demo');
+      if (bookings.length === 0) genDemo.classList.remove('hidden');
+      else genDemo.classList.add('hidden');
+
+      let filtered = currentTab === 'all' ? bookings : bookings.filter(b => b.status === currentTab);
+
+      if (bookings.length === 0) {
+        document.getElementById('empty-state').classList.remove('hidden');
+        document.getElementById('bookings-list').innerHTML = '';
+        return;
+      }
+      document.getElementById('empty-state').classList.add('hidden');
+
+      if (filtered.length === 0) {
+        document.getElementById('bookings-list').innerHTML = `<div class="text-center py-12 text-cp_text_secondary text-sm">No ${currentTab.toLowerCase()} bookings found.</div>`;
+        return;
+      }
+
+      document.getElementById('bookings-list').innerHTML = filtered.map(b => {
+        const icon = (b.serviceIcon && b.serviceIcon.startsWith('http')) ? b.serviceIcon : `https://placehold.co/200x200/1B3A6B/FFFFFF/png?text=${encodeURIComponent(b.serviceName || 'Booking')}`;
+        return `
+    <div class="bg-cp_background_paper rounded-xl border border-cp_borders_main p-5 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(27,58,107,0.1)]">
+      <div class="flex items-start gap-4">
+        <div class="w-14 h-14 bg-cp_palette_primary rounded-xl flex items-center justify-center overflow-hidden flex-shrink-0">
+          <img src="${icon}" alt="${b.serviceName}" class="w-full h-full object-cover">
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-start justify-between gap-2 mb-1">
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <h3 class="font-bold text-cp_palette_primary">${b.serviceName}</h3>
+                <span class="px-3 py-[3px] rounded-[20px] text-[11px] font-[700] uppercase tracking-[0.5px] ${STATUS_STYLES[b.status] || 'bg-gray-100 text-gray-700'}">${b.status}</span>
+              </div>
+              <p class="text-xs text-cp_text_secondary mt-0.5">${b.serviceCategory || ''} · ${b.serviceDuration || '—'} min</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <div class="font-bold text-cp_palette_primary">$${b.servicePrice}</div>
+              <div class="font-mono text-xs text-cp_text_secondary">${b.id}</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 text-sm text-cp_text_secondary mt-2 flex-wrap">
+            <span>📅 ${b.dateFormatted || b.date}</span>
+            <span>⏰ ${b.time}</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 mt-4 pt-4 border-t border-cp_borders_main flex-wrap">
+        <button onclick="viewDetails('${b.id}')" class="px-4 py-2 rounded-lg bg-cp_palette_primary text-white text-xs font-semibold hover:bg-blue-900 transition">View Details</button>
+        ${b.status === 'Confirmed' ? `<button onclick="cancelBooking('${b.id}')" class="px-4 py-2 rounded-lg border border-red-200 text-red-600 text-xs font-semibold hover:bg-red-50 transition">Cancel</button>` : ''}
+        ${b.status !== 'Cancelled' ? `<a href="booking-confirmation.html?id=${b.id}" class="px-4 py-2 rounded-lg border border-cp_borders_main text-cp_palette_primary text-xs font-medium hover:bg-gray-50 transition">View Confirmation</a>` : ''}
+        <a href="booking.html?service=${b.serviceId}" class="px-4 py-2 rounded-lg border border-cp_borders_main text-cp_palette_primary text-xs font-medium hover:bg-gray-50 transition">Book Again</a>
+      </div>
+    </div>
+  `;
+      }).join('');
+    }
+
+    // Update nav badge
+    const allBookings = getBookings();
+    const active = allBookings.filter(b => b.status === 'Confirmed').length;
+    const user = JSON.parse(localStorage.getItem('manpower_user') || 'null');
+    if (user) { document.getElementById('nav-login-btn').textContent = '👤 ' + user.name.split(' ')[0]; document.getElementById('nav-login-btn').href = 'my-bookings.html'; }
+
+    render();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ManShop - Product Details</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <style id="dynamic-color-styles">
+    @layer base {
+      :root {
+        --palette-primary: #1B3A6B;
+        --palette-secondary: #C9972A;
+        --background-default: #F4F6FA;
+        --background-paper: #FFFFFF;
+        --text-primary: #0F1F3D;
+        --text-secondary: #5A6A85;
+        --text-tertiary: #FFFFFF;
+        --borders-main: #DDE3EE;
+      }
+
+      :dir(ltr) {
+        font-family: 'Lexend Deca', system-ui, sans-serif;
+      }
+
+      :dir(rtl) {
+        font-family: 'Changa', system-ui, sans-serif;
+      }
+    }
+
+    .bg-cp_palette_primary {
+      background-color: var(--palette-primary) !important
+    }
+
+    .bg-cp_palette_secondary {
+      background-color: var(--palette-secondary) !important
+    }
+
+    .bg-cp_background_default {
+      background-color: var(--background-default) !important
+    }
+
+    .bg-cp_background_paper {
+      background-color: var(--background-paper) !important
+    }
+
+    .text-cp_text_primary {
+      color: var(--text-primary) !important
+    }
+
+    .text-cp_text_secondary {
+      color: var(--text-secondary) !important
+    }
+
+    .text-cp_text_tertiary {
+      color: var(--text-tertiary) !important
+    }
+
+    .border-cp_borders_main {
+      border-color: var(--borders-main) !important
+    }
+
+    .text-cp_palette_primary {
+      color: var(--palette-primary) !important
+    }
+
+    .text-cp_palette_secondary {
+      color: var(--palette-secondary) !important
+    }
+
+    .border-cp_palette_primary {
+      border-color: var(--palette-primary) !important
+    }
+
+    .hover\:text-cp_palette_primary:hover {
+      color: var(--palette-primary) !important
+    }
+
+    .hover\:bg-cp_palette_primary:hover {
+      background-color: var(--palette-primary) !important
+    }
+
+    .focus\:border-cp_palette_primary:focus {
+      border-color: var(--palette-primary) !important
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav class="bg-cp_palette_primary shadow-lg sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center gap-4">
+            <a href="../index.html" class="text-blue-300 hover:text-white text-xs flex items-center gap-1 transition">←
+              Portfolio</a>
+            <div class="w-px h-5 bg-blue-700"></div>
+            <a href="index.html" class="flex items-center gap-2">
+              <div
+                class="w-8 h-8 rounded-lg p-1 bg-cp_palette_secondary overflow-hidden flex items-center justify-center font-bold text-white text-xs">
+                <img src="../assets/logoipsum-409.png" class="object-cover w-full h-full" alt="logo">
+              </div>
+              <span class="text-white font-bold text-lg">ManShop</span>
+            </a>
+          </div>
+          <div class="hidden md:flex items-center gap-6">
+            <a href="index.html" class="text-blue-200 hover:text-white text-sm font-medium transition">Home</a>
+            <a href="products.html" class="text-blue-200 hover:text-white text-sm font-medium transition">Products</a>
+            <a href="wishlist.html" class="text-blue-200 hover:text-white text-sm font-medium transition relative">
+              Wishlist
+              <span id="nav-wishlist-count"
+                class="hidden absolute -top-2 -right-3 w-4 h-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center"></span>
+            </a>
+            <a href="orders.html" class="text-blue-200 hover:text-white text-sm font-medium transition">Orders</a>
+            <a href="cart.html"
+              class="relative flex items-center gap-1 px-4 py-2 rounded-lg bg-cp_palette_secondary text-white text-sm font-semibold hover:opacity-90 transition">
+              🛒 Cart <span id="nav-cart-count"
+                class="ml-1 bg-white text-cp_palette_primary text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">0</span>
+            </a>
+            <a href="login.html" id="nav-login-btn"
+              class="text-blue-200 hover:text-white text-sm font-medium transition">Login</a>
+          </div>
+          <button class="md:hidden text-white" onclick="document.getElementById('mob-nav').classList.toggle('hidden')">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div id="mob-nav" class="hidden md:hidden px-4 pb-4 space-y-2 border-t border-blue-800 pt-3">
+        <a href="index.html" class="block text-blue-200 text-sm py-1">Home</a>
+        <a href="products.html" class="block text-blue-200 text-sm py-1">Products</a>
+        <a href="wishlist.html" class="block text-blue-200 text-sm py-1">Wishlist</a>
+        <a href="cart.html" class="block text-blue-200 text-sm py-1">Cart</a>
+        <a href="login.html" class="block text-blue-200 text-sm py-1">Login</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Content -->
+  <main class="bg-cp_background_default min-h-screen">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <!-- Breadcrumbs -->
+
+      <nav class="flex mb-8 text-sm text-cp_text_secondary" aria-label="Breadcrumb">
+        <ol class="inline-flex items-center space-x-1 md:space-x-3">
+          <li class="inline-flex items-center">
+            <a href="index.html" class="hover:text-cp_palette_secondary">Home</a>
+          </li>
+          <li>
+            <div class="flex items-center">
+              <svg class="w-3 h-3 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="m1 9 4-4-4-4" />
+              </svg>
+              <a href="products.html" class="ml-1 hover:text-cp_palette_secondary md:ml-2">Products</a>
+            </div>
+          </li>
+          <li id="breadcrumb-category" class="hidden">
+            <div class="flex items-center">
+              <svg class="w-3 h-3 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="m1 9 4-4-4-4" />
+              </svg>
+              <a id="breadcrumb-cat-link" href="#" class="ml-1 hover:text-cp_palette_secondary md:ml-2">Category</a>
+            </div>
+          </li>
+          <li aria-current="page">
+            <div class="flex items-center">
+              <svg class="w-3 h-3 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="m1 9 4-4-4-4" />
+              </svg>
+              <span id="breadcrumb-product" class="ml-1 font-medium text-gray-500 md:ml-2">Product Name</span>
+            </div>
+          </li>
+        </ol>
+      </nav>
+
+
+      <!-- Product Details -->
+
+      <div id="product-container" class="hidden">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-12 bg-cp_background_paper rounded-2xl border border-cp_borders_main p-6 sm:p-10">
+          <!-- Image Section -->
+          <div class="space-y-4">
+            <div class="aspect-square rounded-2xl overflow-hidden bg-gray-50 border border-cp_borders_main">
+              <img id="product-image" src="" alt="" class="w-full h-full object-cover">
+            </div>
+            <div class="grid grid-cols-4 gap-4">
+              <!-- Thumbnails if any, otherwise just placeholders/duplicates for demo -->
+              <div class="aspect-square rounded-lg overflow-hidden border-2 border-cp_palette_primary">
+                <img id="thumb-1" src="" alt="" class="w-full h-full object-cover cursor-pointer">
+              </div>
+            </div>
+          </div>
+
+          <!-- Info Section -->
+          <div class="flex flex-col">
+            <div class="mb-2">
+              <span id="product-tag"
+                class="hidden px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-cp_palette_secondary text-white mb-2"></span>
+              <div id="product-brand-sub" class="text-sm font-medium text-cp_text_secondary uppercase tracking-wider">
+              </div>
+            </div>
+            <h1 id="product-name" class="text-3xl font-extrabold text-cp_palette_primary mb-4"></h1>
+
+            <div class="flex items-center gap-4 mb-6">
+              <div class="flex items-center gap-1">
+                <span id="product-stars" class="text-yellow-500"></span>
+                <span id="product-rating" class="text-sm font-bold text-cp_palette_primary ml-1"></span>
+              </div>
+              <div class="w-px h-4 bg-cp_borders_main"></div>
+              <span id="product-reviews" class="text-sm text-cp_text_secondary"></span>
+            </div>
+
+            <div class="mb-8">
+              <div class="flex items-center gap-3">
+                <span id="product-price" class="text-4xl font-extrabold text-cp_palette_primary"></span>
+                <div id="price-original-container" class="hidden flex flex-col">
+                  <span id="product-original" class="text-lg text-cp_text_secondary line-through"></span>
+                  <span id="product-discount" class="text-xs font-bold text-red-500"></span>
+                </div>
+              </div>
+              <p class="text-xs text-cp_text_secondary mt-2">Inclusive of all taxes</p>
+            </div>
+
+            <div class="border-t border-b border-cp_borders_main py-6 mb-8 space-y-6">
+              <div>
+                <label class="block text-sm font-bold text-cp_palette_primary mb-3">Quantity</label>
+                <div class="flex items-center w-32 border border-cp_borders_main rounded-xl overflow-hidden bg-gray-50">
+                  <button onclick="changeQty(-1)"
+                    class="w-10 h-10 flex items-center justify-center hover:bg-gray-200 transition text-lg">-</button>
+                  <input id="product-qty" type="text" value="1" readonly
+                    class="w-12 h-10 text-center bg-transparent font-bold text-cp_palette_primary focus:outline-none">
+                  <button onclick="changeQty(1)"
+                    class="w-10 h-10 flex items-center justify-center hover:bg-gray-200 transition text-lg">+</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4">
+              <button onclick="handleAddToCart()"
+                class="flex-1 px-8 py-4 rounded-xl bg-cp_palette_primary text-white font-bold hover:bg-blue-900 transition flex items-center justify-center gap-2">
+                🛒 Add to Cart
+              </button>
+              <button onclick="handleToggleWishlist()" id="wl-btn"
+                class="px-8 py-4 rounded-xl border-2 border-cp_borders_main text-cp_palette_primary font-bold hover:bg-gray-50 transition flex items-center justify-center gap-2">
+                <span id="wl-icon">🤍</span> Wishlist
+              </button>
+            </div>
+
+            <div class="mt-8 grid grid-cols-2 gap-4">
+              <div class="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-cp_borders_main">
+                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-sm">🚚
+                </div>
+                <div class="text-[10px]">
+                  <div class="font-bold text-cp_palette_primary">Free Shipping</div>
+                  <div class="text-cp_text_secondary">On orders over $99</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-cp_borders_main">
+                <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-sm">
+                  🛡️</div>
+                <div class="text-[10px]">
+                  <div class="font-bold text-cp_palette_primary">2 Year Warranty</div>
+                  <div class="text-cp_text_secondary">Local warranty</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Description/Specs/Reviews Section -->
+        <div class="mt-12">
+          <div class="border-b border-cp_borders_main mb-8 flex flex-wrap">
+            <button id="tab-btn-desc" onclick="switchTab('description')"
+              class="px-8 py-4 border-b-2 font-bold text-sm transition transition-all duration-300">Description</button>
+            <button id="tab-btn-specs" onclick="switchTab('specifications')"
+              class="px-8 py-4 border-b-2 font-bold text-sm transition transition-all duration-300">Specifications</button>
+            <button id="tab-btn-reviews" onclick="switchTab('reviews')"
+              class="px-8 py-4 border-b-2 font-bold text-sm transition transition-all duration-300 text-cp_text_secondary border-transparent">Reviews</button>
+          </div>
+
+          <!-- Tab Content: Description -->
+          <div id="tab-content-description" class="prose max-w-none text-cp_text_secondary">
+            <p>Experience peak performance and premium design with our curated collection. Crafted with attention to
+              detail and using high-quality materials, this product is designed to meet your needs and exceed your
+              expectations.</p>
+            <p class="mt-4">Whether you're looking for reliability, style, or innovation, this product delivers on all
+              fronts. Join thousands of satisfied customers who have made this a part of their daily lives.</p>
+          </div>
+
+          <!-- Tab Content: Specifications -->
+          <div id="tab-content-specifications" class="hidden"></div>
+
+          <!-- Tab Content: Reviews -->
+          <div id="tab-content-reviews" class="hidden"></div>
+        </div>
+
+        <!-- Related Products -->
+        <div class="mt-20">
+          <div class="flex items-end justify-between mb-8">
+            <div>
+              <h2
+                class="text-2xl font-bold text-cp_palette_primary relative after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-12 after:h-[3px] after:bg-[#C9972A] after:rounded-[2px]">
+                Related Products</h2>
+            </div>
+          </div>
+          <div id="related-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+        </div>
+      </div>
+
+
+      <!-- Empty/Error State -->
+      <div id="not-found" class="hidden text-center py-40">
+        <div class="text-6xl mb-6">🏜️</div>
+        <h1 class="text-2xl font-bold text-cp_palette_primary mb-4">Product Not Found</h1>
+        <p class="text-cp_text_secondary mb-8">The product you're looking for doesn't exist or has been removed.</p>
+        <a href="products.html"
+          class="px-8 py-4 rounded-xl bg-cp_palette_primary text-white font-bold hover:bg-blue-900 transition">Return to
+          Products</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 py-10 mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <div
+              class="w-8 h-8 rounded-lg p-1 bg-cp_palette_secondary overflow-hidden flex items-center justify-center font-bold text-white text-xs">
+              <img src="../assets/logoipsum-409.png" class="object-cover w-full h-full" alt="logo">
+            </div>
+            <span class="text-white font-bold">ManShop</span>
+          </div>
+          <p class="text-gray-400 text-sm">Your premium online shopping destination with thousands of products from top
+            brands.</p>
+        </div>
+        <div>
+          <h5 class="text-white font-semibold mb-3">Quick Links</h5>
+          <div class="space-y-2">
+            <a href="products.html" class="block text-gray-400 hover:text-yellow-400 text-sm transition">All
+              Products</a>
+            <a href="cart.html" class="block text-gray-400 hover:text-yellow-400 text-sm transition">My Cart</a>
+            <a href="wishlist.html" class="block text-gray-400 hover:text-yellow-400 text-sm transition">Wishlist</a>
+            <a href="orders.html" class="block text-gray-400 hover:text-yellow-400 text-sm transition">Order History</a>
+          </div>
+        </div>
+        <div>
+          <h5 class="text-white font-semibold mb-3">Customer Support</h5>
+          <div class="space-y-2">
+            <p class="text-gray-400 text-sm">📧 support@manshop.com</p>
+            <p class="text-gray-400 text-sm">📞 +1 (555) 123-4567</p>
+            <p class="text-gray-400 text-sm">🕐 Mon-Fri 9am–6pm</p>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-6 text-center">
+        <p class="text-gray-600 text-sm">© 2026 ManShop. All rights reserved. | <a href="../index.html"
+            class="text-gray-500 hover:text-yellow-400 transition">← Back to Portfolio</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const PRODUCTS = [
+      { id: 1, name: "Pro Wireless Headphones", price: 189.99, original: 249.99, rating: 4.9, reviews: 2341, cat: "Electronics", brand: "SoundPro", sub: "Headphones", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&h=400", bestseller: true, toprated: true, specs: [{ label: "Type", value: "Over-ear" }, { label: "Connectivity", value: "Bluetooth 5.0" }, { label: "Battery", value: "40 Hours" }, { label: "Noise Cancelling", value: "Active (ANC)" }], reviewsList: [{ user: "James L.", rating: 5, date: "3/1/2026", comment: "Best headphones I ever owned!" }, { user: "Aria S.", rating: 4, date: "2/20/2026", comment: "Great sound, slightly heavy." }] },
+      { id: 2, name: 'Smart 4K Monitor 27"', price: 349.99, original: 429.99, rating: 4.8, reviews: 1876, cat: "Electronics", brand: "ViewTech", sub: "Monitors", image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=400&h=400", bestseller: true, toprated: true, specs: [{ label: "Resolution", value: "3840 x 2160" }, { label: "Panel", value: "IPS" }, { label: "Refresh Rate", value: "144Hz" }, { label: "HDR", value: "HDR400" }], reviewsList: [{ user: "Mike R.", rating: 5, date: "3/5/2026", comment: "Crystal clear display, worth every penny." }] },
+      { id: 3, name: "Mechanical Keyboard RGB", price: 129.99, original: 169.99, rating: 4.7, reviews: 3201, cat: "Electronics", brand: "KeyMaster", sub: "Keyboards", image: "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?auto=format&fit=crop&w=400&h=400", bestseller: true, toprated: false, specs: [{ label: "Switches", value: "Cherry MX Blue" }, { label: "Layout", value: "Tenkeyless" }, { label: "Backlight", value: "Per-key RGB" }], reviewsList: [{ user: "KeebLover", rating: 5, date: "2/28/2026", comment: "Clicky and responsive. Perfect for typing!" }] },
+      { id: 4, name: "USB-C Hub 10-in-1", price: 59.99, original: 79.99, rating: 4.6, reviews: 891, cat: "Electronics", brand: "HubPro", sub: "Accessories", image: "https://images.unsplash.com/photo-1544006659-f0b21f04cb1d?auto=format&fit=crop&w=400&h=400", bestseller: true, toprated: false, specs: [{ label: "Ports", value: "HDMI, USB, SD, LAN" }, { label: "Power Delivery", value: "100W" }, { label: "Material", value: "Aluminum" }], reviewsList: [{ user: "Techie", rating: 4, date: "1/15/2026", comment: "Does everything I need, runs a bit warm." }] },
+      { id: 5, name: "Premium Leather Jacket", price: 299.99, original: 399.99, rating: 4.9, reviews: 542, cat: "Fashion", brand: "StyleCo", sub: "Outerwear", image: "https://images.unsplash.com/photo-1521223890158-f9f7c3d5d504?auto=format&fit=crop&w=400&h=400", bestseller: false, toprated: true, specs: [{ label: "Material", value: "Real Lambskin Leather" }, { label: "Lining", value: "Satin" }, { label: "Style", value: "Biker" }], reviewsList: [{ user: "Fashionista", rating: 5, date: "3/10/2026", comment: "Butter soft leather and perfect fit!" }] },
+      { id: 6, name: "Classic Denim Jeans", price: 79.99, original: 99.99, rating: 4.5, reviews: 1204, cat: "Fashion", brand: "DenimX", sub: "Bottoms", image: "https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=400&h=400", bestseller: true, toprated: false, specs: [{ label: "Material", value: "98% Cotton, 2% Elastane" }, { label: "Fit", value: "Straight Fit" }, { label: "Wash", value: "Vintage Blue" }], reviewsList: [{ user: "ComfortSeeker", rating: 4, date: "2/05/2026", comment: "Very comfortable, runs slightly large." }] },
+      { id: 7, name: "Silk Evening Dress", price: 199.99, original: 259.99, rating: 4.8, reviews: 432, cat: "Fashion", brand: "LuxeWear", sub: "Dresses", image: "https://images.unsplash.com/photo-1539008886822-67d26002f5a6?auto=format&fit=crop&w=400&h=400", bestseller: false, toprated: true, specs: [{ label: "Fabric", value: "100% Mulberry Silk" }, { label: "Length", value: "Floor Length" }, { label: "Care", value: "Dry Clean Only" }], reviewsList: [{ user: "Grace W.", rating: 5, date: "1/20/2026", comment: "Stunning dress, got so many compliments!" }] },
+      { id: 8, name: "Running Sneakers", price: 119.99, original: 149.99, rating: 4.7, reviews: 2109, cat: "Fashion", brand: "SpeedFit", sub: "Footwear", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&h=400", bestseller: true, toprated: true, specs: [{ label: "Sole", value: "React Foam" }, { label: "Upper", value: "Breathable Mesh" }, { label: "Target", value: "Road Running" }], reviewsList: [{ user: "RunnerPro", rating: 5, date: "3/08/2026", comment: "Lightweight and great cushioning." }] },
+      { id: 9, name: "Minimalist Table Lamp", price: 89.99, original: 109.99, rating: 4.6, reviews: 678, cat: "Home", brand: "LightDesign", sub: "Lighting", image: "https://images.unsplash.com/photo-1507473885765-e6ed657f78ea?auto=format&fit=crop&w=400&h=400", bestseller: false, toprated: true, specs: [{ label: "Material", value: "Metal & Wood" }, { label: "Bulb", value: "E27 (Included)" }, { label: "Height", value: "45cm" }], reviewsList: [{ user: "InteriorLover", rating: 4, date: "2/12/2026", comment: "Elegant design, fits perfectly on my desk." }] },
+      { id: 10, name: "Ceramic Coffee Mug Set", price: 34.99, original: 44.99, rating: 4.8, reviews: 1567, cat: "Home", brand: "CeramArt", sub: "Kitchen", image: "https://images.unsplash.com/photo-1517256011271-bf5c54c3e70d?auto=format&fit=crop&w=400&h=400", bestseller: true, toprated: true, specs: [{ label: "Material", value: "Stone Ceramic" }, { label: "Volume", value: "350ml" }, { label: "Qty", value: "Set of 4" }], reviewsList: [{ user: "CoffeeAddict", rating: 5, date: "3/05/2026", comment: "Beautiful glaze and very durable." }] },
+      { id: 11, name: "Scented Candle Collection", price: 45.99, original: 59.99, rating: 4.7, reviews: 934, cat: "Home", brand: "AromaLife", sub: "Decor", image: "https://images.unsplash.com/photo-1536924430914-fa1b439fe460?auto=format&fit=crop&w=400&h=400", bestseller: true, toprated: false, specs: [{ label: "Wax", value: "Soy Wax" }, { label: "Scents", value: "Lavender, Ocean, Pine" }, { label: "Burn Time", value: "30 Hrs Each" }], reviewsList: [{ user: "HomeBody", rating: 5, date: "2/18/2026", comment: "Amazing scents, not too overpowering." }] },
+      { id: 12, name: "Anti-Aging Serum", price: 79.99, original: 99.99, rating: 4.9, reviews: 2876, cat: "Beauty", brand: "GlowSkin", sub: "Skincare", image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=400&h=400", bestseller: true, toprated: true, specs: [{ label: "Volume", value: "30ml" }, { label: "Key Ingredient", value: "Retinol 1%" }, { label: "Skin Type", value: "All Types" }], reviewsList: [{ user: "Grace T.", rating: 5, date: "3/02/2026", comment: "Visible results in just two weeks!" }] },
+      { id: 13, name: "Moisturizing Face Cream", price: 49.99, original: 64.99, rating: 4.6, reviews: 1432, cat: "Beauty", brand: "GlowSkin", sub: "Skincare", image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&w=400&h=400", bestseller: false, toprated: false, specs: [{ label: "Volume", value: "50ml" }, { label: "Key Ingredient", value: "Hyaluronic Acid" }, { label: "Texture", value: "Non-Greasy" }], reviewsList: [{ user: "BeautyFan", rating: 4, date: "2/22/2026", comment: "Hydrates well, good base for makeup." }] },
+      { id: 14, name: "Wireless Gaming Mouse", price: 79.99, original: 99.99, rating: 4.5, reviews: 2045, cat: "Electronics", brand: "KeyMaster", sub: "Accessories", image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=400&h=400", bestseller: false, toprated: false, specs: [{ label: "DPI", value: "16,000" }, { label: "Sensors", value: "Hero 25K" }, { label: "Weight", value: "63g" }], reviewsList: [{ user: "GamerPro", rating: 5, date: "1/12/2026", comment: "Insanely light and precise." }] },
+      { id: 15, name: "Yoga Mat Premium", price: 54.99, original: 69.99, rating: 4.7, reviews: 889, cat: "Home", brand: "FitLife", sub: "Fitness", image: "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=400&h=400", bestseller: false, toprated: true, specs: [{ label: "Thickness", value: "6mm" }, { label: "Material", value: "TPE Eco-Friendly" }, { label: "Grip", value: "Non-Slip" }], reviewsList: [{ user: "YogiM", rating: 5, date: "3/05/2026", comment: "Excellent grip, even when sweating." }] },
+      { id: 16, name: "Cashmere Sweater", price: 149.99, original: 199.99, rating: 4.8, reviews: 321, cat: "Fashion", brand: "LuxeWear", sub: "Tops", image: "https://images.unsplash.com/photo-1576566582418-dc6f578491c6?auto=format&fit=crop&w=400&h=400", bestseller: false, toprated: true, specs: [{ label: "Material", value: "100% Cashmere" }, { label: "Origin", value: "Mongolia" }, { label: "Weight", value: "Lightweight" }], reviewsList: [{ user: "LuxuryLover", rating: 5, date: "2/10/2026", comment: "So soft and warm. Pure luxury." }] },
+      { id: 17, name: "Bluetooth Speaker", price: 89.99, original: 119.99, rating: 4.6, reviews: 1754, cat: "Electronics", brand: "SoundPro", sub: "Speakers", image: "https://images.unsplash.com/photo-1608156639585-3bc7b5e40e6c?auto=format&fit=crop&w=400&h=400", bestseller: true, toprated: false, specs: [{ label: "Output", value: "20W" }, { label: "Waterproof", value: "IPX7" }, { label: "Playtime", value: "12 Hours" }], reviewsList: [{ user: "MusicMan", rating: 4, date: "3/01/2026", comment: "Loud enough for outdoor parties." }] },
+      { id: 18, name: "Linen Bedding Set", price: 129.99, original: 169.99, rating: 4.7, reviews: 543, cat: "Home", brand: "DreamHome", sub: "Bedding", image: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=400&h=400", bestseller: false, toprated: false, specs: [{ label: "Material", value: "100% French Linen" }, { label: "Set Includes", value: "Duvet + 2 Shams" }, { label: "Care", value: "Wash Cold" }], reviewsList: [{ user: "CozyHome", rating: 5, date: "1/30/2026", comment: "Best sleep ever, very breathable." }] },
+    ];
+
+    let currentProduct = null;
+    let activeTab = 'description';
+
+    function getCart() { try { return JSON.parse(localStorage.getItem('manpower_cart') || '[]'); } catch (e) { return []; } }
+    function getWishlist() { try { return JSON.parse(localStorage.getItem('manpower_wishlist') || '[]'); } catch (e) { return []; } }
+    function setCart(c) { localStorage.setItem('manpower_cart', JSON.stringify(c)); updateNavCount(); }
+    function setWishlist(w) { localStorage.setItem('manpower_wishlist', JSON.stringify(w)); updateNavCount(); }
+
+    function updateNavCount() {
+      const cart = getCart();
+      const wl = getWishlist();
+      const cartCountEl = document.getElementById('nav-cart-count');
+      if (cartCountEl) cartCountEl.textContent = cart.reduce((s, i) => s + i.qty, 0);
+      const wlEl = document.getElementById('nav-wishlist-count');
+      if (wlEl) {
+        if (wl.length > 0) { wlEl.textContent = wl.length; wlEl.classList.remove('hidden'); }
+        else { wlEl.classList.add('hidden'); }
+      }
+    }
+
+    function init() {
+      const params = new URLSearchParams(window.location.search);
+      const id = parseInt(params.get('id'));
+      currentProduct = PRODUCTS.find(p => p.id === id);
+
+      if (!currentProduct) {
+        document.getElementById('not-found').classList.remove('hidden');
+        return;
+      }
+
+      document.getElementById('product-container').classList.remove('hidden');
+      renderProduct();
+      renderRelated();
+      updateNavCount();
+      checkAuth();
+      switchTab('description');
+    }
+
+    function renderProduct() {
+      const p = currentProduct;
+      const wl = getWishlist();
+      const isWL = wl.some(x => x.id === p.id);
+
+      // Breadcrumbs
+      document.getElementById('breadcrumb-category').classList.remove('hidden');
+      document.getElementById('breadcrumb-cat-link').textContent = p.cat;
+      document.getElementById('breadcrumb-cat-link').href = `products.html?cat=${p.cat}`;
+      document.getElementById('breadcrumb-product').textContent = p.name;
+      document.title = `ManShop - ${p.name}`;
+
+      // Images
+      document.getElementById('product-image').src = p.image;
+      document.getElementById('product-image').alt = p.name;
+      document.getElementById('thumb-1').src = p.image;
+
+      // Info
+      if (p.bestseller) {
+        const tag = document.getElementById('product-tag');
+        tag.textContent = 'Best Seller';
+        tag.classList.remove('hidden');
+      }
+      document.getElementById('product-brand-sub').textContent = `${p.brand} · ${p.sub}`;
+      document.getElementById('product-name').textContent = p.name;
+
+      // Rating
+      const starTemplate = (r) => '★'.repeat(Math.floor(r)) + (r % 1 >= 0.5 ? '☆' : '') + '☆'.repeat(5 - Math.ceil(r));
+      document.getElementById('product-stars').textContent = starTemplate(p.rating);
+      document.getElementById('product-rating').textContent = p.rating;
+      document.getElementById('product-reviews').textContent = `${p.reviews.toLocaleString()} verified reviews`;
+
+      // Price
+      document.getElementById('product-price').textContent = `$${p.price.toFixed(2)}`;
+      if (p.original > p.price) {
+        document.getElementById('price-original-container').classList.remove('hidden');
+        document.getElementById('product-original').textContent = `$${p.original.toFixed(2)}`;
+        const disc = Math.round((1 - p.price / p.original) * 100);
+        document.getElementById('product-discount').textContent = `${disc}% OFF`;
+      }
+
+      // Wishlist Button
+      updateWishlistUI(isWL);
+    }
+
+    function switchTab(tab) {
+      activeTab = tab;
+      const tabs = ['description', 'specifications', 'reviews'];
+      const buttons = {
+        description: document.getElementById('tab-btn-desc'),
+        specifications: document.getElementById('tab-btn-specs'),
+        reviews: document.getElementById('tab-btn-reviews')
+      };
+
+      tabs.forEach(t => {
+        const btn = buttons[t];
+        const content = document.getElementById(`tab-content-${t}`);
+        if (t === tab) {
+          btn.classList.add('border-cp_palette_primary', 'text-cp_palette_primary');
+          btn.classList.remove('text-cp_text_secondary');
+          content.classList.remove('hidden');
+        } else {
+          btn.classList.remove('border-cp_palette_primary', 'text-cp_palette_primary');
+          btn.classList.add('text-cp_text_secondary');
+          content.classList.add('hidden');
+        }
+      });
+
+      if (tab === 'specifications') renderSpecs();
+      if (tab === 'reviews') renderReviews();
+    }
+
+    function renderSpecs() {
+      const container = document.getElementById('tab-content-specifications');
+      if (!currentProduct.specs) {
+        container.innerHTML = '<p class="text-cp_text_secondary">No specifications available.</p>';
+        return;
+      }
+      container.innerHTML = `
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          ${currentProduct.specs.map(s => `
+            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl border border-cp_borders_main">
+              <span class="text-sm font-bold text-cp_palette_primary">${s.label}</span>
+              <span class="text-sm text-cp_text_secondary">${s.value}</span>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function renderReviews() {
+      const container = document.getElementById('tab-content-reviews');
+      const starTemplate = (r) => '<span class="text-yellow-500">' + '★'.repeat(Math.floor(r)) + '☆'.repeat(5 - Math.floor(r)) + '</span>';
+
+      if (!currentProduct.reviewsList) {
+        container.innerHTML = '<p class="text-cp_text_secondary">No reviews available yet.</p>';
+        return;
+      }
+
+      container.innerHTML = `
+        <div class="flex flex-col gap-6">
+          <div class="flex items-center justify-between mb-4">
+            <h4 class="text-lg font-bold text-cp_palette_primary">Customer Reviews</h4>
+            <button class="px-5 py-2 rounded-lg bg-cp_palette_secondary text-white text-xs font-bold hover:opacity-90 transition">Write a Review</button>
+          </div>
+          ${currentProduct.reviewsList.map(r => `
+            <div class="p-5 rounded-2xl border border-cp_borders_main bg-white shadow-sm">
+              <div class="flex justify-between items-start mb-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-cp_palette_primary flex items-center justify-center text-white font-bold">${r.user.charAt(0)}</div>
+                  <div>
+                    <div class="text-sm font-bold text-cp_palette_primary">${r.user}</div>
+                    <div class="text-[10px] text-cp_text_secondary">${r.date}</div>
+                  </div>
+                </div>
+                <div class="flex gap-0.5">${starTemplate(r.rating)}</div>
+              </div>
+              <p class="text-sm text-cp_text_secondary italic">"${r.comment}"</p>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function changeQty(delta) {
+      const el = document.getElementById('product-qty');
+      let val = parseInt(el.value) + delta;
+      if (val < 1) val = 1;
+      el.value = val;
+    }
+
+    function handleAddToCart() {
+      const qty = parseInt(document.getElementById('product-qty').value);
+      let cart = getCart();
+      const idx = cart.findIndex(x => x.id === currentProduct.id);
+      if (idx >= 0) cart[idx].qty += qty;
+      else cart.push({ ...currentProduct, qty });
+      setCart(cart);
+      showToast(`Added ${qty} item${qty > 1 ? 's' : ''} to cart!`, '🛒');
+    }
+
+    function handleToggleWishlist() {
+      let wl = getWishlist();
+      const idx = wl.findIndex(x => x.id === currentProduct.id);
+      let isWL = false;
+      if (idx >= 0) {
+        wl.splice(idx, 1);
+        showToast('Removed from wishlist', '💔');
+      } else {
+        wl.push(currentProduct);
+        showToast('Added to wishlist!', '❤️');
+        isWL = true;
+      }
+      setWishlist(wl);
+      updateWishlistUI(isWL);
+    }
+
+    function updateWishlistUI(isWL) {
+      const btn = document.getElementById('wl-btn');
+      const icon = document.getElementById('wl-icon');
+      if (btn && icon) {
+        if (isWL) {
+          btn.classList.add('bg-red-50', 'border-red-200');
+          icon.textContent = '❤️';
+        } else {
+          btn.classList.remove('bg-red-50', 'border-red-200');
+          icon.textContent = '🤍';
+        }
+      }
+    }
+
+    function renderRelated() {
+      const related = PRODUCTS.filter(p => p.cat === currentProduct.cat && p.id !== currentProduct.id).sort(() => 0.5 - Math.random()).slice(0, 4);
+      const grid = document.getElementById('related-grid');
+      const wl = getWishlist();
+
+      grid.innerHTML = related.map(p => {
+        const isWL = wl.some(x => x.id === p.id);
+        const disc = Math.round((1 - p.price / p.original) * 100);
+        return `<div class="bg-cp_background_paper rounded-xl border border-cp_borders_main transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-[0_12px_40_rgba(27,58,107,0.15)] overflow-hidden">
+          <div class="relative bg-gray-50 h-48 overflow-hidden group">
+            <a href="product-details.html?id=${p.id}"><img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"></a>
+            <button onclick="event.preventDefault(); toggleRelatedWishlist(${p.id})" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-lg transition ${isWL ? 'text-red-500' : 'text-gray-300 hover:text-red-400'}">
+              ${isWL ? '❤️' : '🤍'}
+            </button>
+            ${p.bestseller ? '<span class="absolute top-3 left-3 inline-block px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-cp_palette_secondary text-white">Best Seller</span>' : ''}
+            ${disc > 0 ? `<span class="absolute bottom-3 right-3 inline-block px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-red-500 text-white">-${disc}%</span>` : ''}
+          </div>
+          <div class="p-4">
+            <div class="text-xs text-cp_text_secondary mb-1">${p.brand} · ${p.sub}</div>
+            <a href="product-details.html?id=${p.id}"><h3 class="font-semibold text-cp_palette_primary text-sm leading-snug mb-2 hover:text-cp_palette_secondary transition">${p.name}</h3></a>
+            <div class="flex items-center gap-1 mb-3">
+              <span class="text-yellow-500 text-xs">${'★'.repeat(Math.floor(p.rating))}</span>
+              <span class="text-xs text-cp_text_secondary">(${p.reviews.toLocaleString()})</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="font-bold text-cp_palette_primary">$${p.price.toFixed(2)}</span>
+                ${p.original > p.price ? `<span class="text-xs text-cp_text_secondary line-through ml-1">$${p.original.toFixed(2)}</span>` : ''}
+              </div>
+            </div>
+          </div>
+        </div>`;
+      }).join('');
+    }
+
+    function toggleRelatedWishlist(id) {
+      let wl = getWishlist();
+      const idx = wl.findIndex(x => x.id === id);
+      if (idx >= 0) { wl.splice(idx, 1); showToast('Removed from wishlist', '💔'); }
+      else { const p = PRODUCTS.find(x => x.id === id); wl.push(p); showToast('Added to wishlist!', '❤️'); }
+      setWishlist(wl);
+      renderRelated();
+    }
+
+    function showToast(msg, icon = '✅') {
+      const t = document.createElement('div');
+      t.className = 'fixed bottom-4 right-4 z-50 bg-gray-900 text-white px-5 py-3 rounded-xl shadow-xl flex items-center gap-2 text-sm font-medium';
+      t.innerHTML = `<span>${icon}</span> ${msg}`;
+      document.body.appendChild(t);
+      setTimeout(() => { t.style.opacity = '0'; t.style.transition = 'opacity 0.3s'; setTimeout(() => t.remove(), 300); }, 2500);
+    }
+
+    function checkAuth() {
+      const user = JSON.parse(localStorage.getItem('manpower_user') || 'null');
+      const loginBtn = document.getElementById('nav-login-btn');
+      if (user && loginBtn) {
+        loginBtn.textContent = '👤 ' + user.name.split(' ')[0];
+        loginBtn.href = 'orders.html';
+      }
+    }
+
+    init();
+  </script>
+</body>
+
+</html>

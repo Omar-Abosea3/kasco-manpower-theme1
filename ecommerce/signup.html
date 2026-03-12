@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ManShop - Sign Up</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <style id="dynamic-color-styles">
+    @layer base {
+      :root {
+        --palette-primary: #1B3A6B;
+        --palette-secondary: #C9972A;
+        --background-default: #F4F6FA;
+        --background-paper: #FFFFFF;
+        --text-primary: #0F1F3D;
+        --text-secondary: #5A6A85;
+        --text-tertiary: #FFFFFF;
+        --borders-main: #DDE3EE;
+      }
+
+      :dir(ltr) {
+        font-family: 'Lexend Deca', system-ui, sans-serif;
+      }
+
+      :dir(rtl) {
+        font-family: 'Changa', system-ui, sans-serif;
+      }
+    }
+
+    .bg-cp_palette_primary {
+      background-color: var(--palette-primary) !important
+    }
+
+    .bg-cp_palette_secondary {
+      background-color: var(--palette-secondary) !important
+    }
+
+    .bg-cp_background_default {
+      background-color: var(--background-default) !important
+    }
+
+    .bg-cp_background_paper {
+      background-color: var(--background-paper) !important
+    }
+
+    .text-cp_text_primary {
+      color: var(--text-primary) !important
+    }
+
+    .text-cp_text_secondary {
+      color: var(--text-secondary) !important
+    }
+
+    .text-cp_text_tertiary {
+      color: var(--text-tertiary) !important
+    }
+
+    .border-cp_borders_main {
+      border-color: var(--borders-main) !important
+    }
+
+    .text-cp_palette_primary {
+      color: var(--palette-primary) !important
+    }
+
+    .text-cp_palette_secondary {
+      color: var(--palette-secondary) !important
+    }
+
+    .border-cp_palette_primary {
+      border-color: var(--palette-primary) !important
+    }
+
+    .hover\:text-cp_palette_primary:hover {
+      color: var(--palette-primary) !important
+    }
+
+    .hover\:bg-cp_palette_primary:hover {
+      background-color: var(--palette-primary) !important
+    }
+
+    .focus\:border-cp_palette_primary:focus {
+      border-color: var(--palette-primary) !important
+    }
+
+    /* Essential Custom Classes replaced by Tailwind utilities */
+    input:focus {
+      outline: none;
+      border-color: var(--palette-primary) !important;
+      box-shadow: 0 0 0 3px rgba(27, 58, 107, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header>
+    <nav class="bg-cp_palette_primary shadow-lg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+        <div class="flex items-center gap-4">
+          <a href="../index.html" class="text-blue-300 hover:text-white text-xs flex items-center gap-1 transition">←
+            Portfolio</a>
+          <div class="w-px h-5 bg-blue-700"></div>
+          <a href="index.html" class="flex items-center gap-2">
+            <div
+              class="w-8 h-8 rounded-lg p-1 bg-cp_palette_secondary overflow-hidden flex items-center justify-center font-bold text-white text-xs">
+              <img src="../assets/logoipsum-409.png" class="object-cover w-full h-full" alt="logo">
+            </div>
+            <span class="text-white font-bold text-lg">ManShop</span>
+          </a>
+        </div>
+        <a href="login.html" class="text-blue-200 hover:text-white text-sm transition">Already have an account? Sign
+          in</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Content -->
+  <main class="bg-cp_background_default min-h-screen">
+    <section class="min-h-screen flex items-center justify-center px-4 py-16">
+      <div class="w-full max-w-md">
+        <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+          <div class="bg-cp_palette_primary p-6 text-center">
+            <div
+              class="w-14 h-14 rounded-2xl bg-cp_palette_secondary flex items-center justify-center text-2xl mx-auto mb-3">
+              ✨</div>
+            <h1 class="text-2xl font-bold text-white">Create Account</h1>
+            <p class="text-blue-200 text-sm mt-1">Join ManShop and start shopping</p>
+          </div>
+          <div class="p-8">
+            <div id="error-msg" class="hidden bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg p-3 mb-5">
+            </div>
+            <div id="success-msg"
+              class="hidden bg-green-50 border border-green-200 text-green-700 text-sm rounded-lg p-3 mb-5"></div>
+            <div class="space-y-4">
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-semibold text-cp_palette_primary mb-2">First Name</label>
+                  <input id="fname" type="text" placeholder="John"
+                    class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm transition" />
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-cp_palette_primary mb-2">Last Name</label>
+                  <input id="lname" type="text" placeholder="Doe"
+                    class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm transition" />
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-cp_palette_primary mb-2">Email Address</label>
+                <input id="email" type="email" placeholder="john@example.com"
+                  class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm transition" />
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-cp_palette_primary mb-2">Phone Number</label>
+                <input id="phone" type="tel" placeholder="+1 (555) 000-0000"
+                  class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm transition" />
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-cp_palette_primary mb-2">Password</label>
+                <div class="relative">
+                  <input id="password" type="password" placeholder="Min. 6 characters"
+                    oninput="checkStrength(this.value)"
+                    class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm pr-12 transition" />
+                  <button type="button" onclick="togglePass('password')"
+                    class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">👁</button>
+                </div>
+                <div class="mt-2 flex gap-1">
+                  <div id="s1" class="h-1 rounded-sm transition-all duration-300 flex-1 bg-gray-200"></div>
+                  <div id="s2" class="h-1 rounded-sm transition-all duration-300 flex-1 bg-gray-200"></div>
+                  <div id="s3" class="h-1 rounded-sm transition-all duration-300 flex-1 bg-gray-200"></div>
+                  <div id="s4" class="h-1 rounded-sm transition-all duration-300 flex-1 bg-gray-200"></div>
+                </div>
+                <p id="strength-text" class="text-xs text-gray-400 mt-1"></p>
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-cp_palette_primary mb-2">Confirm Password</label>
+                <div class="relative">
+                  <input id="confirm" type="password" placeholder="Re-enter password"
+                    class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm pr-12 transition" />
+                  <button type="button" onclick="togglePass('confirm')"
+                    class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">👁</button>
+                </div>
+              </div>
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" id="terms" class="mt-0.5 rounded border-gray-300">
+                <span class="text-sm text-gray-600">I agree to the <a href="#"
+                    class="text-cp_palette_secondary hover:underline">Terms of Service</a> and <a href="#"
+                    class="text-cp_palette_secondary hover:underline">Privacy Policy</a></span>
+              </label>
+              <button onclick="doSignup()"
+                class="w-full bg-cp_palette_primary text-white transition-all duration-200 hover:bg-[#0d2447] py-3 rounded-xl font-semibold">Create
+                Account</button>
+            </div>
+            <div class="mt-6 pt-6 border-t border-gray-100 text-center">
+              <p class="text-sm text-gray-600">Already have an account? <a href="login.html"
+                  class="font-semibold text-cp_palette_secondary hover:underline">Sign in</a></p>
+            </div>
+          </div>
+        </div>
+        <p class="text-center mt-6 text-sm text-gray-500"><a href="index.html" class="hover:text-blue-700 transition">←
+            Back to ManShop</a></p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function togglePass(id) {
+      const p = document.getElementById(id);
+      p.type = p.type === 'password' ? 'text' : 'password';
+    }
+
+    function checkStrength(val) {
+      const bars = ['s1', 's2', 's3', 's4'];
+      const colors = ['bg-red-400', 'bg-orange-400', 'bg-yellow-400', 'bg-green-500'];
+      const labels = ['Weak', 'Fair', 'Good', 'Strong'];
+      let score = 0;
+      if (val.length >= 6) score++;
+      if (/[A-Z]/.test(val)) score++;
+      if (/[0-9]/.test(val)) score++;
+      if (/[^A-Za-z0-9]/.test(val)) score++;
+      bars.forEach((b, i) => {
+        const el = document.getElementById(b);
+        el.className = 'h-1 rounded-sm transition-all duration-300 flex-1 ' + (i < score ? colors[score - 1] : 'bg-gray-200');
+      });
+      document.getElementById('strength-text').textContent = score > 0 ? labels[score - 1] : '';
+    }
+
+    function showError(msg) {
+      const el = document.getElementById('error-msg');
+      el.textContent = msg;
+      el.classList.remove('hidden');
+      document.getElementById('success-msg').classList.add('hidden');
+    }
+
+    function doSignup() {
+      const fname = document.getElementById('fname').value.trim();
+      const lname = document.getElementById('lname').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const pass = document.getElementById('password').value;
+      const confirm = document.getElementById('confirm').value;
+
+      if (!fname || !lname || !email || !pass) { showError('Please fill in all required fields.'); return; }
+      if (!/\S+@\S+\.\S+/.test(email)) { showError('Please enter a valid email address.'); return; }
+      if (pass.length < 6) { showError('Password must be at least 6 characters.'); return; }
+      if (pass !== confirm) { showError('Passwords do not match.'); return; }
+      if (!document.getElementById('terms').checked) { showError('Please accept the Terms of Service.'); return; }
+
+      const users = JSON.parse(localStorage.getItem('manpower_users') || '[]');
+      if (users.find(u => u.email === email)) { showError('An account with this email already exists.'); return; }
+
+      users.push({ name: fname + ' ' + lname, email, phone, password: pass });
+      localStorage.setItem('manpower_users', JSON.stringify(users));
+      localStorage.setItem('manpower_user', JSON.stringify({ name: fname + ' ' + lname, email }));
+
+      document.getElementById('success-msg').textContent = 'Account created! Redirecting...';
+      document.getElementById('success-msg').classList.remove('hidden');
+      document.getElementById('error-msg').classList.add('hidden');
+      setTimeout(() => location.href = 'index.html', 1500);
+    }
+  </script>
+</body>
+
+</html>
