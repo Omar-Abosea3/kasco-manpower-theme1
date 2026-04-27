@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ManBook - Book Service</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <style id="dynamic-color-styles">
+    @layer base {
+      :root {
+        --palette-primary: #1B3A6B;
+        --palette-secondary: #C9972A;
+        --background-default: #F4F6FA;
+        --background-paper: #FFFFFF;
+        --text-primary: #0F1F3D;
+        --text-secondary: #5A6A85;
+        --text-tertiary: #FFFFFF;
+        --borders-main: #DDE3EE;
+      }
+
+      :dir(ltr) {
+        font-family: 'Lexend Deca', system-ui, sans-serif;
+      }
+
+      :dir(rtl) {
+        font-family: 'Changa', system-ui, sans-serif;
+      }
+    }
+
+    .bg-cp_palette_primary {
+      background-color: var(--palette-primary) !important
+    }
+
+    .bg-cp_palette_secondary {
+      background-color: var(--palette-secondary) !important
+    }
+
+    .bg-cp_background_default {
+      background-color: var(--background-default) !important
+    }
+
+    .bg-cp_background_paper {
+      background-color: var(--background-paper) !important
+    }
+
+    .text-cp_text_primary {
+      color: var(--text-primary) !important
+    }
+
+    .text-cp_text_secondary {
+      color: var(--text-secondary) !important
+    }
+
+    .text-cp_text_tertiary {
+      color: var(--text-tertiary) !important
+    }
+
+    .border-cp_borders_main {
+      border-color: var(--borders-main) !important
+    }
+
+    .text-cp_palette_primary {
+      color: var(--palette-primary) !important
+    }
+
+    .border-cp_palette_primary {
+      border-color: var(--palette-primary) !important
+    }
+  </style>
+</head>
+
+<body class="bg-cp_background_default min-h-screen flex flex-col font-sans">
+  <!-- Header -->
+  <header class="bg-cp_palette_primary shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2">
+        <div
+          class="w-8 h-8 rounded-lg bg-cp_palette_secondary flex items-center justify-center font-bold text-white text-xs overflow-hidden">
+          <img src="https://placehold.co/40x40/C9972A/FFFFFF/png?text=MB" alt="MB" class="w-full h-full object-cover">
+        </div>
+        <span class="text-white font-bold text-lg">ManBook Stepper</span>
+      </a>
+      <a href="index.html" class="text-blue-200 text-sm hover:text-white transition">Cancel Booking</a>
+    </div>
+  </header>
+
+  <!-- Stepper Indicator -->
+  <div class="bg-white border-b border-cp_borders_main pt-6 pb-6 px-4">
+    <div class="max-w-3xl mx-auto">
+      <div id="stepper-indicator" class="flex justify-between relative">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="flex-1 max-w-4xl mx-auto w-full px-4 py-10" id="step-content">
+    <div class="text-center mb-10">
+      <h1 class="text-3xl font-bold text-cp_palette_primary mb-2">Select a Service</h1>
+      <p class="text-cp_text_secondary">Choose the service you'd like to book today.</p>
+    </div>
+
+
+    <!-- Selected Branch Summary (Dynamic) -->
+    <div data-dynamic="branch-services-data" class="bg-cp_background_default rounded-2xl p-6 mb-10 border border-cp_borders_main shadow-sm">
+      {% if branch_name %}
+      <div class="flex items-center justify-between">
+        <div class="flex-1">
+          <h3 class="font-bold text-cp_palette_primary text-lg mb-1">selected branch</h3>
+          <p class="text-cp_text_secondary text-sm">{{ branch_name }}</p>
+        </div>
+        <div class="text-left">
+          <p class="font-bold text-cp_palette_secondary uppercase tracking-tight text-sm mb-1">{{ branch_status }}</p>
+          <p class="text-cp_text_secondary text-xs">{{ branch_hours }}</p>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+    <div data-dynamic="services-grid" id="services-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {% for service in services %}
+      <div
+        class="service-card bg-cp_background_paper rounded-2xl p-6 cursor-pointer ring-1 ring-cp_borders_main shadow-sm hover:shadow-md transition-all group"
+        data-service-id="{{ service.service_id }}" onclick="selectService({{ service.service_id }})">
+        <div class="flex items-start space-x-4 space-x-reverse">
+          <div class="relative">
+            <img src="{{ service.service_image_url }}" alt="{{ service.service_name }}"
+              class="w-20 h-20 rounded-2xl object-cover">
+            <div
+              class="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+              <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between mb-2">
+              <h3
+                class="font-bold text-lg text-cp_text_primary group-hover:text-cp_palette_secondary transition-colors">
+                {{ service.service_name }}</h3>
+              {{ service.badges_html|safe }}
+            </div>
+            <p class="text-cp_text_secondary text-sm mb-2 line-clamp-2">{{ service.service_description }}</p>
+            <div class="flex items-center mb-3">
+              <div class="flex items-center ml-3">
+                <span class="text-sm font-semibold ml-1 text-cp_text_primary">{{ service.rating_formatted }}</span>
+                <div class="flex">
+                  {{ service.stars_html|safe }}
+                </div>
+              </div>
+              <span class="text-cp_text_secondary text-sm">{{ service.rating_count_formatted }}</span>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span
+                class="px-2 py-1 bg-cp_background_default border border-cp_borders_main rounded text-[10px] font-bold text-cp_palette_primary uppercase tracking-wide">⏱
+                {{ service.service_duration_formatted }}</span>
+              {% if service.badges_html %}{{ service.badges_html|safe }}{% endif %}
+            </div>
+            <div class="text-sm text-cp_text_secondary mb-3">
+              {% if service.service_includes %}<p class="mb-1 text-xs"><strong>يشمل:</strong> {{
+                service.service_includes }}</p>{% endif %}
+              <p class="text-xs"><strong>الفئة:</strong> {{ service.service_category_name }}</p>
+            </div>
+            <div class="flex items-center justify-between mt-auto">
+              <span class="text-2xl font-bold text-cp_palette_secondary">{{ service.service_price_formatted }}</span>
+              <span
+                class="text-xs font-semibold text-cp_text_secondary bg-cp_background_default px-2 py-1 rounded-full">{{
+                service.availability_text }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="mt-12 flex justify-end border-t border-cp_borders_main pt-6">
+      <button id="next-btn" disabled
+        class="px-8 py-3 rounded-xl bg-cp_palette_secondary text-white font-bold opacity-50 cursor-not-allowed transition shadow-md">Continue</button>
+    </div>
+  </main>
+
+  <script type="module">
+    import { animate, stagger } from "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm";
+
+    animate("#step-content", { opacity: [0, 1], y: [20, 0] }, { duration: 0.5, easing: "ease-out" });
+
+    let state = JSON.parse(localStorage.getItem('manbook_stepper_state'));
+    if (!state) {
+      state = {
+        flow: 'service_first',
+        serviceId: null,
+        branchId: null,
+        providerId: null,
+        scheduleDate: null,
+        scheduleTime: null,
+        guests: 1,
+        customerDetails: {}
+      };
+      localStorage.setItem('manbook_stepper_state', JSON.stringify(state));
+    }
+
+    let stepsListServiceFirst = [
+      { id: 'service', label: 'Service', url: 'booking-service.html' },
+      { id: 'branch', label: 'Branch', url: 'booking-branch.html' },
+      { id: 'provider', label: 'Provider', url: 'booking-provider.html' },
+      { id: 'schedule', label: 'Time', url: 'booking-schedule.html' },
+      { id: 'details', label: 'Details', url: 'booking-details.html' },
+      { id: 'review', label: 'Review', url: 'booking-review.html' }
+    ];
+
+    let stepsListBranchFirst = [
+      { id: 'branch', label: 'Branch', url: 'booking-branch.html' },
+      { id: 'service', label: 'Service', url: 'booking-service.html' },
+      { id: 'provider', label: 'Provider', url: 'booking-provider.html' },
+      { id: 'schedule', label: 'Time', url: 'booking-schedule.html' },
+      { id: 'details', label: 'Details', url: 'booking-details.html' },
+      { id: 'review', label: 'Review', url: 'booking-review.html' }
+    ];
+
+    // If branch is already selected from backend, remove it from the steps flow
+    if ("{{ branch_name }}" !== "") {
+      stepsListServiceFirst = stepsListServiceFirst.filter(s => s.id !== 'branch');
+      stepsListBranchFirst = stepsListBranchFirst.filter(s => s.id !== 'branch');
+    }
+
+    const currentSteps = state.flow === 'service_first' ? stepsListServiceFirst : stepsListBranchFirst;
+    const currentStepIndex = currentSteps.findIndex(s => s.id === 'service');
+
+    const stepperHtml = `
+      <div class="absolute top-1/2 left-0 w-full h-1 bg-cp_borders_main -translate-y-1/2 z-0 rounded-full"></div>
+      <div class="absolute top-1/2 left-0 h-1 bg-cp_palette_secondary -translate-y-1/2 z-0 rounded-full transition-all duration-500" style="width: ${(currentStepIndex / (currentSteps.length - 1)) * 100}%"></div>
+      ${currentSteps.map((step, idx) => {
+      const isCompleted = idx < currentStepIndex;
+      const isActive = idx === currentStepIndex;
+      let ringClass = isCompleted || isActive ? 'bg-cp_palette_secondary text-white' : 'bg-white border-2 border-cp_borders_main text-cp_text_secondary';
+      if (isActive) ringClass = 'bg-cp_palette_secondary text-white ring-4 ring-yellow-100';
+
+      return `
+          <div class="relative z-10 flex flex-col items-center">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${ringClass} transition-colors duration-300">
+               ${isCompleted ? '✓' : idx + 1}
+            </div>
+            <span class="absolute top-10 text-[10px] sm:text-xs font-semibold uppercase tracking-wider ${isActive ? 'text-cp_palette_secondary' : 'text-cp_text_secondary'}">${step.label}</span>
+          </div>
+        `;
+    }).join('')}
+    `;
+    document.getElementById('stepper-indicator').innerHTML = stepperHtml;
+
+    const nextBtn = document.getElementById('next-btn');
+
+    window.selectService = (id) => {
+      state.serviceId = id;
+      localStorage.setItem('manbook_stepper_state', JSON.stringify(state));
+
+      // Update UI for selected service
+      document.querySelectorAll('.service-card').forEach(card => {
+        card.classList.remove('ring-4', 'ring-cp_palette_secondary', 'bg-yellow-50');
+        if (card.dataset.serviceId == id) {
+          card.classList.add('ring-4', 'ring-cp_palette_secondary', 'bg-yellow-50');
+        }
+      });
+
+      nextBtn.disabled = false;
+      nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      nextBtn.classList.add('hover:opacity-90', 'hover:-translate-y-0.5');
+    };
+
+    // Initialize selection from state if exists
+    if (state.serviceId) {
+      window.selectService(state.serviceId);
+    }
+
+    animate(".service-card", { opacity: [0, 1], scale: [0.95, 1] }, { duration: 0.4, delay: stagger(0.05) });
+
+    nextBtn.addEventListener('click', async () => {
+      await animate("#step-content", { opacity: 0, x: -20 }, { duration: 0.3 }).finished;
+      window.location.href = currentSteps[currentStepIndex + 1].url;
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ManBook - Select Branch</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style id="dynamic-color-styles">
+    @layer base {
+      :root {
+        --palette-primary: #1B3A6B;
+        --palette-secondary: #C9972A;
+        --background-default: #F4F6FA;
+        --background-paper: #FFFFFF;
+        --text-primary: #0F1F3D;
+        --text-secondary: #5A6A85;
+        --text-tertiary: #FFFFFF;
+        --borders-main: #DDE3EE;
+      }
+      :dir(ltr) { font-family: 'Lexend Deca', system-ui, sans-serif; }
+      :dir(rtl) { font-family: 'Changa', system-ui, sans-serif; }
+    }
+    .bg-cp_palette_primary { background-color: var(--palette-primary) !important }
+    .bg-cp_palette_secondary { background-color: var(--palette-secondary) !important }
+    .bg-cp_background_default { background-color: var(--background-default) !important }
+    .bg-cp_background_paper { background-color: var(--background-paper) !important }
+    .text-cp_text_primary { color: var(--text-primary) !important }
+    .text-cp_text_secondary { color: var(--text-secondary) !important }
+    .text-cp_text_tertiary { color: var(--text-tertiary) !important }
+    .border-cp_borders_main { border-color: var(--borders-main) !important }
+    .text-cp_palette_primary { color: var(--palette-primary) !important }
+    .border-cp_palette_primary { border-color: var(--palette-primary) !important }
+  </style>
+</head>
+<body class="bg-cp_background_default min-h-screen flex flex-col font-sans">
+  <header class="bg-cp_palette_primary shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-cp_palette_secondary flex items-center justify-center font-bold text-white text-xs overflow-hidden">
+          <img src="https://placehold.co/40x40/C9972A/FFFFFF/png?text=MB" alt="MB" class="w-full h-full object-cover">
+        </div>
+        <span class="text-white font-bold text-lg">ManBook Stepper</span>
+      </a>
+      <a href="index.html" class="text-blue-200 text-sm hover:text-white transition">Cancel Booking</a>
+    </div>
+  </header>
+
+  <div class="bg-white border-b border-cp_borders_main pt-6 pb-6 px-4">
+    <div class="max-w-3xl mx-auto">
+      <div id="stepper-indicator" class="flex justify-between relative"></div>
+    </div>
+  </div>
+
+  <main class="flex-1 max-w-4xl mx-auto w-full px-4 py-10" id="step-content">
+    <div class="mb-6 h-8">
+      <button id="back-btn" class="text-cp_text_secondary hover:text-cp_palette_primary flex items-center gap-1 text-sm font-medium transition">
+        &larr; Back
+      </button>
+    </div>
+    
+    <div class="text-center mb-10">
+      <h1 class="text-3xl font-bold text-cp_palette_primary mb-2">Select a Branch</h1>
+      <p class="text-cp_text_secondary">Choose the location for your appointment.</p>
+    </div>
+
+    <!-- Selected Service Summary (Dynamic) -->
+    <div data-dynamic="service-summary" class="selected-service-summary bg-cp_background_default rounded-2xl p-5 mb-8 border border-cp_borders_main shadow-sm">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center">
+          <div class="ml-4">
+            <img src="{{ selected_service.image_url }}" alt="{{ selected_service.name }}" class="w-14 h-14 rounded-xl object-cover ring-2 ring-white shadow-sm">
+          </div>
+          <div>
+            <h4 class="font-bold text-cp_text_primary text-lg">{{ selected_service.name }}</h4>
+            <p class="text-xs text-cp_text_secondary font-semibold uppercase tracking-wider">{{ selected_service.duration_formatted }} • {{ selected_service.price_formatted }}</p>
+          </div>
+        </div>
+        <a href="booking-service.html" class="px-4 py-2 bg-white text-cp_palette_secondary text-sm font-bold rounded-lg border border-cp_borders_main hover:bg-cp_background_default transition-colors">Change</a>
+      </div>
+    </div>
+    
+    <div data-dynamic="branch-grid" id="items-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {% for branch in branches %}
+      <div class="branch-card bg-cp_background_paper rounded-2xl shadow-[0_4px_20px_rgba(27,58,107,0.05)] overflow-hidden border border-cp_borders_main cursor-pointer ring-offset-2 transition-all hover:shadow-lg group" 
+           data-branch-id="{{ branch.id }}"
+           onclick="selectBranch({{ branch.id }}, event); return false;"
+           data-lat="{{ branch.latitude }}"
+           data-lng="{{ branch.longitude }}">
+        <div class="relative h-48 overflow-hidden">
+          <img src="{{ branch.image_url }}" 
+               alt="{{ branch.name }}" 
+               class="branch-image w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute top-3 right-3">
+            <span class="bg-{{ branch.status_color }} text-white px-2 py-1 rounded-full text-xs font-bold shadow-sm">{{ branch.status_text }}</span>
+          </div>
+        </div>
+        <div class="p-5">
+          <h3 class="text-xl font-bold text-cp_palette_primary mb-2 group-hover:text-cp_palette_secondary transition-colors">{{ branch.name }}</h3>
+          <div class="flex items-center mb-3">
+            <span class="text-lg font-bold text-cp_palette_primary ml-2">{{ branch.rating|floatformat:1 }}</span>
+            <div class="flex items-center ml-2">
+              {% for star in branch.stars %}
+              <svg class="w-4 h-4 {{ star.class }} text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+              </svg>
+              {% endfor %}
+            </div>
+            <span class="text-cp_text_secondary text-sm">({{ branch.reviews_count }})</span>
+          </div>
+          <p class="text-cp_text_secondary text-sm mb-4 leading-relaxed line-clamp-2">
+            <span class="inline-block mr-1">📍</span> {{ branch.full_address }}
+          </p>
+          <div class="flex items-center justify-between border-t border-cp_borders_main pt-4 mt-auto">
+            <div class="flex items-center text-xs font-bold">
+              <span class="text-{{ branch.status_color }} mr-1">●</span>
+              <span class="text-cp_palette_primary">{{ branch.status_text }}</span>
+              {% if branch.closing_time %}
+              <span class="text-cp_text_secondary font-medium ml-2">— {{ branch.closing_info }}</span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    
+    <div class="mt-12 flex justify-end border-t border-cp_borders_main pt-6">
+      <button id="next-btn" disabled class="px-8 py-3 rounded-xl bg-cp_palette_secondary text-white font-bold opacity-50 cursor-not-allowed transition shadow-md">Continue</button>
+    </div>
+  </main>
+
+  <script type="module">
+    import { animate, stagger } from "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm";
+    
+    animate("#step-content", { opacity: [0, 1], y: [20, 0] }, { duration: 0.5, easing: "ease-out" });
+
+    let state = JSON.parse(localStorage.getItem('manbook_stepper_state'));
+    if (!state) {
+      state = { flow: 'branch_first', serviceId: null, branchId: null, providerId: null, scheduleDate: null, scheduleTime: null, guests: 1, customerDetails: {} };
+      localStorage.setItem('manbook_stepper_state', JSON.stringify(state));
+    }
+
+    const stepsListServiceFirst = [
+      { id: 'service', label: 'Service', url: 'booking-service.html' },
+      { id: 'branch', label: 'Branch', url: 'booking-branch.html' },
+      { id: 'provider', label: 'Provider', url: 'booking-provider.html' },
+      { id: 'schedule', label: 'Time', url: 'booking-schedule.html' },
+      { id: 'details', label: 'Details', url: 'booking-details.html' },
+      { id: 'review', label: 'Review', url: 'booking-review.html' }
+    ];
+    
+    const stepsListBranchFirst = [
+      { id: 'branch', label: 'Branch', url: 'booking-branch.html' },
+      { id: 'service', label: 'Service', url: 'booking-service.html' },
+      { id: 'provider', label: 'Provider', url: 'booking-provider.html' },
+      { id: 'schedule', label: 'Time', url: 'booking-schedule.html' },
+      { id: 'details', label: 'Details', url: 'booking-details.html' },
+      { id: 'review', label: 'Review', url: 'booking-review.html' }
+    ];
+
+    const currentSteps = state.flow === 'service_first' ? stepsListServiceFirst : stepsListBranchFirst;
+    const currentStepIndex = currentSteps.findIndex(s => s.id === 'branch');
+    
+    const stepperHtml = `
+      <div class="absolute top-1/2 left-0 w-full h-1 bg-cp_borders_main -translate-y-1/2 z-0 rounded-full"></div>
+      <div class="absolute top-1/2 left-0 h-1 bg-cp_palette_secondary -translate-y-1/2 z-0 rounded-full transition-all duration-500" style="width: ${(currentStepIndex / (currentSteps.length - 1)) * 100}%"></div>
+      ${currentSteps.map((step, idx) => {
+        const isCompleted = idx < currentStepIndex;
+        const isActive = idx === currentStepIndex;
+        let ringClass = isCompleted || isActive ? 'bg-cp_palette_secondary text-white' : 'bg-white border-2 border-cp_borders_main text-cp_text_secondary';
+        if(isActive) ringClass = 'bg-cp_palette_secondary text-white ring-4 ring-yellow-100';
+        
+        return `
+          <div class="relative z-10 flex flex-col items-center">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${ringClass} transition-colors duration-300">
+               ${isCompleted ? '✓' : idx + 1}
+            </div>
+            <span class="absolute top-10 text-[10px] sm:text-xs font-semibold uppercase tracking-wider ${isActive ? 'text-cp_palette_secondary' : 'text-cp_text_secondary'}">${step.label}</span>
+          </div>
+        `;
+      }).join('')}
+    `;
+    document.getElementById('stepper-indicator').innerHTML = stepperHtml;
+
+    if(currentStepIndex > 0) {
+      document.getElementById('back-btn').addEventListener('click', async () => {
+         await animate("#step-content", { opacity: 0, x: 20 }, { duration: 0.3 }).finished;
+         window.location.href = currentSteps[currentStepIndex - 1].url;
+      });
+    } else {
+      document.getElementById('back-btn').style.display = 'none';
+    }
+
+    const nextBtn = document.getElementById('next-btn');
+
+    window.selectBranch = (id, event) => {
+      if (event) event.preventDefault();
+      state.branchId = id;
+      localStorage.setItem('manbook_stepper_state', JSON.stringify(state));
+      
+      // Update UI
+      document.querySelectorAll('.branch-card').forEach(card => {
+        card.classList.remove('ring-4', 'ring-cp_palette_secondary', 'bg-yellow-50');
+        if (card.dataset.branchId == id) {
+          card.classList.add('ring-4', 'ring-cp_palette_secondary', 'bg-yellow-50');
+        }
+      });
+
+      nextBtn.disabled = false;
+      nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      nextBtn.classList.add('hover:opacity-90', 'hover:-translate-y-0.5');
+    };
+
+    // Initialize from state
+    if (state.branchId) {
+      window.selectBranch(state.branchId);
+    }
+
+    animate(".branch-card", { opacity: [0, 1], y: [20, 0] }, { duration: 0.4, delay: stagger(0.1) });
+
+    nextBtn.addEventListener('click', async () => {
+      await animate("#step-content", { opacity: 0, x: -20 }, { duration: 0.3 }).finished;
+      window.location.href = currentSteps[currentStepIndex + 1].url;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ManBook - Booking Details</title>
+   <script src="https://cdn.tailwindcss.com"></script>
+   <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet">
+   <style id="dynamic-color-styles">
+      @layer base {
+         :root {
+            --palette-primary: #1B3A6B;
+            --palette-secondary: #C9972A;
+            --background-default: #F4F6FA;
+            --background-paper: #FFFFFF;
+            --text-primary: #0F1F3D;
+            --text-secondary: #5A6A85;
+            --text-tertiary: #FFFFFF;
+            --borders-main: #DDE3EE;
+         }
+
+         :dir(ltr) {
+            font-family: 'Lexend Deca', system-ui, sans-serif;
+         }
+
+         :dir(rtl) {
+            font-family: 'Changa', system-ui, sans-serif;
+         }
+      }
+
+      .bg-cp_palette_primary {
+         background-color: var(--palette-primary) !important
+      }
+
+      .bg-cp_palette_secondary {
+         background-color: var(--palette-secondary) !important
+      }
+
+      .bg-cp_background_default {
+         background-color: var(--background-default) !important
+      }
+
+      .bg-cp_background_paper {
+         background-color: var(--background-paper) !important
+      }
+
+      .text-cp_text_primary {
+         color: var(--text-primary) !important
+      }
+
+      .text-cp_text_secondary {
+         color: var(--text-secondary) !important
+      }
+
+      .text-cp_text_tertiary {
+         color: var(--text-tertiary) !important
+      }
+
+      .border-cp_borders_main {
+         border-color: var(--borders-main) !important
+      }
+
+      .text-cp_palette_primary {
+         color: var(--palette-primary) !important
+      }
+
+      .border-cp_palette_primary {
+         border-color: var(--palette-primary) !important
+      }
+   </style>
+</head>
+
+<body class="bg-cp_background_default min-h-screen flex flex-col font-sans">
+   <header class="bg-cp_palette_primary shadow-md sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+         <a href="index.html" class="flex items-center gap-2">
+            <div
+               class="w-8 h-8 rounded-lg bg-cp_palette_secondary flex items-center justify-center font-bold text-white text-xs overflow-hidden">
+               <img src="https://placehold.co/40x40/C9972A/FFFFFF/png?text=MB" alt="MB"
+                  class="w-full h-full object-cover">
+            </div>
+            <span class="text-white font-bold text-lg">ManBook Stepper</span>
+         </a>
+         <a href="index.html" class="text-blue-200 text-sm hover:text-white transition">Cancel Booking</a>
+      </div>
+   </header>
+
+   <div class="bg-white border-b border-cp_borders_main pt-6 pb-6 px-4">
+      <div class="max-w-3xl mx-auto">
+         <div id="stepper-indicator" class="flex justify-between relative"></div>
+      </div>
+   </div>
+
+   <main class="flex-1 max-w-4xl mx-auto w-full px-4 py-10" id="step-content">
+      <div class="mb-6 h-8">
+         <button id="back-btn"
+            class="text-cp_text_secondary hover:text-cp_palette_primary flex items-center gap-1 text-sm font-medium transition">
+            &larr; Back
+         </button>
+      </div>
+
+      <div class="text-center mb-10">
+         <h1 class="text-3xl font-bold text-cp_palette_primary mb-2">Client Details</h1>
+         <p class="text-cp_text_secondary">Please provide your details to confirm the appointment.</p>
+      </div>
+
+      <div data-dynamic="details-form-container" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+         <!-- Form -->
+         <div class="lg:col-span-2 space-y-6">
+            <div class="bg-white rounded-2xl border border-cp_borders_main p-6 lg:p-8 shadow-sm">
+               <h2 class="text-lg font-bold text-cp_palette_primary mb-6 border-b border-cp_borders_main pb-4">Customer
+                  Information</h2>
+
+               <!-- Tabs -->
+               <div class="flex gap-2 p-1 bg-cp_background_default rounded-xl mb-6 w-full max-w-sm">
+                  <button type="button"
+                     class="flex-1 py-2 rounded-lg bg-white shadow-sm font-bold text-sm text-cp_palette_primary ring-1 ring-cp_borders_main pointer-events-none">Guest
+                     Checkout</button>
+                  <button type="button"
+                     class="flex-1 py-2 rounded-lg font-bold text-sm text-cp_text_secondary hover:text-cp_palette_primary transition cursor-pointer"
+                     onclick="alert('Login flow not implemented in UI demo')">Login/Existing</button>
+               </div>
+
+               <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+                  <div class="md:col-span-2">
+                     <label class="block text-xs font-bold text-cp_text_secondary uppercase tracking-wide mb-2">Full
+                        Name *</label>
+                     <input type="text" id="c-name"
+                        class="w-full bg-cp_background_default border border-cp_borders_main rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cp_palette_secondary transition"
+                        placeholder="John Doe">
+                  </div>
+                  <div>
+                     <label class="block text-xs font-bold text-cp_text_secondary uppercase tracking-wide mb-2">Phone
+                        Number *</label>
+                     <input type="tel" id="c-phone"
+                        class="w-full bg-cp_background_default border border-cp_borders_main rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cp_palette_secondary transition"
+                        placeholder="+1 234 567 8900">
+                  </div>
+                  <div>
+                     <label class="block text-xs font-bold text-cp_text_secondary uppercase tracking-wide mb-2">Email
+                        Address</label>
+                     <input type="email" id="c-email"
+                        class="w-full bg-cp_background_default border border-cp_borders_main rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cp_palette_secondary transition"
+                        placeholder="john@example.com">
+                  </div>
+               </div>
+            </div>
+
+            <div class="bg-white rounded-2xl border border-cp_borders_main p-6 lg:p-8 shadow-sm">
+               <h2 class="text-lg font-bold text-cp_palette_primary mb-6 border-b border-cp_borders_main pb-4">
+                  Appointment Preferences</h2>
+
+               <div class="mb-5 relative">
+                  <label class="block text-xs font-bold text-cp_text_secondary uppercase tracking-wide mb-2">Number of
+                     Participants</label>
+                  <select id="c-pax"
+                     class="w-full md:w-1/2 bg-cp_background_default border border-cp_borders_main rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cp_palette_secondary transition appearance-none">
+                     <option value="1">1 Person</option>
+                     <option value="2">2 People</option>
+                     <option value="3">3 People</option>
+                     <option value="4">4 People</option>
+                     <option value="5">5 People</option>
+                     <option value="6">6 People</option>
+                     <option value="7">7 People</option>
+                     <option value="8">8 People</option>
+                     <option value="9">9 People</option>
+                     <option value="10">10 People</option>
+                  </select>
+                  <div
+                     class="pointer-events-none absolute inset-y-0 right-0 md:right-1/2 flex items-center px-4 pt-6 text-gray-500">
+                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                     </svg>
+                  </div>
+               </div>
+
+               <div class="mb-5">
+                  <label class="block text-xs font-bold text-cp_text_secondary uppercase tracking-wide mb-2">Special
+                     Requests (Optional)</label>
+                  <textarea id="c-req" rows="3"
+                     class="w-full bg-cp_background_default border border-cp_borders_main rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cp_palette_secondary transition resize-none"
+                     placeholder="Any special requirements we should know about?"></textarea>
+               </div>
+
+               <div>
+                  <label class="block text-xs font-bold text-cp_text_secondary uppercase tracking-wide mb-2">Internal
+                     Notes (Optional)</label>
+                  <textarea id="c-notes" rows="2"
+                     class="w-full bg-cp_background_default border border-cp_borders_main rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cp_palette_secondary transition resize-none"
+                     placeholder="For branch internal use..."></textarea>
+               </div>
+            </div>
+         </div>
+
+         <div data-dynamic="details-summary" class="lg:col-span-1">
+            <div class="bg-cp_palette_primary rounded-2xl p-6 shadow-lg text-white sticky top-24">
+               <h3 class="text-xl font-bold mb-4">Quick Summary</h3>
+               <ul class="space-y-4 mb-6">
+                  <li class="flex items-start gap-3">
+                     <div
+                        class="w-12 h-12 bg-white rounded-xl overflow-hidden flex-shrink-0 border-2 border-white shadow-sm">
+                        <img src="{{ selected_service.image_url }}" class="w-full h-full object-cover">
+                     </div>
+                     <div>
+                        <span class="block text-xs text-blue-200">Selected Service</span>
+                        <span class="block font-semibold text-sm">{{ selected_service.name }}</span>
+                     </div>
+                  </li>
+                  <li class="flex items-start gap-3">
+                     <span class="text-cp_palette_secondary mt-0.5 text-lg">📅</span>
+                     <div>
+                        <span class="block text-xs text-blue-200">Date & Time</span>
+                        <span class="block font-semibold text-sm" id="qs-dt">{{ selected_date }} at {{ selected_time
+                           }}</span>
+                     </div>
+                  </li>
+                  <li class="flex items-start gap-3">
+                     <span class="text-cp_palette_secondary mt-0.5 text-lg">🏢</span>
+                     <div>
+                        <span class="block text-xs text-blue-200">Location</span>
+                        <span class="block font-semibold text-sm">{{ selected_branch.name }}</span>
+                     </div>
+                  </li>
+               </ul>
+               <div class="p-4 bg-white bg-opacity-10 rounded-xl relative overflow-hidden">
+                  <div class="absolute -right-4 -top-4 w-16 h-16 bg-white opacity-5 rounded-full"></div>
+                  <div class="text-xs text-blue-200 mb-1">Your progress</div>
+                  <div class="font-bold text-cp_palette_secondary text-lg">Almost Done!</div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="mt-12 flex justify-end border-t border-cp_borders_main pt-6">
+         <button id="next-btn" disabled
+            class="px-8 py-3 rounded-xl bg-cp_palette_secondary text-white font-bold opacity-50 cursor-not-allowed transition shadow-md">Continue
+            to Review</button>
+      </div>
+   </main>
+
+   <script type="module">
+      import { animate, stagger } from "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm";
+
+      animate("#step-content", { opacity: [0, 1], y: [20, 0] }, { duration: 0.5, easing: "ease-out" });
+
+      let state = JSON.parse(localStorage.getItem('manbook_stepper_state'));
+      if (!state) window.location.href = 'index.html';
+
+      let stepsListServiceFirst = [
+         { id: 'service', label: 'Service', url: 'booking-service.html' },
+         { id: 'branch', label: 'Branch', url: 'booking-branch.html' },
+         { id: 'provider', label: 'Provider', url: 'booking-provider.html' },
+         { id: 'schedule', label: 'Time', url: 'booking-schedule.html' },
+         { id: 'details', label: 'Details', url: 'booking-details.html' },
+         { id: 'review', label: 'Review', url: 'booking-review.html' }
+      ];
+
+      let stepsListBranchFirst = [
+         { id: 'branch', label: 'Branch', url: 'booking-branch.html' },
+         { id: 'service', label: 'Service', url: 'booking-service.html' },
+         { id: 'provider', label: 'Provider', url: 'booking-provider.html' },
+         { id: 'schedule', label: 'Time', url: 'booking-schedule.html' },
+         { id: 'details', label: 'Details', url: 'booking-details.html' },
+         { id: 'review', label: 'Review', url: 'booking-review.html' }
+      ];
+
+      // If branch is already selected from backend, remove it from the steps flow
+      if ("{{ branch_name }}" !== "") {
+         stepsListServiceFirst = stepsListServiceFirst.filter(s => s.id !== 'branch');
+         stepsListBranchFirst = stepsListBranchFirst.filter(s => s.id !== 'branch');
+      }
+
+      const currentSteps = state.flow === 'service_first' ? stepsListServiceFirst : stepsListBranchFirst;
+      const currentStepIndex = currentSteps.findIndex(s => s.id === 'details');
+
+      const stepperHtml = `
+      <div class="absolute top-1/2 left-0 w-full h-1 bg-cp_borders_main -translate-y-1/2 z-0 rounded-full"></div>
+      <div class="absolute top-1/2 left-0 h-1 bg-cp_palette_secondary -translate-y-1/2 z-0 rounded-full transition-all duration-500" style="width: ${(currentStepIndex / (currentSteps.length - 1)) * 100}%"></div>
+      ${currentSteps.map((step, idx) => {
+         const isCompleted = idx < currentStepIndex;
+         const isActive = idx === currentStepIndex;
+         let ringClass = isCompleted || isActive ? 'bg-cp_palette_secondary text-white' : 'bg-white border-2 border-cp_borders_main text-cp_text_secondary';
+         if (isActive) ringClass = 'bg-cp_palette_secondary text-white ring-4 ring-yellow-100';
+
+         return `
+          <div class="relative z-10 flex flex-col items-center">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${ringClass} transition-colors duration-300">
+               ${isCompleted ? '✓' : idx + 1}
+            </div>
+            <span class="absolute top-10 text-[10px] sm:text-xs font-semibold uppercase tracking-wider ${isActive ? 'text-cp_palette_secondary' : 'text-cp_text_secondary'}">${step.label}</span>
+          </div>
+        `;
+      }).join('')}
+    `;
+      document.getElementById('stepper-indicator').innerHTML = stepperHtml;
+
+      document.getElementById('back-btn').addEventListener('click', async () => {
+         await animate("#step-content", { opacity: 0, x: 20 }, { duration: 0.3 }).finished;
+         window.location.href = currentSteps[currentStepIndex - 1].url;
+      });
+
+      document.getElementById('qs-dt').textContent = `${state.scheduleDate || '--'} at ${state.scheduleTime || '--'}`;
+
+      const inputs = {
+         name: document.getElementById('c-name'),
+         phone: document.getElementById('c-phone'),
+         email: document.getElementById('c-email'),
+         pax: document.getElementById('c-pax'),
+         req: document.getElementById('c-req'),
+         notes: document.getElementById('c-notes')
+      };
+
+      const nextBtn = document.getElementById('next-btn');
+
+      if (state.customerDetails) {
+         inputs.name.value = state.customerDetails.name || '';
+         inputs.phone.value = state.customerDetails.phone || '';
+         inputs.email.value = state.customerDetails.email || '';
+         inputs.pax.value = state.guests || '1';
+         inputs.req.value = state.customerDetails.requests || '';
+         inputs.notes.value = state.customerDetails.notes || '';
+      }
+
+      function checkValid() {
+         if (inputs.name.value.trim() && inputs.phone.value.trim()) {
+            nextBtn.disabled = false;
+            nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            nextBtn.classList.add('hover:opacity-90', 'hover:-translate-y-0.5');
+         } else {
+            nextBtn.disabled = true;
+            nextBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            nextBtn.classList.remove('hover:opacity-90', 'hover:-translate-y-0.5');
+         }
+      }
+
+      Object.values(inputs).forEach(input => {
+         input.addEventListener('input', checkValid);
+         input.addEventListener('change', checkValid);
+      });
+
+      checkValid();
+
+      nextBtn.addEventListener('click', async () => {
+         state.guests = parseInt(inputs.pax.value);
+         state.customerType = 'guest';
+         state.customerDetails = {
+            name: inputs.name.value.trim(),
+            phone: inputs.phone.value.trim(),
+            email: inputs.email.value.trim(),
+            requests: inputs.req.value.trim(),
+            notes: inputs.notes.value.trim()
+         };
+         localStorage.setItem('manbook_stepper_state', JSON.stringify(state));
+
+         await animate("#step-content", { opacity: 0, x: -20 }, { duration: 0.3 }).finished;
+         window.location.href = currentSteps[currentStepIndex + 1].url;
+      });
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ManBook - Payment Failed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style id="dynamic-color-styles">
+    @layer base {
+      :root {
+        --palette-primary: #1B3A6B;
+        --palette-secondary: #C9972A;
+        --background-default: #F4F6FA;
+        --background-paper: #FFFFFF;
+        --text-primary: #0F1F3D;
+        --text-secondary: #5A6A85;
+        --text-tertiary: #FFFFFF;
+        --borders-main: #DDE3EE;
+      }
+      :dir(ltr) { font-family: 'Lexend Deca', system-ui, sans-serif; }
+      :dir(rtl) { font-family: 'Changa', system-ui, sans-serif; }
+    }
+    .bg-cp_palette_primary { background-color: var(--palette-primary) !important }
+    .bg-cp_palette_secondary { background-color: var(--palette-secondary) !important }
+    .bg-cp_background_default { background-color: var(--background-default) !important }
+    .bg-cp_background_paper { background-color: var(--background-paper) !important }
+    .text-cp_text_primary { color: var(--text-primary) !important }
+    .text-cp_text_secondary { color: var(--text-secondary) !important }
+    .text-cp_text_tertiary { color: var(--text-tertiary) !important }
+    .border-cp_borders_main { border-color: var(--borders-main) !important }
+    .text-cp_palette_primary { color: var(--palette-primary) !important }
+    .border-cp_palette_primary { border-color: var(--palette-primary) !important }
+  </style>
+</head>
+<body class="bg-cp_background_default min-h-screen flex flex-col font-sans">
+  <header class="bg-cp_palette_primary shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-cp_palette_secondary flex items-center justify-center font-bold text-white text-xs overflow-hidden">
+          <img src="https://placehold.co/40x40/C9972A/FFFFFF/png?text=MB" alt="MB" class="w-full h-full object-cover">
+        </div>
+        <span class="text-white font-bold text-lg">ManBook Secure Checkout</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="flex-1 flex items-center justify-center p-4 py-12" id="step-content">
+    <div class="bg-white rounded-3xl p-8 max-w-md w-full text-center shadow-[0_8px_30px_rgba(27,58,107,0.06)] border border-cp_borders_main relative overflow-hidden">
+       
+       <div class="w-20 h-20 mx-auto bg-red-50 text-red-500 rounded-full flex items-center justify-center text-4xl mb-6 shadow-sm border border-red-200">
+          ✕
+       </div>
+       
+       <h1 class="text-3xl font-extrabold text-cp_palette_primary mb-2">Payment Failed</h1>
+       <p class="text-cp_text_secondary mb-8">We could not process your payment at this time. Please check your card details or try a different payment method.</p>
+       
+       <div class="space-y-3">
+          <a href="booking-payment.html" class="block w-full py-4 rounded-xl bg-cp_palette_secondary text-white font-bold transition shadow-md hover:opacity-90 hover:-translate-y-0.5">Try Another Card</a>
+          <a href="index.html" class="block w-full py-4 rounded-xl border-2 border-cp_palette_primary text-cp_palette_primary font-bold transition hover:bg-cp_palette_primary hover:text-white">Return Home</a>
+       </div>
+    </div>
+  </main>
+  
+  <script type="module">
+    import { animate } from "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm";
+    animate("#step-content", { opacity: [0, 1], scale: [0.95, 1], y: [20, 0] }, { duration: 0.5, easing: "ease-out" });
+  </script>
+</body>
+</html>

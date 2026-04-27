@@ -1,0 +1,106 @@
+<div class="flex flex-col h-full">
+        <label class="cursor-pointer group block flex-1">
+          <input type="radio" name="service" value="{{ service_id }}" class="peer hidden"   {% if state.serviceId == service_id %}checked{% endif %}>
+          <div class="bg-white rounded-2xl border-2 border-transparent shadow-sm p-5 transition-all duration-300 group-hover:shadow-md peer-checked:border-cp_palette_secondary peer-checked:bg-yellow-50 relative overflow-hidden flex items-start gap-4 h-full ring-1 ring-cp_borders_main peer-checked:ring-0">
+            <div class="absolute top-4 right-4 w-5 h-5 rounded-full border-2 border-gray-300 peer-checked:border-cp_palette_secondary peer-checked:bg-cp_palette_secondary flex items-center justify-center transition-colors">
+               <svg class="w-3 h-3 text-white opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <div class="w-16 h-16 bg-cp_background_default rounded-xl overflow-hidden flex-shrink-0">
+              <img src="{{ service_image_url }}" alt="{{ service_name }}" class="w-full h-full object-cover">
+            </div>
+            <div class="pr-6 w-full">
+              <div class="text-xs text-cp_palette_secondary font-bold uppercase tracking-wide mb-1">{{ service_category_name }}</div>
+              <h3 class="text-lg font-bold text-cp_palette_ primary mb-1">{{ service_name }}</h3>
+              <p class="text-sm text-cp_text_secondary mb-2 line-clamp-2">{{ service_description }}</p>
+              <div class="flex items-center justify-between mt-auto pt-2">
+                <div class="flex items-center gap-2 text-xs font-medium text-cp_text_primary">
+                  <span class="bg-white bg-opacity-80 border border-cp_borders_main px-2 py-1 rounded">⏱ {{ service_duration_formatted }}</span>
+                  <span class="bg-white bg-opacity-80 border border-cp_borders_main px-2 py-1 rounded">💳 ${{ service_price_formatted }}</span>
+                </div>
+                <button id="btn-toggle-{{ service_id }}" onclick="toggleDetails(event, {{ service_id }})" class="text-cp_palette_secondary text-xs font-bold hover:underline flex items-center gap-1">
+                  View Details
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </label>
+        
+        <!-- Detailed Section -->
+        <div id="details- {{ service_id }}" class="hidden bg-white border-x border-b border-cp_borders_main rounded-b-2xl -mt-4 mx-2 p-5 pt-8 shadow-inner overflow-hidden">
+          <div class="space-y-4">
+            <div>
+              <h4 class="text-xs font-bold text-cp_palette_primary uppercase tracking-wider mb-2">What's Included</h4>
+              <div class="grid grid-cols-1 gap-1">
+                {{ service_includes?.map(inc => `
+                  <div class="flex items-center gap-2 text-xs text-cp_text_secondary">
+                    <span class="text-green-500 text-sm">✓</span>{{ inc }}
+                  </div>
+                `).join('') }}
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <h4 class="text-xs font-bold text-cp_palette_primary uppercase tracking-wider mb-1">Available At</h4>
+                <div class="text-[11px] text-cp_text_secondary">
+                   {{ service_locations?.join(', ') }}
+                </div>
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-cp_palette_primary uppercase tracking-wider mb-1">Policy</h4>
+                <div class="text-[11px] text-cp_text_secondary">
+                   {{ service_policies?.type }} · Max {{ service_policies?.maxPax }} pax<br>
+                   Cancel up to {{ service_policies?.cancelHours }}h
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- django -->
+
+      <div class="service-card bg-white rounded-xl p-6 cursor-pointer" onclick="selectService({{ service_id }})">
+            <div class="flex items-start space-x-4 space-x-reverse">
+                <div class="relative">
+                    <img src="{{ service_image_url }}" 
+                        alt="{{ service_name }}" class="w-20 h-20 rounded-xl object-cover">
+                    <div class="absolute -bottom-1 -right-1 w-6 h-6 bg-fresha-green rounded-full border-2 border-white flex items-center justify-center">
+                        <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-semibold text-lg text-fresha-dark">{{ service_name }}</h3>
+                        {{ badges_html|safe }}
+                    </div>
+                    <p class="text-fresha-gray text-sm mb-2">{{ service_description }}</p>
+                    <div class="flex items-center mb-3">
+                        <div class="flex items-center ml-3">
+                            <span class="text-sm font-semibold ml-1">{{ rating_formatted }}</span>
+                            <div class="flex">
+                                {{ stars_html|safe }}
+                            </div>
+                        </div>
+                        <span class="text-fresha-gray text-sm">{{ rating_count_formatted }}</span>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="badge duration-badge">{{ service_duration_formatted }}</span>
+                        {% if badges_html %}{{ badges_html|safe }}{% endif %}
+                    </div>
+                    <div class="text-sm text-fresha-gray mb-3">
+                        {% if service_includes %}<p class="mb-1"><strong>يشمل:</strong> {{ service_includes }}</p>{% endif %}
+                        <p><strong>الفئة:</strong> {{ service_category_name }}</p>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-fresha-purple">{{ service_price_formatted }}</span>
+                        <span class="text-sm text-fresha-gray">{{ availability_text }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        

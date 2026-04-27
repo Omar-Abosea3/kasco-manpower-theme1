@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ManBook - Payment</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style id="dynamic-color-styles">
+    @layer base {
+      :root {
+        --palette-primary: #1B3A6B;
+        --palette-secondary: #C9972A;
+        --background-default: #F4F6FA;
+        --background-paper: #FFFFFF;
+        --text-primary: #0F1F3D;
+        --text-secondary: #5A6A85;
+        --text-tertiary: #FFFFFF;
+        --borders-main: #DDE3EE;
+      }
+      :dir(ltr) { font-family: 'Lexend Deca', system-ui, sans-serif; }
+      :dir(rtl) { font-family: 'Changa', system-ui, sans-serif; }
+    }
+    .bg-cp_palette_primary { background-color: var(--palette-primary) !important }
+    .bg-cp_palette_secondary { background-color: var(--palette-secondary) !important }
+    .bg-cp_background_default { background-color: var(--background-default) !important }
+    .bg-cp_background_paper { background-color: var(--background-paper) !important }
+    .text-cp_text_primary { color: var(--text-primary) !important }
+    .text-cp_text_secondary { color: var(--text-secondary) !important }
+    .text-cp_text_tertiary { color: var(--text-tertiary) !important }
+    .border-cp_borders_main { border-color: var(--borders-main) !important }
+    .text-cp_palette_primary { color: var(--palette-primary) !important }
+    .border-cp_palette_primary { border-color: var(--palette-primary) !important }
+  </style>
+</head>
+<body class="bg-cp_background_default min-h-screen flex flex-col font-sans">
+  <header class="bg-cp_palette_primary shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-cp_palette_secondary flex items-center justify-center font-bold text-white text-xs overflow-hidden">
+          <img src="https://placehold.co/40x40/C9972A/FFFFFF/png?text=MB" alt="MB" class="w-full h-full object-cover">
+        </div>
+        <span class="text-white font-bold text-lg">ManBook Secure Checkout</span>
+      </a>
+      <a href="payment-cancel.html" class="text-gray-300 text-sm hover:text-white transition">Cancel</a>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-2xl mx-auto w-full px-4 py-12" id="step-content">
+    
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-50 text-blue-500 text-3xl mb-4 shadow-sm border border-blue-100">🔒</div>
+      <h1 class="text-3xl font-bold text-cp_palette_primary mb-2">Complete Payment</h1>
+      <p class="text-cp_text_secondary">Your booking is reserved for 10:00. Please complete the payment.</p>
+    </div>
+
+    <!-- Payment Content -->
+    <div class="bg-white rounded-2xl border border-cp_borders_main shadow-[0_8px_30px_rgba(27,58,107,0.06)] overflow-hidden mb-8">
+       <div class="bg-gray-50 p-6 border-b border-cp_borders_main flex justify-between items-center">
+          <div>
+            <div class="text-xs font-bold text-cp_text_secondary uppercase tracking-widest mb-1">Total Due</div>
+            <div class="text-3xl font-extrabold text-cp_palette_primary" id="total-price">--</div>
+          </div>
+          <div class="text-right hidden sm:block">
+            <div class="text-sm font-semibold text-cp_palette_primary" id="svc-name">Loading...</div>
+            <div class="text-xs text-cp_text_secondary" id="svc-details">--</div>
+          </div>
+       </div>
+       
+       <div class="p-6 lg:p-8">
+          <div class="mb-6">
+             <div class="flex items-center gap-3 p-4 border-2 border-cp_palette_secondary rounded-xl bg-yellow-50/50">
+                <input type="radio" checked class="w-5 h-5 accent-cp_palette_secondary cursor-pointer">
+                <span class="font-bold text-cp_palette_primary">Credit / Debit Card</span>
+                <span class="ml-auto text-xl">💳</span>
+             </div>
+          </div>
+          
+          <div class="space-y-5">
+             <div>
+                <label class="block text-xs font-bold text-cp_text_secondary uppercase tracking-wide mb-2">Card Number</label>
+                <input type="text" class="w-full bg-cp_background_default border border-cp_borders_main rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cp_palette_secondary transition font-mono tracking-widest text-sm" placeholder="0000 0000 0000 0000" maxlength="19">
+             </div>
+             <div class="grid grid-cols-2 gap-5">
+                <div>
+                   <label class="block text-xs font-bold text-cp_text_secondary uppercase tracking-wide mb-2">Expiry Date</label>
+                   <input type="text" class="w-full bg-cp_background_default border border-cp_borders_main rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cp_palette_secondary transition text-center font-mono tracking-wider text-sm" placeholder="MM/YY" maxlength="5">
+                </div>
+                <div>
+                   <label class="block text-xs font-bold text-cp_text_secondary uppercase tracking-wide mb-2">CVV</label>
+                   <input type="password" class="w-full bg-cp_background_default border border-cp_borders_main rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cp_palette_secondary transition text-center font-mono tracking-widest text-sm" placeholder="•••" maxlength="4">
+                </div>
+             </div>
+             <div>
+                <label class="block text-xs font-bold text-cp_text_secondary uppercase tracking-wide mb-2">Cardholder Name</label>
+                <input type="text" class="w-full bg-cp_background_default border border-cp_borders_main rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cp_palette_secondary transition" placeholder="John Doe">
+             </div>
+          </div>
+          
+          <div class="mt-8">
+             <button id="pay-btn" class="w-full py-4 rounded-xl bg-cp_palette_primary text-white font-bold text-lg transition shadow-lg hover:bg-opacity-90 hover:-translate-y-0.5 relative overflow-hidden group">
+                <span class="relative z-10 flex items-center justify-center gap-2">
+                   Pay <span id="btn-amt"></span>
+                </span>
+                <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity"></div>
+             </button>
+             <div class="mt-4 flex items-center justify-center gap-2 text-xs text-cp_text_secondary font-medium">
+                🔒 Payments are securely encrypted and processed.
+             </div>
+          </div>
+       </div>
+    </div>
+    
+    <div class="text-center space-x-6">
+       <button id="back-btn" class="text-sm font-semibold text-cp_text_secondary hover:text-cp_palette_primary transition">&larr; Back to Review</button>
+       <a href="payment-failure.html" class="text-sm font-semibold text-red-400 hover:text-red-500 transition">Test Failure Page</a>
+    </div>
+  </main>
+
+  <script type="module">
+    import { animate } from "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm";
+    
+    animate("#step-content", { opacity: [0, 1], scale: [0.98, 1] }, { duration: 0.5, easing: "ease-out" });
+
+    let state = JSON.parse(localStorage.getItem('manbook_stepper_state'));
+    if (!state) window.location.href = 'index.html';
+
+    const SERVICES = [
+      { id: 1, name: "Classic Haircut", price: 45, duration: 45 },
+      { id: 2, name: "Deep Tissue Massage", price: 95, duration: 60 },
+      { id: 3, name: "Facial Treatment", price: 75, duration: 75 },
+      { id: 4, name: "Manicure & Pedicure", price: 65, duration: 90 },
+      { id: 5, name: "Yoga Session", price: 50, duration: 60 },
+      { id: 6, name: "Dental Checkup", price: 120, duration: 30 }
+    ];
+
+    const srv = SERVICES.find(x => x.id === state.serviceId) || SERVICES[0];
+    const total = srv.price * (state.guests || 1);
+    
+    document.getElementById('total-price').textContent = `$${total.toFixed(2)}`;
+    document.getElementById('btn-amt').textContent = `$${total.toFixed(2)}`;
+    document.getElementById('svc-name').textContent = srv.name;
+    document.getElementById('svc-details').textContent = `${state.guests} Pax • ${srv.duration} min`;
+
+    document.getElementById('back-btn').addEventListener('click', async () => {
+       await animate("#step-content", { opacity: 0, y: 20 }, { duration: 0.3 }).finished;
+       window.location.href = 'booking-review.html';
+    });
+
+    document.getElementById('pay-btn').addEventListener('click', async (e) => {
+       const btn = e.currentTarget;
+       btn.innerHTML = `<span class="animate-pulse">Processing...</span>`;
+       btn.disabled = true;
+       btn.classList.add('opacity-80', 'cursor-not-allowed');
+       
+       // Simulate processing
+       setTimeout(async () => {
+          // Save booking to master array to reflect in my-bookings
+          const allBookings = JSON.parse(localStorage.getItem('manpower_bookings') || '[]');
+          
+          const bookingObj = {
+             id: "BKG" + Math.floor(Math.random() * 10000).toString().padStart(4, '0'),
+             service: srv.name,
+             branch: state.branchId === 1 ? 'Downtown Branch' : 'Westside Clinic',
+             provider: state.providerId === 'any' ? 'Any Available' : 'Selected Professional',
+             date: state.scheduleDate,
+             time: state.scheduleTime,
+             status: 'Upcoming',
+             price: total,
+             guests: state.guests,
+             customer: state.customerDetails
+          };
+          
+          allBookings.push(bookingObj);
+          localStorage.setItem('manpower_bookings', JSON.stringify(allBookings));
+          
+          // clear stepper
+          localStorage.removeItem('manbook_stepper_state');
+          
+          await animate("#step-content", { opacity: 0, scale: 0.95 }, { duration: 0.3 }).finished;
+          window.location.href = `payment-success.html?id=${bookingObj.id}`;
+       }, 1500);
+    });
+  </script>
+</body>
+</html>
