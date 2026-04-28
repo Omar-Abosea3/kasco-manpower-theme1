@@ -96,9 +96,10 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
           <div class="flex items-center gap-4">
-            <a href="../index.html" class="text-blue-300 hover:text-white text-xs flex items-center gap-1 transition">←
+            <a href="../index.html"
+              class="text-cp_text_tertiary opacity-70 hover:text-cp_text_tertiary text-xs flex items-center gap-1 transition">←
               Portfolio</a>
-            <div class="w-px h-5 bg-blue-700"></div>
+            <div class="w-px h-5 bg-cp_text_tertiary opacity-30"></div>
             <a href="index.html" class="flex items-center gap-2">
               <div
                 class="w-8 h-8 rounded-lg p-1 bg-cp_palette_secondary overflow-hidden flex items-center justify-center font-bold text-white text-xs">
@@ -108,21 +109,25 @@
             </a>
           </div>
           <div class="hidden md:flex items-center gap-6">
-            <a href="index.html" class="text-blue-200 hover:text-white text-sm font-medium transition">Home</a>
-            <a href="products.html" class="text-blue-200 hover:text-white text-sm font-medium transition">Products</a>
-            <a href="wishlist.html" class="text-blue-200 hover:text-white text-sm font-medium transition relative">
+            <a href="index.html"
+              class="text-cp_text_tertiary opacity-80 hover:text-cp_text_tertiary text-sm font-medium transition">Home</a>
+            <a href="products.html"
+              class="text-cp_text_tertiary opacity-80 hover:text-cp_text_tertiary text-sm font-medium transition">Products</a>
+            <a href="wishlist.html"
+              class="text-cp_text_tertiary opacity-80 hover:text-cp_text_tertiary text-sm font-medium transition relative">
               Wishlist
               <span id="nav-wishlist-count"
                 class="hidden absolute -top-2 -right-3 w-4 h-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center"></span>
             </a>
-            <a href="orders.html" class="text-blue-200 hover:text-white text-sm font-medium transition">Orders</a>
+            <a href="orders.html"
+              class="text-cp_text_tertiary opacity-80 hover:text-cp_text_tertiary text-sm font-medium transition">Orders</a>
             <a href="cart.html"
               class="relative flex items-center gap-1 px-4 py-2 rounded-lg bg-cp_palette_secondary text-white text-sm font-semibold hover:opacity-90 transition">
-              🛒 Cart <span id="nav-cart-count"
+              <img src="./assets/shopping-cart-add.png" /> Cart <span id="nav-cart-count"
                 class="ml-1 bg-white text-cp_palette_primary text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">0</span>
             </a>
             <a href="login.html" id="nav-login-btn"
-              class="text-blue-200 hover:text-white text-sm font-medium transition">Login</a>
+              class="text-cp_text_tertiary opacity-80 hover:text-cp_text_tertiary text-sm font-medium transition">Login</a>
           </div>
           <button class="md:hidden text-white" onclick="document.getElementById('mob-nav').classList.toggle('hidden')">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -131,12 +136,13 @@
           </button>
         </div>
       </div>
-      <div id="mob-nav" class="hidden md:hidden px-4 pb-4 space-y-2 border-t border-blue-800 pt-3">
-        <a href="index.html" class="block text-blue-200 text-sm py-1">Home</a>
-        <a href="products.html" class="block text-blue-200 text-sm py-1">Products</a>
-        <a href="wishlist.html" class="block text-blue-200 text-sm py-1">Wishlist</a>
-        <a href="cart.html" class="block text-blue-200 text-sm py-1">Cart</a>
-        <a href="login.html" class="block text-blue-200 text-sm py-1">Login</a>
+      <div id="mob-nav"
+        class="hidden md:hidden px-4 pb-4 space-y-2 border-t border-cp_palette_primary border-opacity-30 pt-3">
+        <a href="index.html" class="block text-cp_text_tertiary opacity-80 text-sm py-1">Home</a>
+        <a href="products.html" class="block text-cp_text_tertiary opacity-80 text-sm py-1">Products</a>
+        <a href="wishlist.html" class="block text-cp_text_tertiary opacity-80 text-sm py-1">Wishlist</a>
+        <a href="cart.html" class="block text-cp_text_tertiary opacity-80 text-sm py-1">Cart</a>
+        <a href="login.html" class="block text-cp_text_tertiary opacity-80 text-sm py-1">Login</a>
       </div>
     </nav>
   </header>
@@ -178,7 +184,7 @@
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="m1 9 4-4-4-4" />
               </svg>
-              <span id="breadcrumb-product" class="ml-1 font-medium text-gray-500 md:ml-2">Product Name</span>
+              <span id="breadcrumb-product" class="ml-1 font-medium text-cp_text_secondary md:ml-2">Product Name</span>
             </div>
           </li>
         </ol>
@@ -192,7 +198,8 @@
           class="grid grid-cols-1 md:grid-cols-2 gap-12 bg-cp_background_paper rounded-2xl border border-cp_borders_main p-6 sm:p-10">
           <!-- Image Section -->
           <div class="space-y-4">
-            <div class="aspect-square rounded-2xl overflow-hidden bg-gray-50 border border-cp_borders_main">
+            <div
+              class="aspect-square rounded-2xl overflow-hidden bg-cp_background_default border border-cp_borders_main">
               <img id="product-image" src="" alt="" class="w-full h-full object-cover">
             </div>
             <div class="grid grid-cols-4 gap-4">
@@ -236,38 +243,43 @@
             <div class="border-t border-b border-cp_borders_main py-6 mb-8 space-y-6">
               <div>
                 <label class="block text-sm font-bold text-cp_palette_primary mb-3">Quantity</label>
-                <div class="flex items-center w-32 border border-cp_borders_main rounded-xl overflow-hidden bg-gray-50">
+                <div
+                  class="flex items-center w-32 border border-cp_borders_main rounded-xl overflow-hidden bg-cp_background_default">
                   <button onclick="changeQty(-1)"
-                    class="w-10 h-10 flex items-center justify-center hover:bg-gray-200 transition text-lg">-</button>
+                    class="w-10 h-10 flex items-center justify-center hover:bg-cp_background_default transition text-lg">-</button>
                   <input id="product-qty" type="text" value="1" readonly
                     class="w-12 h-10 text-center bg-transparent font-bold text-cp_palette_primary focus:outline-none">
                   <button onclick="changeQty(1)"
-                    class="w-10 h-10 flex items-center justify-center hover:bg-gray-200 transition text-lg">+</button>
+                    class="w-10 h-10 flex items-center justify-center hover:bg-cp_background_default transition text-lg">+</button>
                 </div>
               </div>
             </div>
 
             <div class="flex flex-col sm:flex-row gap-4">
               <button onclick="handleAddToCart()"
-                class="flex-1 px-8 py-4 rounded-xl bg-cp_palette_primary text-white font-bold hover:bg-blue-900 transition flex items-center justify-center gap-2">
-                🛒 Add to Cart
+                class="flex-1 px-8 py-4 rounded-xl bg-cp_palette_primary text-white font-bold hover:bg-cp_palette_primary hover:brightness-75 transition flex items-center justify-center gap-2">
+                <img src="./assets/shopping-cart-add.png" /> Add to Cart
               </button>
               <button onclick="handleToggleWishlist()" id="wl-btn"
-                class="px-8 py-4 rounded-xl border-2 border-cp_borders_main text-cp_palette_primary font-bold hover:bg-gray-50 transition flex items-center justify-center gap-2">
-                <span id="wl-icon">🤍</span> Wishlist
+                class="px-8 py-4 rounded-xl border-2 border-cp_borders_main text-cp_palette_primary font-bold hover:bg-cp_background_default transition flex items-center justify-center gap-2">
+                <span id="wl-icon"><img src="./assets/empty-heart.png" /></span> Wishlist
               </button>
             </div>
 
             <div class="mt-8 grid grid-cols-2 gap-4">
-              <div class="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-cp_borders_main">
-                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-sm">🚚
+              <div
+                class="flex items-center gap-3 p-3 rounded-xl bg-cp_background_default border border-cp_borders_main">
+                <div
+                  class="w-8 h-8 rounded-full bg-cp_palette_primary bg-opacity-20 flex items-center justify-center text-cp_palette_primary text-sm">
+                  🚚
                 </div>
                 <div class="text-[10px]">
                   <div class="font-bold text-cp_palette_primary">Free Shipping</div>
                   <div class="text-cp_text_secondary">On orders over $99</div>
                 </div>
               </div>
-              <div class="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-cp_borders_main">
+              <div
+                class="flex items-center gap-3 p-3 rounded-xl bg-cp_background_default border border-cp_borders_main">
                 <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-sm">
                   🛡️</div>
                 <div class="text-[10px]">
@@ -326,14 +338,15 @@
         <h1 class="text-2xl font-bold text-cp_palette_primary mb-4">Product Not Found</h1>
         <p class="text-cp_text_secondary mb-8">The product you're looking for doesn't exist or has been removed.</p>
         <a href="products.html"
-          class="px-8 py-4 rounded-xl bg-cp_palette_primary text-white font-bold hover:bg-blue-900 transition">Return to
+          class="px-8 py-4 rounded-xl bg-cp_palette_primary text-white font-bold hover:bg-cp_palette_primary hover:brightness-75 transition">Return
+          to
           Products</a>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 py-10 mt-20">
+  <footer class="bg-cp_palette_primary py-10 mt-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
         <div>
@@ -344,31 +357,38 @@
             </div>
             <span class="text-white font-bold">ManShop</span>
           </div>
-          <p class="text-gray-400 text-sm">Your premium online shopping destination with thousands of products from top
+          <p class="text-cp_text_tertiary opacity-70 text-sm">Your premium online shopping destination with thousands of
+            products from top
             brands.</p>
         </div>
         <div>
           <h5 class="text-white font-semibold mb-3">Quick Links</h5>
           <div class="space-y-2">
-            <a href="products.html" class="block text-gray-400 hover:text-yellow-400 text-sm transition">All
+            <a href="products.html"
+              class="block text-cp_text_tertiary opacity-70 hover:text-cp_palette_secondary text-sm transition">All
               Products</a>
-            <a href="cart.html" class="block text-gray-400 hover:text-yellow-400 text-sm transition">My Cart</a>
-            <a href="wishlist.html" class="block text-gray-400 hover:text-yellow-400 text-sm transition">Wishlist</a>
-            <a href="orders.html" class="block text-gray-400 hover:text-yellow-400 text-sm transition">Order History</a>
+            <a href="cart.html"
+              class="block text-cp_text_tertiary opacity-70 hover:text-cp_palette_secondary text-sm transition">My
+              Cart</a>
+            <a href="wishlist.html"
+              class="block text-cp_text_tertiary opacity-70 hover:text-cp_palette_secondary text-sm transition">Wishlist</a>
+            <a href="orders.html"
+              class="block text-cp_text_tertiary opacity-70 hover:text-cp_palette_secondary text-sm transition">Order
+              History</a>
           </div>
         </div>
         <div>
           <h5 class="text-white font-semibold mb-3">Customer Support</h5>
           <div class="space-y-2">
-            <p class="text-gray-400 text-sm">📧 support@manshop.com</p>
-            <p class="text-gray-400 text-sm">📞 +1 (555) 123-4567</p>
-            <p class="text-gray-400 text-sm">🕐 Mon-Fri 9am–6pm</p>
+            <p class="text-cp_text_tertiary opacity-70 text-sm">📧 support@manshop.com</p>
+            <p class="text-cp_text_tertiary opacity-70 text-sm">📞 +1 (555) 123-4567</p>
+            <p class="text-cp_text_tertiary opacity-70 text-sm">🕐 Mon-Fri 9am–6pm</p>
           </div>
         </div>
       </div>
       <div class="border-t border-gray-800 pt-6 text-center">
-        <p class="text-gray-600 text-sm">© 2026 ManShop. All rights reserved. | <a href="../index.html"
-            class="text-gray-500 hover:text-yellow-400 transition">← Back to Portfolio</a></p>
+        <p class="text-cp_text_secondary text-sm">© 2026 ManShop. All rights reserved. | <a href="../index.html"
+            class="text-cp_text_secondary hover:text-cp_palette_secondary transition">← Back to Portfolio</a></p>
       </div>
     </div>
   </footer>
@@ -514,7 +534,7 @@
       container.innerHTML = `
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           ${currentProduct.specs.map(s => `
-            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl border border-cp_borders_main">
+            <div class="flex items-center justify-between p-4 bg-cp_background_default rounded-xl border border-cp_borders_main">
               <span class="text-sm font-bold text-cp_palette_primary">${s.label}</span>
               <span class="text-sm text-cp_text_secondary">${s.value}</span>
             </div>
@@ -539,7 +559,7 @@
             <button class="px-5 py-2 rounded-lg bg-cp_palette_secondary text-white text-xs font-bold hover:opacity-90 transition">Write a Review</button>
           </div>
           ${currentProduct.reviewsList.map(r => `
-            <div class="p-5 rounded-2xl border border-cp_borders_main bg-white shadow-sm">
+            <div class="p-5 rounded-2xl border border-cp_borders_main bg-cp_background_paper shadow-sm">
               <div class="flex justify-between items-start mb-3">
                 <div class="flex items-center gap-3">
                   <div class="w-10 h-10 rounded-full bg-cp_palette_primary flex items-center justify-center text-white font-bold">${r.user.charAt(0)}</div>
@@ -571,7 +591,7 @@
       if (idx >= 0) cart[idx].qty += qty;
       else cart.push({ ...currentProduct, qty });
       setCart(cart);
-      showToast(`Added ${qty} item${qty > 1 ? 's' : ''} to cart!`, '🛒');
+      showToast(`Added ${qty} item${qty > 1 ? 's' : ''} to cart!`, '<img src="./assets/shopping-cart-add.png" />');
     }
 
     function handleToggleWishlist() {
@@ -596,10 +616,10 @@
       if (btn && icon) {
         if (isWL) {
           btn.classList.add('bg-red-50', 'border-red-200');
-          icon.textContent = '❤️';
+          icon.innerHTML = '<img src="./assets/heart.png" />';
         } else {
           btn.classList.remove('bg-red-50', 'border-red-200');
-          icon.textContent = '🤍';
+          icon.innerHTML = '<img src="./assets/empty-heart.png" />';
         }
       }
     }
@@ -613,10 +633,10 @@
         const isWL = wl.some(x => x.id === p.id);
         const disc = Math.round((1 - p.price / p.original) * 100);
         return `<div class="bg-cp_background_paper rounded-xl border border-cp_borders_main transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-[0_12px_40_rgba(27,58,107,0.15)] overflow-hidden">
-          <div class="relative bg-gray-50 h-48 overflow-hidden group">
+          <div class="relative bg-cp_background_default h-48 overflow-hidden group">
             <a href="product-details.html?id=${p.id}"><img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"></a>
             <button onclick="event.preventDefault(); toggleRelatedWishlist(${p.id})" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-lg transition ${isWL ? 'text-red-500' : 'text-gray-300 hover:text-red-400'}">
-              ${isWL ? '❤️' : '🤍'}
+              ${isWL ? '<img src="./assets/heart.png" />' : '<img src="./assets/empty-heart.png" />'}
             </button>
             ${p.bestseller ? '<span class="absolute top-3 left-3 inline-block px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-cp_palette_secondary text-white">Best Seller</span>' : ''}
             ${disc > 0 ? `<span class="absolute bottom-3 right-3 inline-block px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-red-500 text-white">-${disc}%</span>` : ''}
@@ -650,7 +670,7 @@
 
     function showToast(msg, icon = '✅') {
       const t = document.createElement('div');
-      t.className = 'fixed bottom-4 right-4 z-50 bg-gray-900 text-white px-5 py-3 rounded-xl shadow-xl flex items-center gap-2 text-sm font-medium';
+      t.className = 'fixed bottom-4 right-4 z-50 bg-cp_palette_primary text-cp_text_tertiary px-5 py-3 rounded-xl shadow-xl flex items-center gap-2 text-sm font-medium';
       t.innerHTML = `<span>${icon}</span> ${msg}`;
       document.body.appendChild(t);
       setTimeout(() => { t.style.opacity = '0'; t.style.transition = 'opacity 0.3s'; setTimeout(() => t.remove(), 300); }, 2500);

@@ -101,9 +101,10 @@
     <nav class="bg-cp_palette_primary shadow-lg">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
         <div class="flex items-center gap-4">
-          <a href="../index.html" class="text-blue-300 hover:text-white text-xs flex items-center gap-1 transition">←
+          <a href="../index.html"
+            class="text-cp_text_tertiary opacity-70 hover:text-cp_text_tertiary text-xs flex items-center gap-1 transition">←
             Portfolio</a>
-          <div class="w-px h-5 bg-blue-700"></div>
+          <div class="w-px h-5 bg-cp_text_tertiary opacity-30"></div>
           <a href="index.html" class="flex items-center gap-2">
             <div
               class="w-8 h-8 rounded-lg p-1 bg-cp_palette_secondary overflow-hidden flex items-center justify-center font-bold text-white text-xs">
@@ -112,8 +113,9 @@
             <span class="text-white font-bold text-lg">ManShop</span>
           </a>
         </div>
-        <a href="login.html" class="text-blue-200 hover:text-white text-sm transition">Already have an account? Sign
-          in</a>
+        <a href="login.html"
+          class="text-cp_text_tertiary opacity-80 hover:text-cp_text_tertiary text-sm transition">Already have an
+          account? Sign in</a>
       </div>
     </nav>
   </header>
@@ -122,13 +124,13 @@
   <main class="bg-cp_background_default min-h-screen">
     <section class="min-h-screen flex items-center justify-center px-4 py-16">
       <div class="w-full max-w-md">
-        <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+        <div class="bg-cp_background_paper rounded-2xl shadow-xl border border-cp_borders_main overflow-hidden">
           <div class="bg-cp_palette_primary p-6 text-center">
             <div
               class="w-14 h-14 rounded-2xl bg-cp_palette_secondary flex items-center justify-center text-2xl mx-auto mb-3">
               ✨</div>
             <h1 class="text-2xl font-bold text-white">Create Account</h1>
-            <p class="text-blue-200 text-sm mt-1">Join ManShop and start shopping</p>
+            <p class="text-cp_text_tertiary opacity-80 text-sm mt-1">Join ManShop and start shopping</p>
           </div>
           <div class="p-8">
             <div id="error-msg" class="hidden bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg p-3 mb-5">
@@ -140,12 +142,12 @@
                 <div>
                   <label class="block text-sm font-semibold text-cp_palette_primary mb-2">First Name</label>
                   <input id="fname" type="text" placeholder="John"
-                    class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm transition" />
+                    class="w-full border border-cp_borders_main rounded-xl px-4 py-3 text-sm transition" />
                 </div>
                 <div>
                   <label class="block text-sm font-semibold text-cp_palette_primary mb-2">Last Name</label>
                   <input id="lname" type="text" placeholder="Doe"
-                    class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm transition" />
+                    class="w-full border border-cp_borders_main rounded-xl px-4 py-3 text-sm transition" />
                 </div>
               </div>
               <div>
@@ -165,15 +167,15 @@
                     oninput="checkStrength(this.value)"
                     class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm pr-12 transition" />
                   <button type="button" onclick="togglePass('password')"
-                    class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">👁</button>
+                    class="absolute right-3 top-1/2 -translate-y-1/2 text-cp_text_secondary">👁</button>
                 </div>
                 <div class="mt-2 flex gap-1">
-                  <div id="s1" class="h-1 rounded-sm transition-all duration-300 flex-1 bg-gray-200"></div>
-                  <div id="s2" class="h-1 rounded-sm transition-all duration-300 flex-1 bg-gray-200"></div>
-                  <div id="s3" class="h-1 rounded-sm transition-all duration-300 flex-1 bg-gray-200"></div>
-                  <div id="s4" class="h-1 rounded-sm transition-all duration-300 flex-1 bg-gray-200"></div>
+                  <div id="s1" class="h-1 rounded-sm transition-all duration-300 flex-1 bg-cp_background_default"></div>
+                  <div id="s2" class="h-1 rounded-sm transition-all duration-300 flex-1 bg-cp_background_default"></div>
+                  <div id="s3" class="h-1 rounded-sm transition-all duration-300 flex-1 bg-cp_background_default"></div>
+                  <div id="s4" class="h-1 rounded-sm transition-all duration-300 flex-1 bg-cp_background_default"></div>
                 </div>
-                <p id="strength-text" class="text-xs text-gray-400 mt-1"></p>
+                <p id="strength-text" class="text-xs text-cp_text_secondary mt-1"></p>
               </div>
               <div>
                 <label class="block text-sm font-semibold text-cp_palette_primary mb-2">Confirm Password</label>
@@ -181,12 +183,12 @@
                   <input id="confirm" type="password" placeholder="Re-enter password"
                     class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm pr-12 transition" />
                   <button type="button" onclick="togglePass('confirm')"
-                    class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">👁</button>
+                    class="absolute right-3 top-1/2 -translate-y-1/2 text-cp_text_secondary">👁</button>
                 </div>
               </div>
               <label class="flex items-start gap-3 cursor-pointer">
-                <input type="checkbox" id="terms" class="mt-0.5 rounded border-gray-300">
-                <span class="text-sm text-gray-600">I agree to the <a href="#"
+                <input type="checkbox" id="terms" class="mt-0.5 rounded border-cp_borders_main">
+                <span class="text-sm text-cp_text_secondary">I agree to the <a href="#"
                     class="text-cp_palette_secondary hover:underline">Terms of Service</a> and <a href="#"
                     class="text-cp_palette_secondary hover:underline">Privacy Policy</a></span>
               </label>
@@ -194,13 +196,14 @@
                 class="w-full bg-cp_palette_primary text-white transition-all duration-200 hover:bg-[#0d2447] py-3 rounded-xl font-semibold">Create
                 Account</button>
             </div>
-            <div class="mt-6 pt-6 border-t border-gray-100 text-center">
-              <p class="text-sm text-gray-600">Already have an account? <a href="login.html"
+            <div class="mt-6 pt-6 border-t border-cp_borders_main text-center">
+              <p class="text-sm text-cp_text_secondary">Already have an account? <a href="login.html"
                   class="font-semibold text-cp_palette_secondary hover:underline">Sign in</a></p>
             </div>
           </div>
         </div>
-        <p class="text-center mt-6 text-sm text-gray-500"><a href="index.html" class="hover:text-blue-700 transition">←
+        <p class="text-center mt-6 text-sm text-cp_text_secondary"><a href="index.html"
+            class="hover:text-cp_palette_primary transition">←
             Back to ManShop</a></p>
       </div>
     </section>
@@ -223,7 +226,7 @@
       if (/[^A-Za-z0-9]/.test(val)) score++;
       bars.forEach((b, i) => {
         const el = document.getElementById(b);
-        el.className = 'h-1 rounded-sm transition-all duration-300 flex-1 ' + (i < score ? colors[score - 1] : 'bg-gray-200');
+        el.className = 'h-1 rounded-sm transition-all duration-300 flex-1 ' + (i < score ? colors[score - 1] : 'bg-cp_background_default');
       });
       document.getElementById('strength-text').textContent = score > 0 ? labels[score - 1] : '';
     }

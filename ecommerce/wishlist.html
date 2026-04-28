@@ -96,8 +96,9 @@
     <nav class="bg-cp_palette_primary shadow-lg sticky top-0 z-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
         <div class="flex items-center gap-4">
-          <a href="../index.html" class="text-blue-300 hover:text-white text-xs transition">← Portfolio</a>
-          <div class="w-px h-5 bg-blue-700"></div>
+          <a href="../index.html"
+            class="text-cp_text_tertiary opacity-70 hover:text-cp_text_tertiary text-xs transition">← Portfolio</a>
+          <div class="w-px h-5 bg-cp_text_tertiary opacity-30"></div>
           <a href="index.html" class="flex items-center gap-2">
             <div
               class="w-8 h-8 rounded-lg p-1 bg-cp_palette_secondary overflow-hidden flex items-center justify-center font-bold text-white text-xs">
@@ -107,16 +108,20 @@
           </a>
         </div>
         <div class="hidden md:flex items-center gap-6">
-          <a href="index.html" class="text-blue-200 hover:text-white text-sm transition">Home</a>
-          <a href="products.html" class="text-blue-200 hover:text-white text-sm transition">Products</a>
+          <a href="index.html"
+            class="text-cp_text_tertiary opacity-80 hover:text-cp_text_tertiary text-sm transition">Home</a>
+          <a href="products.html"
+            class="text-cp_text_tertiary opacity-80 hover:text-cp_text_tertiary text-sm transition">Products</a>
           <a href="wishlist.html" class="text-white text-sm font-medium border-b-2 border-secondary pb-0.5">Wishlist</a>
-          <a href="orders.html" class="text-blue-200 hover:text-white text-sm transition">Orders</a>
+          <a href="orders.html"
+            class="text-cp_text_tertiary opacity-80 hover:text-cp_text_tertiary text-sm transition">Orders</a>
           <a href="cart.html"
             class="flex items-center gap-1 px-4 py-2 rounded-lg bg-cp_palette_secondary text-white text-sm font-semibold hover:opacity-90 transition">
-            🛒 Cart <span id="nav-cart-count"
+            <img src="./assets/shopping-cart-add.png" /> Cart <span id="nav-cart-count"
               class="ml-1 bg-white text-cp_palette_primary text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">0</span>
           </a>
-          <a href="login.html" id="nav-login-btn" class="text-blue-200 hover:text-white text-sm transition">Login</a>
+          <a href="login.html" id="nav-login-btn"
+            class="text-cp_text_tertiary opacity-80 hover:text-cp_text_tertiary text-sm transition">Login</a>
         </div>
       </div>
     </nav>
@@ -127,10 +132,10 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         <div>
           <h1 class="text-3xl font-bold text-white mb-1">My Wishlist ❤️</h1>
-          <p id="wl-count" class="text-blue-200 text-sm"></p>
+          <p id="wl-count" class="text-cp_text_tertiary opacity-80 text-sm"></p>
         </div>
         <button onclick="clearWishlist()"
-          class="px-4 py-2 rounded-lg border border-red-400 text-red-300 hover:bg-red-900 hover:bg-opacity-30 text-sm font-medium transition">Clear
+          class="px-4 py-2 rounded-lg border border-red-500 border-opacity-50 text-red-400 hover:bg-red-500 hover:bg-opacity-30 text-sm font-medium transition">Clear
           Wishlist</button>
       </div>
     </section>
@@ -141,14 +146,15 @@
         <h2 class="text-2xl font-bold text-cp_palette_primary mb-2">Your Wishlist is Empty</h2>
         <p class="text-cp_text_secondary mb-6">Save products you love to find them easily later.</p>
         <a href="products.html"
-          class="px-8 py-3 rounded-xl bg-cp_palette_primary text-white font-semibold hover:bg-blue-900 transition">Browse
+          class="px-8 py-3 rounded-xl bg-cp_palette_primary text-white font-semibold hover:bg-cp_palette_primary hover:brightness-75 transition">Browse
           Products →</a>
       </div>
 
       <div id="wishlist-actions" class="hidden justify-between items-center mb-6">
         <span class="text-sm text-cp_text_secondary"></span>
         <button onclick="addAllToCart()"
-          class="px-6 py-2.5 rounded-xl bg-cp_palette_secondary text-white text-sm font-semibold hover:opacity-90 transition">🛒
+          class="px-6 py-2.5 rounded-xl bg-cp_palette_secondary text-white text-sm font-semibold hover:opacity-90 transition"><img
+            src="./assets/shopping-cart-add.png" />
           Add All to Cart</button>
       </div>
 
@@ -156,10 +162,10 @@
     </section>
   </main>
 
-  <footer class="bg-gray-900 py-8 mt-8">
+  <footer class="bg-cp_palette_primary py-8 mt-8">
     <div class="max-w-7xl mx-auto px-4 text-center">
-      <p class="text-gray-600 text-sm">© 2026 ManShop. <a href="../index.html"
-          class="text-gray-500 hover:text-yellow-400 transition">← Portfolio</a></p>
+      <p class="text-cp_text_secondary text-sm">© 2026 ManShop. <a href="../index.html"
+          class="text-cp_text_secondary hover:text-cp_palette_secondary transition">← Portfolio</a></p>
     </div>
   </footer>
 
@@ -191,7 +197,7 @@
       if (idx >= 0) cart[idx].qty++;
       else cart.push({ ...p, qty: 1 });
       setCart(cart);
-      showToast('Added to cart!', '🛒');
+      showToast('Added to cart!', '<img src="./assets/shopping-cart-add.png" />');
     }
 
     function addAllToCart() {
@@ -203,12 +209,12 @@
         else cart.push({ ...p, qty: 1 });
       });
       setCart(cart);
-      showToast(`${wl.length} items added to cart!`, '🛒');
+      showToast(`${wl.length} items added to cart!`, '<img src="./assets/shopping-cart-add.png" />');
     }
 
     function showToast(msg, icon = '✅') {
       const t = document.createElement('div');
-      t.className = 'fixed bottom-4 right-4 z-50 bg-gray-900 text-white px-5 py-3 rounded-xl shadow-xl flex items-center gap-2 text-sm font-medium';
+      t.className = 'fixed bottom-4 right-4 z-50 bg-cp_palette_primary text-cp_text_tertiary px-5 py-3 rounded-xl shadow-xl flex items-center gap-2 text-sm font-medium';
       t.innerHTML = `<span>${icon}</span> ${msg}`;
       document.body.appendChild(t);
       setTimeout(() => { t.style.opacity = '0'; t.style.transition = 'opacity 0.3s'; setTimeout(() => t.remove(), 300); }, 2500);
@@ -235,7 +241,7 @@
       document.getElementById('wishlist-grid').innerHTML = wl.map(p => {
         const disc = Math.round((1 - p.price / p.original) * 100);
         return `<div class="bg-cp_background_paper rounded-xl border border-cp_borders_main transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(27,58,107,0.15)] overflow-hidden">
-      <div class="relative bg-gray-50 h-48 overflow-hidden group">
+      <div class="relative bg-cp_background_default h-48 overflow-hidden group">
         <a href="product-details.html?id=${p.id}"><img src="${p.image || 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&h=400'}" alt="${p.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"></a>
         <button onclick="removeFromWishlist(${p.id})" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-red-500 hover:bg-red-50 transition text-lg" title="Remove from wishlist">❤️</button>
         ${disc > 0 ? `<span class="absolute top-3 left-3 inline-block px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-red-500 text-white">-${disc}%</span>` : ''}
@@ -245,17 +251,17 @@
         <a href="product-details.html?id=${p.id}"><h3 class="font-semibold text-cp_palette_primary text-sm leading-snug mb-2 hover:text-cp_palette_secondary transition">${p.name}</h3></a>
         <div class="flex items-center gap-1 mb-3">
           <span class="text-yellow-500 text-xs">${'★'.repeat(Math.floor(p.rating))}</span>
-          <span class="text-xs text-gray-400">${p.rating}</span>
+          <span class="text-xs text-cp_text_secondary">${p.rating}</span>
         </div>
         <div class="flex items-center justify-between mb-4">
           <div>
             <span class="font-bold text-cp_palette_primary">$${p.price.toFixed(2)}</span>
-            ${p.original > p.price ? `<span class="text-xs text-gray-400 line-through ml-1">$${p.original.toFixed(2)}</span>` : ''}
+            ${p.original > p.price ? `<span class="text-xs text-cp_text_secondary line-through ml-1">$${p.original.toFixed(2)}</span>` : ''}
           </div>
         </div>
         <div class="flex gap-2">
-          <button onclick="addToCart(${p.id})" class="flex-1 py-2.5 rounded-lg bg-cp_palette_primary text-white text-sm font-semibold hover:bg-blue-900 transition">🛒 Add to Cart</button>
-          <button onclick="removeFromWishlist(${p.id})" class="w-10 rounded-lg border border-gray-200 flex items-center justify-center text-gray-400 hover:text-red-500 hover:border-red-200 transition">🗑</button>
+          <button onclick="addToCart(${p.id})" class="flex-1 py-2.5 rounded-lg bg-cp_palette_primary text-white text-sm font-semibold hover:bg-cp_palette_primary hover:brightness-75 transition flex items-center justify-center gap-2"><img src="./assets/shopping-cart-add.png" /> Add to Cart</button>
+          <button onclick="removeFromWishlist(${p.id})" class="w-10 rounded-lg border border-cp_borders_main flex items-center justify-center text-cp_text_secondary hover:text-red-500 hover:border-red-500 hover:border-opacity-30 transition">🗑</button>
         </div>
       </div>
     </div>`;
